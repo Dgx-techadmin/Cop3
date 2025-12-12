@@ -432,7 +432,7 @@ export default function DepartmentDetailPage() {
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                   <Button
                     size="lg"
-                    className="gradient-primary text-white shadow-elegant hover:shadow-xl transition-all duration-300 group"
+                    className="bg-accent hover:bg-accent-light text-white shadow-elegant hover:shadow-xl transition-all duration-300 group"
                     onClick={() => navigate('/tutorials')}
                   >
                     View Tutorials
