@@ -118,7 +118,7 @@ export const AIHelperSection = () => {
                 <Button
                   type="submit"
                   disabled={loading}
-                  className="w-full gradient-primary text-white shadow-elegant hover:shadow-xl transition-all duration-300 group"
+                  className="w-full bg-accent hover:bg-accent-light text-white shadow-elegant hover:shadow-xl transition-all duration-300 group"
                   size="lg"
                 >
                   {loading ? (
