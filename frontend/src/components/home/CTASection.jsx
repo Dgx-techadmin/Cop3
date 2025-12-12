@@ -10,7 +10,7 @@ export const CTASection = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative overflow-hidden rounded-2xl shadow-elegant">
           {/* Gradient Background */}
-          <div className="absolute inset-0 gradient-primary opacity-95"></div>
+          <div className="absolute inset-0 gradient-accent opacity-95"></div>
           
           {/* Decorative elements */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 blur-2xl"></div>
