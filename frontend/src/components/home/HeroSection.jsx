@@ -41,7 +41,7 @@ export const HeroSection = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in fade-in slide-in-from-bottom-10 duration-700 delay-450">
             <Button
               size="lg"
-              className="gradient-primary text-white shadow-elegant hover:shadow-xl transition-all duration-300 hover:scale-105 group"
+              className="bg-accent hover:bg-accent-light text-white shadow-elegant hover:shadow-xl transition-all duration-300 hover:scale-105 group"
               onClick={scrollToHelper}
             >
               Get AI Suggestions
@@ -50,7 +50,7 @@ export const HeroSection = () => {
             <Button
               size="lg"
               variant="outline"
-              className="border-2 hover:border-primary hover:text-primary transition-colors"
+              className="border-2 border-primary text-primary hover:bg-primary hover:text-white transition-colors"
               onClick={() => navigate('/tutorials')}
             >
               Explore Tutorials
