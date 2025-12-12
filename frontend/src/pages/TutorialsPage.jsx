@@ -148,7 +148,7 @@ export default function TutorialsPage() {
                       </ul>
                     </div>
                     <Button
-                      className="w-full mt-6 gradient-primary text-white shadow-elegant hover:shadow-xl transition-all duration-300 group"
+                      className="w-full mt-6 bg-accent hover:bg-accent-light text-white shadow-elegant hover:shadow-xl transition-all duration-300 group"
                       onClick={() => window.open(tutorial.videoUrl, '_blank')}
                     >
                       Watch Tutorial
