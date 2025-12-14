@@ -70,9 +70,9 @@ const quickGuides = [
     icon: "📘"
   },
   {
-    title: "Copilot Prompt Library",
-    description: "Explore hundreds of pre-built prompts for various scenarios and departments.",
-    url: "https://adoption.microsoft.com/en-us/copilot/prompts/",
+    title: "Copilot Prompt Gallery",
+    description: "Explore Microsoft's official gallery of pre-built prompts for various scenarios and departments.",
+    url: "https://learn.microsoft.com/en-us/copilot/microsoft-365/copilot-prompt-gallery",
     icon: "📚"
   },
   {
