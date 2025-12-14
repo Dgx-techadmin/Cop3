@@ -39,7 +39,7 @@ const tutorials = [
     description: "Compose professional emails faster, manage your inbox efficiently, and never struggle with email etiquette again.",
     duration: "7 min",
     level: "Beginner",
-    videoUrl: "https://support.microsoft.com/en-us/office/get-started-with-copilot-in-outlook-46b53b7f-cc21-41ce-871c-b3f8303f5303",
+    videoUrl: "https://support.microsoft.com/en-us/office/frequently-asked-questions-about-copilot-in-outlook-07420c70-099e-4552-8522-7d426712917b",
     topics: ["Email drafting", "Tone adjustment", "Summarization", "Quick replies"]
   },
   {
