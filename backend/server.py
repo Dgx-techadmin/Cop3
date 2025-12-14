@@ -162,7 +162,10 @@ Format your response as JSON with keys: approach, tool, why, strategic_alignment
         return AIHelperResponse(**ai_response)
         
     except Exception as e:
+        import traceback
+        error_details = traceback.format_exc()
         logging.error(f"Error in AI helper: {str(e)}")
+        logging.error(f"Full traceback: {error_details}")
         raise HTTPException(status_code=500, detail=f"Error generating AI suggestions: {str(e)}")
 
 # Include the router in the main app
