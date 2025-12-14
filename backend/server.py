@@ -20,10 +20,9 @@ mongo_url = os.environ['MONGO_URL']
 client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ['DB_NAME']]
 
-# OpenAI client - Using Emergent Universal Key with their API endpoint
+# OpenAI client - Using standard OpenAI API
 openai_client = AsyncOpenAI(
-    api_key=os.environ.get('OPENAI_API_KEY'),
-    base_url="https://api.emergent.sh/v1"
+    api_key=os.environ.get('OPENAI_API_KEY')
 )
 
 # Create the main app without a prefix
