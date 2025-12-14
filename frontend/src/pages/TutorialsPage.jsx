@@ -57,7 +57,7 @@ const tutorials = [
     description: "Master the art of prompt engineering to get better, more accurate results from Copilot across all applications.",
     duration: "12 min",
     level: "Advanced",
-    videoUrl: "https://support.microsoft.com/en-us/topic/the-art-of-the-prompt-how-to-get-the-best-out-of-generative-ai-9401e19d-493f-49d6-9d99-2f3e288d5f0d",
+    videoUrl: "https://support.microsoft.com/en-us/topic/learn-about-copilot-prompts-f6c3b467-f07c-4db1-ae54-ffac96184dd5",
     topics: ["Prompt structure", "Context setting", "Iteration techniques", "Best practices"]
   }
 ];
