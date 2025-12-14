@@ -154,9 +154,9 @@ Format your response as JSON with keys: approach, tool, why, strategic_alignment
             
         except Exception as ai_error:
             logging.warning(f"Live AI failed, using fallback: {str(ai_error)}")
-        
-        # Generate intelligent responses based on department
-        responses_by_dept = {
+            
+            # Fallback: Generate intelligent responses based on department
+            responses_by_dept = {
             "sales": {
                 "approach": "1. Use Copilot in Excel to analyze historical sales data and identify patterns\n2. Create predictive models by asking Copilot to \"analyze trends in deal closures by industry and size\"\n3. Generate automated reports with key insights and forecasts\n4. Use Copilot in Outlook to draft personalized follow-up emails based on customer data\n5. Set up Copilot-powered dashboards to track real-time performance against forecasts",
                 "tool": "Copilot in Excel",
