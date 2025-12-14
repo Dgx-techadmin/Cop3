@@ -89,8 +89,8 @@ async def get_status_checks(skip: int = 0, limit: int = 100):
 @api_router.post("/ai-helper", response_model=AIHelperResponse)
 async def ai_helper(request: AIHelperRequest):
     """
-    Generate personalized AI suggestions based on user's challenge and department.
-    Note: Currently using intelligent mock responses. Integrate with Emergent LLM API when available.
+    Generate personalized AI suggestions using live AI (Emergent Universal Key -> GPT-4o).
+    Falls back to intelligent mock responses if API fails.
     """
     try:
         # Map department to strategic pillar
@@ -104,6 +104,56 @@ async def ai_helper(request: AIHelperRequest):
         }
         
         strategic_pillar = strategic_pillars.get(request.department, "organizational excellence")
+        
+        # Try live AI first
+        try:
+            system_prompt = """You are an AI assistant for Dynamics G-Ex, helping employees learn how to use Microsoft Copilot to solve their challenges. 
+
+Your tone should be:
+- Professional yet cheerful
+- Practical and actionable
+- Encouraging and supportive
+- Include smart Aussie humor when appropriate (light and tasteful)
+
+You should provide:
+1. Step-by-step approach (3-5 practical steps)
+2. Recommended Microsoft Copilot tool/feature
+3. Why this helps (connected to company strategy)
+4. Strategic alignment with company pillars
+
+Keep responses concise but helpful. Focus on practical, actionable advice."""
+
+            user_prompt = f"""A {request.department} team member named {request.name} has the following challenge:
+
+"{request.challenge}"
+
+Please provide:
+1. A step-by-step approach to tackle this challenge (be specific and actionable)
+2. The recommended Microsoft Copilot tool or feature (e.g., "Copilot in Excel", "Copilot in Word", "Copilot in Teams", "Copilot in Outlook", "Copilot in PowerPoint", or just "Copilot")
+3. Why this helps the {request.department} department
+4. How this aligns with Dynamics G-Ex's strategic pillar: {strategic_pillar}
+
+Format your response as JSON with keys: approach, tool, why, strategic_alignment"""
+
+            # Call GPT-4o via Emergent
+            response = await openai_client.chat.completions.create(
+                model="gpt-4o",
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_prompt}
+                ],
+                temperature=0.7,
+                max_tokens=800,
+                response_format={"type": "json_object"}
+            )
+            
+            # Parse response
+            import json
+            ai_response = json.loads(response.choices[0].message.content)
+            logging.info("✅ Live AI response generated successfully")
+            
+        except Exception as ai_error:
+            logging.warning(f"Live AI failed, using fallback: {str(ai_error)}")
         
         # Generate intelligent responses based on department
         responses_by_dept = {
