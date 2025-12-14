@@ -193,15 +193,15 @@ Format your response as JSON with keys: approach, tool, why, strategic_alignment
                 "why": "Customer service is all about speed and empathy. Copilot helps you respond faster without sacrificing quality, maintain the right tone even when rushed, and scale your support without losing the personal touch. It's like giving every team member superpowers.",
                 "strategic_alignment": f"This supports {strategic_pillar}, enabling you to deliver consistently excellent experiences that build customer loyalty and drive referrals."
             }
-        }
-        
-        # Get department-specific response or use a default
-        ai_response = responses_by_dept.get(request.department, {
-            "approach": "1. Start by clearly defining your objective and desired outcome\n2. Use Copilot to draft, analyze, or generate content relevant to your challenge\n3. Iterate and refine the output by providing specific feedback\n4. Validate the results and adapt them to your specific context\n5. Share insights with your team to multiply the impact",
-            "tool": "Copilot",
-            "why": "Copilot accelerates your work by handling routine tasks, providing smart suggestions, and helping you focus on what matters most. It's designed to augment your expertise, not replace it.",
-            "strategic_alignment": f"This supports {strategic_pillar}, enabling you to work smarter and achieve better results faster."
-        })
+            }
+            
+            # Get department-specific response or use a default
+            ai_response = responses_by_dept.get(request.department, {
+                "approach": "1. Start by clearly defining your objective and desired outcome\n2. Use Copilot to draft, analyze, or generate content relevant to your challenge\n3. Iterate and refine the output by providing specific feedback\n4. Validate the results and adapt them to your specific context\n5. Share insights with your team to multiply the impact",
+                "tool": "Copilot",
+                "why": "Copilot accelerates your work by handling routine tasks, providing smart suggestions, and helping you focus on what matters most. It's designed to augment your expertise, not replace it.",
+                "strategic_alignment": f"This supports {strategic_pillar}, enabling you to work smarter and achieve better results faster."
+            })
         
         # Store in database for analytics
         doc = {
