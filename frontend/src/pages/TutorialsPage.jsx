@@ -78,7 +78,7 @@ const quickGuides = [
   {
     title: "Best Practices & Tips",
     description: "Learn from experts about maximizing productivity with AI assistance.",
-    url: "https://www.microsoft.com/en-us/microsoft-365/blog/copilot/",
+    url: "https://adoption.microsoft.com/en-us/copilot/",
     icon: "💡"
   },
   {
