@@ -21,14 +21,13 @@ export const Navigation = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
-            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center shadow-card">
-              <Sparkles className="w-6 h-6 text-white" />
-            </div>
+            <img 
+              src="/dynamics-gex-logo.png" 
+              alt="Dynamics G-Ex Logo" 
+              className="h-12 w-auto transition-transform group-hover:scale-105"
+            />
             <div className="hidden sm:block">
-              <h1 className="text-xl font-heading font-bold text-foreground group-hover:text-primary transition-colors">
-                Dynamics <span className="text-accent font-bold">G-Ex</span>
-              </h1>
-              <p className="text-xs text-muted-foreground">AI Hub</p>
+              <p className="text-xs text-muted-foreground font-medium">AI Hub</p>
             </div>
           </Link>
           
