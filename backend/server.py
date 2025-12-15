@@ -149,6 +149,12 @@ Format your response as JSON with keys: approach, tool, why, strategic_alignment
             # Parse response
             import json
             ai_response = json.loads(response.choices[0].message.content)
+            
+            # Convert lists to strings if needed (AI sometimes returns steps as arrays)
+            if isinstance(ai_response.get('approach'), list):
+                ai_response['approach'] = '\n'.join(f"{i+1}. {step}" if not step.startswith(f"{i+1}.") else step 
+                                                     for i, step in enumerate(ai_response['approach']))
+            
             logging.info("✅ Live AI response generated successfully")
             
         except Exception as ai_error:
