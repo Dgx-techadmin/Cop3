@@ -53,6 +53,11 @@ class AIHelperResponse(BaseModel):
     tool: str
     why: str
     strategic_alignment: str = ""
+    conversation_id: str = ""
+
+class ChatMessage(BaseModel):
+    message: str
+    conversation_id: str
 
 # Add your routes to the router instead of directly to app
 @api_router.get("/")
