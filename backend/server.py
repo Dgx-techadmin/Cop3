@@ -223,6 +223,21 @@ Format your response as JSON with keys: approach, tool, why, strategic_alignment
         }
         await db.ai_helper_requests.insert_one(doc)
         
+        # Generate conversation ID
+        conversation_id = str(uuid.uuid4())
+        ai_response['conversation_id'] = conversation_id
+        
+        # Store conversation context
+        await db.conversations.insert_one({
+            "conversation_id": conversation_id,
+            "name": request.name,
+            "department": request.department,
+            "challenge": request.challenge,
+            "initial_response": ai_response,
+            "messages": [],
+            "timestamp": datetime.now(timezone.utc).isoformat()
+        })
+        
         return AIHelperResponse(**ai_response)
         
     except Exception as e:
@@ -231,6 +246,82 @@ Format your response as JSON with keys: approach, tool, why, strategic_alignment
         logging.error(f"Error in AI helper: {str(e)}")
         logging.error(f"Full traceback: {error_details}")
         raise HTTPException(status_code=500, detail=f"Error generating AI suggestions: {str(e)}")
+
+@api_router.post("/ai-chat")
+async def ai_chat(chat_request: ChatMessage):
+    """
+    Continue the conversation with follow-up questions about Microsoft Copilot.
+    Restricted to Copilot-related topics only.
+    """
+    try:
+        # Get conversation context
+        conversation = await db.conversations.find_one(
+            {"conversation_id": chat_request.conversation_id},
+            {"_id": 0}
+        )
+        
+        if not conversation:
+            raise HTTPException(status_code=404, detail="Conversation not found")
+        
+        # Build conversation history
+        messages = [
+            {"role": "system", "content": """You are an AI assistant for Dynamics G-Ex, helping employees learn how to use Microsoft Copilot.
+
+IMPORTANT RESTRICTIONS:
+- ONLY answer questions related to Microsoft Copilot usage (Word, Excel, PowerPoint, Outlook, Teams)
+- If the question is not about Copilot, politely redirect: "I'm here to help with Microsoft Copilot questions. Could you ask about how Copilot can assist with your work?"
+- Stay focused on practical, actionable Copilot advice
+- Reference the user's original challenge when relevant
+
+Your tone should be:
+- Professional yet cheerful
+- Practical and actionable
+- Encouraging and supportive
+- Include smart Aussie humor when appropriate (light and tasteful)
+
+Keep responses concise (2-4 paragraphs max) but helpful."""},
+            {"role": "assistant", "content": f"I provided these initial suggestions:\n\nApproach: {conversation['initial_response']['approach']}\n\nTool: {conversation['initial_response']['tool']}\n\nLet me know if you'd like me to elaborate or if you have follow-up questions!"}
+        ]
+        
+        # Add previous messages from this conversation
+        for msg in conversation.get('messages', []):
+            messages.append({"role": "user", "content": msg['user']})
+            messages.append({"role": "assistant", "content": msg['assistant']})
+        
+        # Add current user message
+        messages.append({"role": "user", "content": chat_request.message})
+        
+        # Call OpenAI
+        response = await openai_client.chat.completions.create(
+            model="gpt-4o",
+            messages=messages,
+            temperature=0.7,
+            max_tokens=500
+        )
+        
+        assistant_response = response.choices[0].message.content
+        
+        # Store in conversation history
+        await db.conversations.update_one(
+            {"conversation_id": chat_request.conversation_id},
+            {
+                "$push": {
+                    "messages": {
+                        "user": chat_request.message,
+                        "assistant": assistant_response,
+                        "timestamp": datetime.now(timezone.utc).isoformat()
+                    }
+                }
+            }
+        )
+        
+        return {"response": assistant_response}
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logging.error(f"Error in chat: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error processing chat: {str(e)}")
 
 # Include the router in the main app
 app.include_router(api_router)
