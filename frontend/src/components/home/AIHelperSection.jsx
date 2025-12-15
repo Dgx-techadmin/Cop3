@@ -34,6 +34,7 @@ export const AIHelperSection = () => {
     
     setLoading(true);
     setResponse(null);
+    setChatMessages([]);
     
     try {
       const result = await axios.post(`${API}/ai-helper`, formData);
@@ -44,6 +45,38 @@ export const AIHelperSection = () => {
       toast.error("Oops! Something went wrong. Give it another go.");
     } finally {
       setLoading(false);
+    }
+  };
+  
+  const handleChatSubmit = async (e) => {
+    e.preventDefault();
+    
+    if (!chatInput.trim() || !response?.conversation_id) {
+      return;
+    }
+    
+    const userMessage = chatInput.trim();
+    setChatInput("");
+    setChatLoading(true);
+    
+    // Add user message to chat
+    setChatMessages(prev => [...prev, { role: "user", content: userMessage }]);
+    
+    try {
+      const result = await axios.post(`${API}/ai-chat`, {
+        message: userMessage,
+        conversation_id: response.conversation_id
+      });
+      
+      // Add AI response to chat
+      setChatMessages(prev => [...prev, { role: "assistant", content: result.data.response }]);
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("Error sending message. Please try again.");
+      // Remove the user message if failed
+      setChatMessages(prev => prev.slice(0, -1));
+    } finally {
+      setChatLoading(false);
     }
   };
   
