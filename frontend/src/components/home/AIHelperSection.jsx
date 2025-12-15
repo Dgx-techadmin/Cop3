@@ -262,6 +262,61 @@ export const AIHelperSection = () => {
                       <p className="text-sm text-muted-foreground">{response.strategic_alignment}</p>
                     </div>
                   )}
+                  
+                  {/* Interactive Chat Section */}
+                  <div className="mt-8 pt-6 border-t border-border">
+                    <h4 className="font-semibold text-foreground mb-4 flex items-center space-x-2">
+                      <span>💬</span>
+                      <span>Continue the Conversation</span>
+                    </h4>
+                    <p className="text-sm text-muted-foreground mb-4">
+                      Have follow-up questions? Ask me anything about using Microsoft Copilot for your challenge!
+                    </p>
+                    
+                    {/* Chat Messages */}
+                    {chatMessages.length > 0 && (
+                      <div className="space-y-3 mb-4 max-h-96 overflow-y-auto">
+                        {chatMessages.map((msg, idx) => (
+                          <div
+                            key={idx}
+                            className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                          >
+                            <div
+                              className={`max-w-[85%] rounded-lg p-3 ${
+                                msg.role === 'user'
+                                  ? 'bg-primary text-white'
+                                  : 'bg-muted text-foreground'
+                              }`}
+                            >
+                              <p className="text-sm leading-relaxed whitespace-pre-line">{msg.content}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                    
+                    {/* Chat Input */}
+                    <form onSubmit={handleChatSubmit} className="flex gap-2">
+                      <Input
+                        value={chatInput}
+                        onChange={(e) => setChatInput(e.target.value)}
+                        placeholder="Ask a follow-up question..."
+                        disabled={chatLoading}
+                        className="flex-1 transition-all focus:ring-2 focus:ring-primary"
+                      />
+                      <Button
+                        type="submit"
+                        disabled={chatLoading || !chatInput.trim()}
+                        className="bg-primary hover:bg-primary/90 text-white"
+                      >
+                        {chatLoading ? (
+                          <Loader2 className="w-4 h-4 animate-spin" />
+                        ) : (
+                          <ArrowRight className="w-4 h-4" />
+                        )}
+                      </Button>
+                    </form>
+                  </div>
                 </CardContent>
               </Card>
             )}
