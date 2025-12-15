@@ -20,6 +20,9 @@ export const AIHelperSection = () => {
   });
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState(null);
+  const [chatMessages, setChatMessages] = useState([]);
+  const [chatInput, setChatInput] = useState("");
+  const [chatLoading, setChatLoading] = useState(false);
   
   const handleSubmit = async (e) => {
     e.preventDefault();
