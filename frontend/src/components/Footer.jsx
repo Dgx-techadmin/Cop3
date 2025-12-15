@@ -8,15 +8,14 @@ export const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center shadow-card">
-                <Sparkles className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <h3 className="text-lg font-heading font-bold text-foreground">
-                  Dynamics <span className="text-accent font-bold">G-Ex</span>
-                </h3>
-                <p className="text-xs text-muted-foreground">AI Hub</p>
-              </div>
+              <img 
+                src="/dynamics-gex-logo.png" 
+                alt="Dynamics G-Ex Logo" 
+                className="h-12 w-auto"
+              />
+            </div>
+            <div>
+              <p className="text-sm font-medium text-muted-foreground">AI Hub</p>
             </div>
             <p className="text-sm text-muted-foreground">
               Making life easier with AI. Empowering every team member to work smarter, not harder.
