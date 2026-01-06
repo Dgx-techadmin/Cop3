@@ -4,7 +4,7 @@ import HomePage from "@/pages/HomePage";
 import TipsPage from "@/pages/TipsPage";
 import TutorialsPage from "@/pages/TutorialsPage";
 import DepartmentDetailPage from "@/pages/DepartmentDetailPage";
-import TrainingModule from "@/pages/TrainingModule";
+import TrainingModuleEnhanced from "@/pages/TrainingModuleEnhanced";
 import { Toaster } from "@/components/ui/sonner";
 
 function App() {
