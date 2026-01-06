@@ -63,6 +63,10 @@ class QuizSubmission(BaseModel):
     time_taken: int  # in seconds
     feedback: str
 
+class ChatMessage(BaseModel):
+    message: str
+    conversation_id: str
+
 # Add your routes to the router instead of directly to app
 @api_router.get("/")
 async def root():
