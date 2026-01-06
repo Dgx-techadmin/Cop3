@@ -380,7 +380,8 @@ async def download_quiz_results(password: str):
             
             # Add answer columns
             if "answers" in first_submission and first_submission["answers"]:
-                answer_keys = sorted(first_submission["answers"].keys())
+                # Sort answer keys numerically, not alphabetically
+                answer_keys = sorted([int(k) for k in first_submission["answers"].keys()])
                 for key in answer_keys:
                     fieldnames.append(f"q{key}_answer")
                     fieldnames.append(f"q{key}_correct")
