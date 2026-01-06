@@ -161,7 +161,7 @@ export const QuizComponent = ({ questions }) => {
             <Trophy className="w-6 h-6 text-accent" />
             <span>Knowledge Check Quiz</span>
           </CardTitle>
-          <CardDescription>Test your understanding – {questions.length} questions to see if you're ready!</CardDescription>
+          <CardDescription>Test your understanding – {questions.length} questions to see if you&apos;re ready!</CardDescription>
         </CardHeader>
         <CardContent>
           {showUserForm ? (
