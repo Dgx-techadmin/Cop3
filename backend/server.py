@@ -331,6 +331,96 @@ Keep responses concise (2-4 paragraphs max) but helpful."""},
         logging.error(f"Error in chat: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Error processing chat: {str(e)}")
 
+@api_router.post("/quiz-submit")
+async def submit_quiz(submission: QuizSubmission):
+    """
+    Store quiz submission results
+    """
+    try:
+        doc = {
+            "name": submission.name,
+            "department": submission.department,
+            "answers": submission.answers,
+            "score": submission.score,
+            "time_taken": submission.time_taken,
+            "feedback": submission.feedback,
+            "timestamp": datetime.now(timezone.utc).isoformat()
+        }
+        await db.quiz_submissions.insert_one(doc)
+        return {"success": True}
+    except Exception as e:
+        logging.error(f"Error submitting quiz: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error submitting quiz: {str(e)}")
+
+@api_router.get("/quiz-results/download")
+async def download_quiz_results(password: str):
+    """
+    Admin endpoint to download all quiz results as CSV
+    """
+    if password != "Dynamics@26":
+        raise HTTPException(status_code=403, detail="Invalid password")
+    
+    try:
+        # Get all quiz submissions
+        submissions = await db.quiz_submissions.find({}, {"_id": 0}).to_list(1000)
+        
+        if not submissions:
+            return {"message": "No quiz submissions found"}
+        
+        # Convert to CSV format
+        import csv
+        import io
+        
+        output = io.StringIO()
+        
+        if submissions:
+            # Get all unique answer keys from first submission
+            first_submission = submissions[0]
+            fieldnames = ["name", "department", "score", "time_taken", "feedback", "timestamp"]
+            
+            # Add answer columns
+            if "answers" in first_submission and first_submission["answers"]:
+                answer_keys = sorted(first_submission["answers"].keys())
+                for key in answer_keys:
+                    fieldnames.append(f"q{key}_answer")
+                    fieldnames.append(f"q{key}_correct")
+            
+            writer = csv.DictWriter(output, fieldnames=fieldnames)
+            writer.writeheader()
+            
+            for sub in submissions:
+                row = {
+                    "name": sub.get("name", ""),
+                    "department": sub.get("department", ""),
+                    "score": sub.get("score", 0),
+                    "time_taken": sub.get("time_taken", 0),
+                    "feedback": sub.get("feedback", ""),
+                    "timestamp": sub.get("timestamp", "")
+                }
+                
+                # Add answers
+                if "answers" in sub:
+                    for key, value in sub["answers"].items():
+                        row[f"q{key}_answer"] = value.get("selected", "")
+                        row[f"q{key}_correct"] = "Correct" if value.get("correct", False) else "Incorrect"
+                
+                writer.writerow(row)
+        
+        csv_content = output.getvalue()
+        
+        from fastapi.responses import Response
+        return Response(
+            content=csv_content,
+            media_type="text/csv",
+            headers={
+                "Content-Disposition": f"attachment; filename=quiz_results_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
+            }
+        )
+        
+    except Exception as e:
+        logging.error(f"Error downloading quiz results: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error downloading results: {str(e)}")
+
 # Include the router in the main app
 app.include_router(api_router)
 
