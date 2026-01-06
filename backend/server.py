@@ -567,7 +567,8 @@ async def view_quiz_results(password: str):
         
         # Add question columns
         if submissions and "answers" in submissions[0]:
-            answer_keys = sorted(submissions[0]["answers"].keys())
+            # Sort answer keys numerically
+            answer_keys = sorted([int(k) for k in submissions[0]["answers"].keys()])
             for key in answer_keys:
                 html += f"<th>Q{key} Answer</th><th>Q{key} Result</th>"
         
