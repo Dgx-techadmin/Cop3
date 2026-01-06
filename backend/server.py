@@ -421,6 +421,250 @@ async def download_quiz_results(password: str):
         logging.error(f"Error downloading quiz results: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Error downloading results: {str(e)}")
 
+@api_router.get("/quiz-results/view")
+async def view_quiz_results(password: str):
+    """
+    Admin endpoint to view quiz results in a copyable HTML table
+    """
+    if password != "Dynamics@26":
+        raise HTTPException(status_code=403, detail="Invalid password")
+    
+    try:
+        # Get all quiz submissions
+        submissions = await db.quiz_submissions.find({}, {"_id": 0}).to_list(1000)
+        
+        if not submissions:
+            html = """
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <title>Quiz Results - No Data</title>
+                <style>
+                    body { font-family: Arial, sans-serif; padding: 40px; text-align: center; }
+                    .message { color: #666; font-size: 18px; }
+                </style>
+            </head>
+            <body>
+                <h1>Quiz Results</h1>
+                <p class="message">No quiz submissions found yet.</p>
+            </body>
+            </html>
+            """
+            from fastapi.responses import HTMLResponse
+            return HTMLResponse(content=html)
+        
+        # Build HTML table
+        html = """
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Quiz Results - Dynamics G-Ex AI Training</title>
+            <style>
+                * { margin: 0; padding: 0; box-sizing: border-box; }
+                body { 
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+                    padding: 20px; 
+                    background: #f5f5f5;
+                }
+                .header {
+                    background: white;
+                    padding: 20px;
+                    margin-bottom: 20px;
+                    border-radius: 8px;
+                    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                }
+                h1 { color: #2B8FBD; margin-bottom: 10px; }
+                .info { color: #666; font-size: 14px; margin-bottom: 10px; }
+                .actions {
+                    margin-top: 15px;
+                    display: flex;
+                    gap: 10px;
+                }
+                button {
+                    background: #FF8C1A;
+                    color: white;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    font-size: 14px;
+                    font-weight: 500;
+                }
+                button:hover { background: #e67d15; }
+                .table-container {
+                    background: white;
+                    padding: 20px;
+                    border-radius: 8px;
+                    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                    overflow-x: auto;
+                }
+                table { 
+                    width: 100%; 
+                    border-collapse: collapse; 
+                    font-size: 13px;
+                }
+                th, td { 
+                    padding: 12px; 
+                    text-align: left; 
+                    border: 1px solid #ddd;
+                    white-space: nowrap;
+                }
+                th { 
+                    background: #2B8FBD; 
+                    color: white; 
+                    font-weight: 600;
+                    position: sticky;
+                    top: 0;
+                }
+                tr:nth-child(even) { background: #f9f9f9; }
+                tr:hover { background: #f0f7fa; }
+                .correct { color: #22c55e; font-weight: 600; }
+                .incorrect { color: #ef4444; font-weight: 600; }
+                .score-high { background: #dcfce7; color: #166534; font-weight: 600; }
+                .score-medium { background: #fef3c7; color: #854d0e; font-weight: 600; }
+                .score-low { background: #fee2e2; color: #991b1b; font-weight: 600; }
+                .copied-message {
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: #22c55e;
+                    color: white;
+                    padding: 15px 20px;
+                    border-radius: 5px;
+                    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+                    display: none;
+                    z-index: 1000;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="header">
+                <h1>📊 Quiz Results - AI Training Module</h1>
+                <p class="info">Total Submissions: <strong>""" + str(len(submissions)) + """</strong> | 
+                Generated: <strong>""" + datetime.now().strftime('%Y-%m-%d %H:%M:%S') + """</strong></p>
+                <div class="actions">
+                    <button onclick="copyTable()">📋 Copy Table to Clipboard</button>
+                    <button onclick="copyAsCSV()">📄 Copy as CSV</button>
+                    <button onclick="window.print()">🖨️ Print</button>
+                </div>
+            </div>
+            
+            <div class="copied-message" id="copiedMessage">✓ Copied to clipboard!</div>
+            
+            <div class="table-container">
+                <table id="resultsTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Department</th>
+                            <th>Score</th>
+                            <th>Time (sec)</th>
+                            <th>Feedback</th>
+                            <th>Date</th>
+        """
+        
+        # Add question columns
+        if submissions and "answers" in submissions[0]:
+            answer_keys = sorted(submissions[0]["answers"].keys())
+            for key in answer_keys:
+                html += f"<th>Q{key} Answer</th><th>Q{key} Result</th>"
+        
+        html += "</tr></thead><tbody>"
+        
+        # Add data rows
+        for idx, sub in enumerate(submissions, 1):
+            score = sub.get("score", 0)
+            total = 10
+            percentage = (score / total) * 100
+            
+            score_class = "score-high" if percentage >= 80 else "score-medium" if percentage >= 60 else "score-low"
+            
+            html += f"""
+            <tr>
+                <td>{idx}</td>
+                <td><strong>{sub.get("name", "")}</strong></td>
+                <td>{sub.get("department", "").title()}</td>
+                <td class="{score_class}">{score}/{total} ({percentage:.0f}%)</td>
+                <td>{sub.get("time_taken", 0)}s</td>
+                <td>{sub.get("feedback", "")}</td>
+                <td>{sub.get("timestamp", "")[:10]}</td>
+            """
+            
+            # Add answers
+            if "answers" in sub:
+                for key in answer_keys:
+                    answer_data = sub["answers"].get(str(key), {})
+                    answer = answer_data.get("selected", "N/A")
+                    is_correct = answer_data.get("correct", False)
+                    result_class = "correct" if is_correct else "incorrect"
+                    result_text = "✓ Correct" if is_correct else "✗ Incorrect"
+                    
+                    html += f"<td>{answer}</td><td class='{result_class}'>{result_text}</td>"
+            
+            html += "</tr>"
+        
+        html += """
+                    </tbody>
+                </table>
+            </div>
+            
+            <script>
+                function showCopiedMessage() {
+                    const msg = document.getElementById('copiedMessage');
+                    msg.style.display = 'block';
+                    setTimeout(() => { msg.style.display = 'none'; }, 2000);
+                }
+                
+                function copyTable() {
+                    const table = document.getElementById('resultsTable');
+                    const range = document.createRange();
+                    range.selectNode(table);
+                    window.getSelection().removeAllRanges();
+                    window.getSelection().addRange(range);
+                    document.execCommand('copy');
+                    window.getSelection().removeAllRanges();
+                    showCopiedMessage();
+                }
+                
+                function copyAsCSV() {
+                    const table = document.getElementById('resultsTable');
+                    let csv = [];
+                    
+                    // Get headers
+                    const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.textContent);
+                    csv.push(headers.join(','));
+                    
+                    // Get rows
+                    table.querySelectorAll('tbody tr').forEach(row => {
+                        const cols = Array.from(row.querySelectorAll('td')).map(td => {
+                            let text = td.textContent.trim();
+                            // Escape commas and quotes
+                            if (text.includes(',') || text.includes('"')) {
+                                text = '"' + text.replace(/"/g, '""') + '"';
+                            }
+                            return text;
+                        });
+                        csv.push(cols.join(','));
+                    });
+                    
+                    const csvContent = csv.join('\\n');
+                    navigator.clipboard.writeText(csvContent).then(() => {
+                        showCopiedMessage();
+                    });
+                }
+            </script>
+        </body>
+        </html>
+        """
+        
+        from fastapi.responses import HTMLResponse
+        return HTMLResponse(content=html)
+        
+    except Exception as e:
+        logging.error(f"Error viewing quiz results: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error viewing results: {str(e)}")
+
 # Include the router in the main app
 app.include_router(api_router)
 
