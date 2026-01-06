@@ -347,39 +347,6 @@ export const QuizComponent = ({ questions }) => {
           )}
         </CardContent>
       </Card>
-
-      {/* Admin Panel */}
-      <Card className="shadow-card border border-border">
-        <CardContent className="pt-6">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => setShowAdminPanel(!showAdminPanel)}
-            className="text-xs text-muted-foreground hover:text-foreground"
-          >
-            Admin Access
-          </Button>
-          
-          {showAdminPanel && (
-            <div className="mt-4 space-y-3 max-w-md">
-              <Label htmlFor="admin-password" className="text-sm">Enter admin password to download results</Label>
-              <div className="flex gap-2">
-                <Input
-                  id="admin-password"
-                  type="password"
-                  placeholder="Admin password"
-                  value={adminPassword}
-                  onChange={(e) => setAdminPassword(e.target.value)}
-                />
-                <Button onClick={handleAdminDownload} size="sm">
-                  <Download className="w-4 h-4 mr-2" />
-                  Download CSV
-                </Button>
-              </div>
-            </div>
-          )}
-        </CardContent>
-      </Card>
     </div>
   );
 };
