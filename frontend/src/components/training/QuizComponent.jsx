@@ -22,6 +22,8 @@ export const QuizComponent = ({ questions }) => {
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [showResults, setShowResults] = useState(false);
   const [score, setScore] = useState(0);
+  const [showAdminPanel, setShowAdminPanel] = useState(false);
+  const [adminPassword, setAdminPassword] = useState("");
 
   const handleStartQuiz = () => {
     if (!userName.trim() || !userDepartment) {
