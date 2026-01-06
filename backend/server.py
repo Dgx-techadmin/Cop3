@@ -401,9 +401,9 @@ async def download_quiz_results(password: str):
                 
                 # Add answers
                 if "answers" in sub:
-                    for key, value in sub["answers"].items():
-                        row[f"q{key}_answer"] = value.get("selected", "")
-                        row[f"q{key}_correct"] = "Correct" if value.get("correct", False) else "Incorrect"
+                    for key in answer_keys:
+                        row[f"q{key}_answer"] = sub["answers"].get(str(key), {}).get("selected", "")
+                        row[f"q{key}_correct"] = "Correct" if sub["answers"].get(str(key), {}).get("correct", False) else "Incorrect"
                 
                 writer.writerow(row)
         
