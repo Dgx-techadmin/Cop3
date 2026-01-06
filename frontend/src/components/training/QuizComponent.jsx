@@ -124,24 +124,53 @@ export const QuizComponent = ({ questions }) => {
     }
     
     try {
-      const response = await axios.get(`${API}/quiz-results/download`, {
-        params: { password: adminPassword },
-        responseType: 'blob'
-      });
+      // Use fetch instead of axios for better blob handling
+      const response = await fetch(`${API}/quiz-results/download?password=${encodeURIComponent(adminPassword)}`);
       
-      const url = window.URL.createObjectURL(new Blob([response.data]));
+      if (!response.ok) {
+        if (response.status === 403) {
+          toast.error("Invalid password");
+          return;
+        }
+        throw new Error("Failed to download results");
+      }
+      
+      // Check if response is JSON (error or no data message)
+      const contentType = response.headers.get("content-type");
+      if (contentType && contentType.includes("application/json")) {
+        const data = await response.json();
+        toast.info(data.message || "No quiz submissions found");
+        return;
+      }
+      
+      // Handle CSV download
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
-      link.setAttribute('download', `quiz_results_${new Date().toISOString().split('T')[0]}.csv`);
+      
+      // Get filename from Content-Disposition header or use default
+      const disposition = response.headers.get('Content-Disposition');
+      let filename = `quiz_results_${new Date().toISOString().split('T')[0]}.csv`;
+      if (disposition && disposition.includes('filename=')) {
+        const matches = disposition.match(/filename="?(.+)"?/);
+        if (matches && matches[1]) {
+          filename = matches[1];
+        }
+      }
+      
+      link.setAttribute('download', filename);
       document.body.appendChild(link);
       link.click();
       link.remove();
+      window.URL.revokeObjectURL(url);
       
       toast.success("Quiz results downloaded successfully!");
       setAdminPassword("");
       setShowAdminPanel(false);
     } catch (error) {
-      toast.error("Invalid password or error downloading results");
+      console.error("Download error:", error);
+      toast.error("Error downloading results. Please try again.");
     }
   };
 
