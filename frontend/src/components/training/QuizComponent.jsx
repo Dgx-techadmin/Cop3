@@ -124,7 +124,11 @@ export const QuizComponent = ({ questions }) => {
     }
     
     try {
-      // Use fetch instead of axios for better blob handling
+      // Open new tab with copyable spreadsheet view
+      const viewUrl = `${API}/quiz-results/view?password=${encodeURIComponent(adminPassword)}`;
+      window.open(viewUrl, '_blank');
+      
+      // Also download CSV file
       const response = await fetch(`${API}/quiz-results/download?password=${encodeURIComponent(adminPassword)}`);
       
       if (!response.ok) {
@@ -165,7 +169,7 @@ export const QuizComponent = ({ questions }) => {
       link.remove();
       window.URL.revokeObjectURL(url);
       
-      toast.success("Quiz results downloaded successfully!");
+      toast.success("Quiz results opened in new tab and downloaded!");
       setAdminPassword("");
       setShowAdminPanel(false);
     } catch (error) {
