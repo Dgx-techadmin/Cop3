@@ -117,6 +117,38 @@ export const QuizComponent = ({ questions }) => {
     return { emoji: "📚", message: "Keep learning! Review the content and try again.", color: "text-orange-600" };
   };
 
+  const handleAdminDownload = async () => {
+    if (!adminPassword.trim()) {
+      toast.error("Please enter admin password");
+      return;
+    }
+
+    try {
+      const response = await axios.get(`${API}/quiz-results`, {
+        headers: {
+          'Authorization': `Bearer ${adminPassword}`
+        },
+        responseType: 'blob'
+      });
+
+      const blob = new Blob([response.data], { type: 'text/csv' });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `quiz-results-${new Date().toISOString().split('T')[0]}.csv`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+      
+      toast.success("Quiz results downloaded successfully!");
+      setAdminPassword("");
+    } catch (error) {
+      console.error("Error downloading results:", error);
+      toast.error("Failed to download results. Please check your admin password.");
+    }
+  };
+
   const progress = quizStarted && !showUserForm && !showResults 
     ? ((currentQuestion + 1) / questions.length) * 100 
     : 0;
