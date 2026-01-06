@@ -115,67 +115,6 @@ export const QuizComponent = ({ questions }) => {
     return { emoji: "📚", message: "Keep learning! Review the content and try again.", color: "text-orange-600" };
   };
 
-  const handleAdminDownload = async () => {
-    if (!adminPassword) {
-      toast.error("Please enter the admin password");
-      return;
-    }
-    
-    try {
-      // Open new tab with copyable spreadsheet view
-      const viewUrl = `${API}/quiz-results/view?password=${encodeURIComponent(adminPassword)}`;
-      window.open(viewUrl, '_blank');
-      
-      // Also download CSV file
-      const response = await fetch(`${API}/quiz-results/download?password=${encodeURIComponent(adminPassword)}`);
-      
-      if (!response.ok) {
-        if (response.status === 403) {
-          toast.error("Invalid password");
-          return;
-        }
-        throw new Error("Failed to download results");
-      }
-      
-      // Check if response is JSON (error or no data message)
-      const contentType = response.headers.get("content-type");
-      if (contentType && contentType.includes("application/json")) {
-        const data = await response.json();
-        toast.info(data.message || "No quiz submissions found");
-        return;
-      }
-      
-      // Handle CSV download
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      
-      // Get filename from Content-Disposition header or use default
-      const disposition = response.headers.get('Content-Disposition');
-      let filename = `quiz_results_${new Date().toISOString().split('T')[0]}.csv`;
-      if (disposition && disposition.includes('filename=')) {
-        const matches = disposition.match(/filename="?(.+)"?/);
-        if (matches && matches[1]) {
-          filename = matches[1];
-        }
-      }
-      
-      link.setAttribute('download', filename);
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-      window.URL.revokeObjectURL(url);
-      
-      toast.success("Quiz results opened in new tab and downloaded!");
-      setAdminPassword("");
-      setShowAdminPanel(false);
-    } catch (error) {
-      console.error("Download error:", error);
-      toast.error("Error downloading results. Please try again.");
-    }
-  };
-
   const progress = quizStarted && !showUserForm && !showResults 
     ? ((currentQuestion + 1) / questions.length) * 100 
     : 0;
