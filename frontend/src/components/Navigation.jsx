@@ -13,6 +13,7 @@ export const Navigation = () => {
     { path: "/", label: "Home", icon: Sparkles },
     { path: "/tips", label: "Tips & Use Cases", icon: Lightbulb },
     { path: "/tutorials", label: "Tutorials", icon: GraduationCap },
+    { path: "/training", label: "Training", icon: GraduationCap },
   ];
   
   return (
