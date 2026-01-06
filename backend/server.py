@@ -55,9 +55,13 @@ class AIHelperResponse(BaseModel):
     strategic_alignment: str = ""
     conversation_id: str = ""
 
-class ChatMessage(BaseModel):
-    message: str
-    conversation_id: str
+class QuizSubmission(BaseModel):
+    name: str
+    department: str
+    answers: dict
+    score: int
+    time_taken: int  # in seconds
+    feedback: str
 
 # Add your routes to the router instead of directly to app
 @api_router.get("/")
