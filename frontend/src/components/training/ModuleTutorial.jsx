@@ -266,7 +266,25 @@ export const ModuleTutorial = ({ moduleId, moduleName }) => {
 
   return (
     <>
-      <style>{`
+      {/* Reopen Tutorial Button */}
+      {!isOpen && showReopenButton && (
+        <button
+          onClick={handleReopen}
+          className="fixed left-4 bottom-4 bg-accent hover:bg-accent/90 text-white p-3 rounded-full shadow-lg transition-all z-50 group flex items-center space-x-2"
+          aria-label="Reopen tutorial"
+          title="Restart Tutorial"
+        >
+          <Sparkles className="w-5 h-5" />
+          <span className="text-sm font-semibold max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 whitespace-nowrap">
+            Tutorial
+          </span>
+        </button>
+      )}
+
+      {/* Tutorial Modal */}
+      {isOpen && (
+        <>
+          <style>{`
         @keyframes pulse-border {
           0%, 100% {
             border-color: rgb(255, 140, 26);
