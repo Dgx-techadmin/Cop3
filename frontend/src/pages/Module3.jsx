@@ -608,6 +608,94 @@ Key Topics:
           </div>
         </section>
 
+        {/* Application-Specific Video Tutorials */}
+        <section className="py-12 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-blue-500/5">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div className="text-center space-y-2">
+              <h2 className="text-3xl font-heading font-bold text-foreground">
+                📺 Application-Specific Tutorials
+              </h2>
+              <p className="text-muted-foreground">
+                Click any card to watch a detailed tutorial for that application
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {copilotVideos.map((video, idx) => {
+                const Icon = video.icon;
+                return (
+                  <Card 
+                    key={idx} 
+                    className="shadow-card hover:shadow-xl transition-all cursor-pointer border-2 hover:border-primary"
+                    onClick={() => setExpandedVideo(video)}
+                  >
+                    <CardHeader>
+                      <div className="flex items-center justify-between">
+                        <div className={`p-3 rounded-lg bg-primary/10`}>
+                          <Icon className="w-6 h-6 text-primary" />
+                        </div>
+                        <Play className="w-8 h-8 text-primary" />
+                      </div>
+                      <CardTitle className="text-lg mt-3">{video.title}</CardTitle>
+                      <CardDescription>{video.description}</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <Button className="w-full" variant="outline">
+                        <Play className="w-4 h-4 mr-2" />
+                        Watch Tutorial
+                      </Button>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
+
+            <div className="text-center pt-4">
+              <p className="text-xs text-muted-foreground">
+                💡 Pro Tip: Watch the tutorial for the tool you use most frequently first
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Video Modal */}
+        {expandedVideo && (
+          <div 
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[200] flex items-center justify-center p-4"
+            onClick={() => setExpandedVideo(null)}
+          >
+            <div 
+              className="bg-background rounded-lg shadow-2xl max-w-5xl w-full"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="p-4 border-b flex items-center justify-between">
+                <div>
+                  <h3 className="text-xl font-bold">{expandedVideo.title}</h3>
+                  <p className="text-sm text-muted-foreground">{expandedVideo.description}</p>
+                </div>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setExpandedVideo(null)}
+                >
+                  <X className="w-5 h-5" />
+                </Button>
+              </div>
+              <div className="p-4">
+                <div className="aspect-video rounded-lg overflow-hidden bg-muted">
+                  <iframe
+                    className="w-full h-full"
+                    src={`https://www.youtube.com/embed/${expandedVideo.videoId}${expandedVideo.timestamp || ''}`}
+                    title={expandedVideo.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* ChatGPT for Brainstorming */}
         <section className="py-12 bg-gradient-to-r from-purple-500/10 via-pink-500/10 to-purple-500/10">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
