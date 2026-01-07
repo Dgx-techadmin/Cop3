@@ -789,6 +789,13 @@ Key Topics:
         </section>
       </main>
       <Footer />
+      
+      {/* Module AI Expert */}
+      <ModuleAIExpert 
+        moduleId={2}
+        moduleName="Governance & Responsible AI Use"
+        moduleContext={moduleContext}
+      />
     </div>
   );
 }
