@@ -235,13 +235,33 @@ export default function TrainingModuleEnhanced() {
     <div className="min-h-screen flex flex-col">
       <Navigation />
       <main className="flex-1 bg-gradient-to-b from-background to-secondary/20">
+        {/* Module Banner */}
+        <div 
+          className="relative bg-primary overflow-hidden"
+          style={{
+            backgroundImage: `url('/dynamics-gex-logo.png')`,
+            backgroundSize: '120px',
+            backgroundRepeat: 'repeat',
+            backgroundPosition: 'center',
+            opacity: 0.95
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/90 to-primary/95"></div>
+          <div className="relative py-8 px-4">
+            <div className="max-w-4xl mx-auto text-center">
+              <div className="inline-flex items-center space-x-3 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full border border-white/20">
+                <BookOpen className="w-6 h-6 text-white" />
+                <span className="text-2xl sm:text-3xl font-heading font-bold text-white">
+                  Module 1: Foundation
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Hero Section */}
         <section className="py-16 bg-gradient-to-br from-background via-background to-secondary/30">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-            <Badge className="text-sm px-4 py-2">
-              <BookOpen className="w-4 h-4 mr-2" />
-              Module 1: Foundation
-            </Badge>
             <h1 className="text-4xl sm:text-5xl font-heading font-bold text-foreground">
               Intro to AI & <span className="text-primary">Dynamics G-Ex</span> Strategy
             </h1>
