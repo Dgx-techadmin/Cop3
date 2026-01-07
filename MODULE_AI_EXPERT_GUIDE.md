@@ -8,12 +8,32 @@ The training modules include two interactive features:
 ## Module Tutorial
 
 ### Features
-- Appears automatically on first visit
-- Shows after 800ms delay for smooth UX
-- Explains: content navigation, AI helper, and quiz
+- **Interactive & Animated**: Highlights actual components on the page with spotlight effect
+- **Step-by-step guided tour**: 5 steps walking users through the module
+- **Smooth animations**: Pulsing borders, smooth scrolling, and transitions
+- **Smart positioning**: Tooltips adjust position based on highlighted element
+- **Progress indicators**: Visual dots showing current step
+- **Auto-scroll**: Automatically scrolls to highlighted elements
+- Appears automatically on first visit (after 1 second)
+- "Skip Tour" and navigation buttons for user control
 - "Don't show again" stored in localStorage
-- Simple, concise, and visually appealing
-- Dismissible by clicking X or button
+- Dark overlay with spotlight effect on active elements
+
+### Tutorial Steps
+
+1. **Welcome**: Center modal introducing the tour
+2. **Module Content**: Highlights collapsible sections and explains how to expand them
+3. **AI Expert**: Points to the floating tab on the right side
+4. **Quiz**: Highlights the quiz section at the bottom
+5. **Ready**: Final encouragement message
+
+### Visual Effects
+
+- **Pulsing orange border**: Around highlighted elements
+- **Dark backdrop**: Dims everything except the highlighted area (spotlight effect)
+- **Smooth scrolling**: Automatically brings elements into view
+- **Animated tooltip**: Positioned near highlighted elements with arrows
+- **Progress dots**: Show which step user is on
 
 ### How to Add to a New Module
 
