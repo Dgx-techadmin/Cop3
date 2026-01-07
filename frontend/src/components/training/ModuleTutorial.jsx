@@ -279,10 +279,9 @@ export const ModuleTutorial = ({ moduleId, moduleName }) => {
       <div
         style={{
           ...getTooltipPosition(),
-          position: "fixed",
-          zIndex: 100,
+          zIndex: 101,
           maxWidth: isCenterPosition ? "500px" : "400px",
-          width: isCenterPosition ? "90%" : "auto"
+          width: isCenterPosition ? "90%" : "400px"
         }}
         className="animate-in fade-in zoom-in-95 duration-300"
       >
@@ -306,7 +305,7 @@ export const ModuleTutorial = ({ moduleId, moduleName }) => {
               </div>
               <button
                 onClick={handleSkip}
-                className="text-muted-foreground hover:text-foreground transition-colors ml-2"
+                className="text-muted-foreground hover:text-foreground transition-colors ml-2 flex-shrink-0"
                 aria-label="Skip tutorial"
               >
                 <X className="w-5 h-5" />
@@ -347,9 +346,9 @@ export const ModuleTutorial = ({ moduleId, moduleName }) => {
                   variant="ghost"
                   size="sm"
                   onClick={handleSkip}
-                  className="text-muted-foreground"
+                  className="text-muted-foreground hover:text-foreground"
                 >
-                  Skip Tour
+                  Skip
                 </Button>
               )}
 
@@ -358,7 +357,7 @@ export const ModuleTutorial = ({ moduleId, moduleName }) => {
                 onClick={handleNext}
                 className="flex-1 bg-accent hover:bg-accent/90 text-white"
               >
-                {isLastStep ? "Get Started" : "Next"}
+                {isLastStep ? "Finish" : "Next"}
                 {!isLastStep && <ChevronRight className="w-4 h-4 ml-1" />}
               </Button>
             </div>
