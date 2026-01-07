@@ -37,42 +37,59 @@ Key Topics:
 
   const copilotVideos = [
     {
-      title: "Copilot in Outlook",
-      description: "Learn email management, drafting, and summarization",
-      videoId: "d0Nix0-NErw",
-      app: "Outlook",
-      icon: Mail
-    },
-    {
-      title: "Copilot in Word",
-      description: "Document creation, editing, and formatting assistance",
-      videoId: "e6nPqCQ-5ms",
-      app: "Word",
-      icon: FileText
+      title: "Copilot Full, Short Training",
+      description: "Complete overview of Microsoft 365 Copilot features",
+      videoId: "kLxOCW2Em7M",
+      app: "All Apps",
+      icon: Sparkles
     },
     {
       title: "Copilot in Excel",
       description: "Data analysis, formulas, and insights",
-      videoId: "kLxOCW2Em7M",
+      videoId: "4UkKFnuAHSY",
       app: "Excel",
       icon: TrendingUp,
-      timestamp: "?t=600"
+      timestamp: "?t=142"
     },
     {
-      title: "Copilot in PowerPoint",
-      description: "Create and design presentations quickly",
-      videoId: "kLxOCW2Em7M",
-      app: "PowerPoint",
-      icon: FileText,
-      timestamp: "?t=1188"
+      title: "Copilot in Outlook",
+      description: "Learn email management, drafting, and summarization",
+      videoId: "4UkKFnuAHSY",
+      app: "Outlook",
+      icon: Mail,
+      timestamp: "?t=1913"
     },
     {
       title: "Copilot in Teams",
       description: "Meeting summaries and collaboration features",
-      videoId: "kLxOCW2Em7M",
+      videoId: "4UkKFnuAHSY",
       app: "Teams",
       icon: Users,
-      timestamp: "?t=300"
+      timestamp: "?t=3002"
+    },
+    {
+      title: "Copilot in Word",
+      description: "Document creation, editing, and formatting assistance",
+      videoId: "4UkKFnuAHSY",
+      app: "Word",
+      icon: FileText,
+      timestamp: "?t=3790"
+    },
+    {
+      title: "Copilot in PowerPoint",
+      description: "Create and design presentations quickly",
+      videoId: "4UkKFnuAHSY",
+      app: "PowerPoint",
+      icon: FileText,
+      timestamp: "?t=4701"
+    },
+    {
+      title: "Microsoft 365 Copilot App",
+      description: "Web and Desktop Copilot experience",
+      videoId: "4UkKFnuAHSY",
+      app: "M365 App",
+      icon: Briefcase,
+      timestamp: "?t=5301"
     }
   ];
 
