@@ -313,7 +313,7 @@ Keep responses concise (2-4 paragraphs max) but helpful."""},
             model="gpt-4o",
             messages=messages,
             temperature=0.7,
-            max_tokens=500
+            max_tokens=1000
         )
         
         assistant_response = response.choices[0].message.content
@@ -429,7 +429,7 @@ Remember: Your goal is to be the most helpful AI teacher possible, ensuring user
             model="gpt-4o",
             messages=messages,
             temperature=0.7,
-            max_tokens=500
+            max_tokens=1000
         )
         
         assistant_response = response.choices[0].message.content
