@@ -81,7 +81,7 @@ export default function TrainingHub() {
         "Build custom AI solutions"
       ],
       duration: "30 min",
-      status: "coming_soon"
+      status: "available"
     },
     {
       id: 4,
