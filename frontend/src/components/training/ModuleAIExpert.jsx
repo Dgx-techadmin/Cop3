@@ -140,11 +140,11 @@ export const ModuleAIExpert = ({ moduleId, moduleName, moduleContext }) => {
                 </div>
                 <div className="flex-1">
                   <p className="text-sm text-muted-foreground">
-                    Hi! I'm your AI expert for <strong>{moduleName}</strong>. 
-                    I can help answer questions about the content you're learning.
+                    Hi! I'm your <strong>AI Expert</strong> for Copilot and ChatGPT. 
+                    Ask me anything about AI tools, and I'll give you detailed, step-by-step guidance.
                   </p>
                   <p className="text-xs text-muted-foreground mt-2">
-                    💡 Try asking: "What are the key DOs?" or "Explain data protection"
+                    💡 Try: "How do I use Copilot in Excel?" or "Give me tips for better prompts"
                   </p>
                 </div>
               </div>
