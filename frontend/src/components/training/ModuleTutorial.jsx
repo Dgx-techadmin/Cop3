@@ -38,7 +38,8 @@ export const ModuleTutorial = ({ moduleId, moduleName }) => {
       description: "At the end of the module, you'll find a quiz. Take it to check your understanding and track your progress!",
       target: "#quiz-section",
       position: "top",
-      highlight: "single"
+      highlight: "single",
+      optional: true // Mark as optional in case it's not found
     },
     {
       title: "You're All Set! 🚀",
@@ -49,8 +50,12 @@ export const ModuleTutorial = ({ moduleId, moduleName }) => {
   ];
 
   useEffect(() => {
+    // Check URL parameter for forcing tutorial
+    const urlParams = new URLSearchParams(window.location.search);
+    const forceTutorial = urlParams.get('tutorial') === 'true';
+    
     const tutorialShown = localStorage.getItem(storageKey);
-    if (!tutorialShown) {
+    if (!tutorialShown || forceTutorial) {
       const timer = setTimeout(() => {
         setIsOpen(true);
       }, 1000);
