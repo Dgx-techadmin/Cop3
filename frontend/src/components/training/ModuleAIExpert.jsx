@@ -107,9 +107,9 @@ export const ModuleAIExpert = ({ moduleId, moduleName, moduleContext }) => {
 
       {/* Sidebar Panel (Expanded State) */}
       {isOpen && (
-        <div className="fixed right-0 top-0 h-screen w-full sm:w-96 bg-background border-l border-border shadow-2xl z-50 flex flex-col">
+        <div className="fixed right-0 top-16 bottom-0 h-[calc(100vh-4rem)] w-full sm:w-96 bg-background border-l border-border shadow-2xl z-50 flex flex-col">
           {/* Header */}
-          <div className="bg-gradient-to-r from-primary to-accent p-4 flex items-center justify-between">
+          <div className="bg-gradient-to-r from-primary to-accent p-4 flex items-center justify-between flex-shrink-0">
             <div className="flex items-center space-x-2">
               <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
                 <Sparkles className="w-5 h-5 text-white" />
