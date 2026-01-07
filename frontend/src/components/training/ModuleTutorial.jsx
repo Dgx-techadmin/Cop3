@@ -95,6 +95,11 @@ export const ModuleTutorial = ({ moduleId, moduleName }) => {
     setIsOpen(false);
     setHighlightedElement(null);
     localStorage.setItem(storageKey, "true");
+    
+    // Scroll to top of page smoothly
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 300);
   };
 
   const handleSkip = () => {
