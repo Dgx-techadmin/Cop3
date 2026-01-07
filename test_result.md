@@ -198,15 +198,13 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Homepage Navigation"
-    - "AI Helper Form"
-    - "Get AI Suggestions Button Scroll"
-    - "Department Detail Pages"
-    - "Copy Prompt Functionality"
+    - "Module 3 Video Tutorials with Timestamps"
   stuck_tasks: []
-  test_all: true
+  test_all: false
   test_priority: "high_first"
 
 agent_communication:
     - agent: "testing"
       message: "Starting comprehensive testing of Dynamics G-Ex AI Hub. Will test navigation, AI Helper form with real GPT API, department pages, and copy functionality. Using playwright for UI testing."
+    - agent: "main"
+      message: "Updated Module 3 video tutorials section. Please test: 1) Navigate to /training/module-3 2) Verify first video card shows 'Copilot Full, Short Training' with Dougie Wood video 3) Verify other 6 cards (Excel, Outlook, Teams, Word, PowerPoint, M365 App) show correct titles 4) Click on 'Copilot in Excel' card and verify video modal opens with correct video 5) Verify disclaimer section appears below video cards with 5-step instructions 6) Test clicking other video cards to ensure modal opens properly"
