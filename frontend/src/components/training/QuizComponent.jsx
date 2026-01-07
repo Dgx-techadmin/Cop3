@@ -156,7 +156,7 @@ export const QuizComponent = ({ questions, moduleId = 1, moduleName = "Module 1"
     : 0;
 
   return (
-    <div className="space-y-6">
+    <div id="quiz-section" className="space-y-6">
       <Card className="shadow-elegant border-2 border-primary/20">
         <CardHeader>
           <CardTitle className="flex items-center space-x-2">
