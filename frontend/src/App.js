@@ -7,6 +7,7 @@ import DepartmentDetailPage from "@/pages/DepartmentDetailPage";
 import TrainingHub from "@/pages/TrainingHub";
 import Module1 from "@/pages/Module1";
 import Module2 from "@/pages/Module2";
+import Module3 from "@/pages/Module3";
 import ScrollToTop from "@/components/ScrollToTop";
 import { Toaster } from "@/components/ui/sonner";
 
@@ -22,6 +23,7 @@ function App() {
           <Route path="/training" element={<TrainingHub />} />
           <Route path="/training/module-1" element={<Module1 />} />
           <Route path="/training/module-2" element={<Module2 />} />
+          <Route path="/training/module-3" element={<Module3 />} />
           <Route path="/department/:dept" element={<DepartmentDetailPage />} />
         </Routes>
       </BrowserRouter>
