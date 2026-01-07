@@ -10,7 +10,9 @@ export const ModuleTutorial = ({ moduleId, moduleName }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
   const [highlightedElement, setHighlightedElement] = useState(null);
+  const [showReopenButton, setShowReopenButton] = useState(false);
   const storageKey = `module-${moduleId}-tutorial-shown`;
+  const reopenButtonKey = `module-${moduleId}-tutorial-reopen-button`;
 
   const steps = [
     {
