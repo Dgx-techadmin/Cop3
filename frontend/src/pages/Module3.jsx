@@ -299,6 +299,53 @@ Key Topics:
           </div>
         </section>
 
+        {/* See Copilot in Action - Video Demos */}
+        <section className="py-12 bg-gradient-to-r from-purple-500/5 via-blue-500/5 to-purple-500/5">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div className="text-center space-y-2">
+              <h2 className="text-3xl font-heading font-bold text-foreground">
+                <Play className="inline w-8 h-8 mr-2 text-purple-600" />
+                See Copilot in Action
+              </h2>
+              <p className="text-muted-foreground">
+                Watch these official demos to see how Copilot works in each Microsoft 365 application
+              </p>
+            </div>
+
+            {/* Video Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {copilotVideos.map((video, idx) => (
+                <Card key={idx} className="shadow-card hover:shadow-lg transition-all">
+                  <CardContent className="pt-6 space-y-3">
+                    <div className="aspect-video rounded-lg overflow-hidden bg-muted">
+                      <iframe
+                        className="w-full h-full"
+                        src={`https://www.youtube.com/embed/${video.videoId}${video.timestamp || ''}`}
+                        title={video.title}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      ></iframe>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-sm mb-1">{video.title}</h3>
+                      <p className="text-xs text-muted-foreground">{video.description}</p>
+                      <Badge variant="outline" className="mt-2 text-xs">
+                        {video.duration}
+                      </Badge>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            <div className="text-center pt-4">
+              <p className="text-xs text-muted-foreground">
+                💡 Tip: Watch the videos relevant to your daily work tools first, then explore others
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* Core Content - Sales & Marketing */}
         <section className="py-12">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
