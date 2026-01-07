@@ -625,23 +625,55 @@ export default function Module2() {
                 Responsible AI by Department
               </h2>
               <p className="text-muted-foreground">
-                See how to use AI responsibly in your role
+                Expand your department to see responsible AI examples tailored to your role
               </p>
             </div>
 
-            <div className="space-y-6">
-              {departmentExamples.map((dept, idx) => (
-                <UseCaseCard
-                  key={idx}
-                  title={dept.title}
-                  icon={dept.icon}
-                  color={dept.color}
-                  iconColor={dept.iconColor}
-                  description={dept.description}
-                  examples={dept.examples}
-                />
-              ))}
-            </div>
+            <Card className="shadow-card">
+              <CardContent className="pt-6 space-y-3">
+                {departmentExamples.map((dept, idx) => {
+                  const Icon = dept.icon;
+                  return (
+                    <CollapsibleSection
+                      key={idx}
+                      title={dept.title}
+                      icon={dept.icon}
+                      defaultOpen={false}
+                    >
+                      <div className="space-y-4 pt-2">
+                        <div className={`flex items-center space-x-3 p-3 rounded-lg ${dept.color}`}>
+                          <Icon className={`w-5 h-5 ${dept.iconColor} flex-shrink-0`} />
+                          <p className="text-sm font-semibold text-foreground">
+                            {dept.description}
+                          </p>
+                        </div>
+                        
+                        <div className="space-y-4">
+                          {dept.examples.map((example, exIdx) => (
+                            <div 
+                              key={exIdx}
+                              className="bg-muted/30 p-4 rounded-lg border border-border space-y-2"
+                            >
+                              <h4 className="text-sm font-semibold text-foreground">
+                                {example.title}
+                              </h4>
+                              <div className="bg-card p-3 rounded border-l-4 border-primary">
+                                <p className="text-xs font-mono text-muted-foreground">
+                                  "{example.prompt}"
+                                </p>
+                              </div>
+                              <p className="text-xs text-muted-foreground italic">
+                                💡 {example.note}
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </CollapsibleSection>
+                  );
+                })}
+              </CardContent>
+            </Card>
           </div>
         </section>
 
