@@ -724,6 +724,13 @@ Key Topics:
         </section>
       </main>
       <Footer />
+      
+      {/* Module AI Expert */}
+      <ModuleAIExpert 
+        moduleId={1}
+        moduleName="Intro to AI & Dynamics G-Ex Strategy"
+        moduleContext={moduleContext}
+      />
     </div>
   );
 }
