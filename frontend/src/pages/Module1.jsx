@@ -644,13 +644,24 @@ export default function TrainingModuleEnhanced() {
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="bg-card rounded-lg p-6 space-y-3 border border-border">
-                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                      <BookOpen className="w-6 h-6 text-primary" />
+                  <div className="bg-card rounded-lg p-6 space-y-3 border border-border hover:border-primary/30 transition-all cursor-pointer"
+                       onClick={() => navigate('/training/module-2')}>
+                    <div className="w-12 h-12 rounded-lg bg-green-100 flex items-center justify-center">
+                      <Shield className="w-6 h-6 text-green-600" />
                     </div>
-                    <h3 className="font-semibold text-foreground">Module 2: Coming Soon</h3>
-                    <p className="text-sm text-muted-foreground">Governance & Responsible AI Use</p>
-                    <Badge variant="secondary">In Development</Badge>
+                    <h3 className="font-semibold text-foreground">Module 2: Governance & Responsible AI Use</h3>
+                    <p className="text-sm text-muted-foreground">Learn the dos and don'ts of AI usage, data protection, and responsible AI practices</p>
+                    <Button
+                      size="sm"
+                      className="bg-green-600 hover:bg-green-700 text-white"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        navigate('/training/module-2');
+                      }}
+                    >
+                      Start Module 2
+                      <ArrowRight className="ml-2 w-4 h-4" />
+                    </Button>
                   </div>
 
                   <div className="bg-card rounded-lg p-6 space-y-3 border border-border">
