@@ -69,6 +69,13 @@ class ChatMessage(BaseModel):
     message: str
     conversation_id: str
 
+class ModuleAssistantRequest(BaseModel):
+    message: str
+    module_id: int
+    module_name: str
+    module_context: str
+    conversation_id: str = None
+
 # Add your routes to the router instead of directly to app
 @api_router.get("/")
 async def root():
