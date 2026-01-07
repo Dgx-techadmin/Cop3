@@ -115,6 +115,10 @@ export const ModuleTutorial = ({ moduleId, moduleName }) => {
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }, 300);
+    
+    // Log instructions for testing
+    console.log(`%c✨ Want to see the tutorial again?`, 'color: #FF8C1A; font-size: 14px; font-weight: bold');
+    console.log(`%cAdd ?tutorial=true to the URL or run: localStorage.removeItem('${storageKey}')`, 'color: #2B8FBD; font-size: 12px');
   };
 
   const handleSkip = () => {
