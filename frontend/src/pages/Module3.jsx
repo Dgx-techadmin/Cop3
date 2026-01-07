@@ -626,17 +626,28 @@ Key Topics:
                 return (
                   <Card 
                     key={idx} 
-                    className="shadow-card hover:shadow-xl transition-all cursor-pointer border-2 hover:border-primary"
+                    className="shadow-card hover:shadow-xl transition-all cursor-pointer border-2 hover:border-primary overflow-hidden"
                     onClick={() => setExpandedVideo(video)}
                   >
-                    <CardHeader>
-                      <div className="flex items-center justify-between">
-                        <div className={`p-3 rounded-lg bg-primary/10`}>
-                          <Icon className="w-6 h-6 text-primary" />
+                    {/* Video Thumbnail */}
+                    <div className="relative aspect-video bg-muted overflow-hidden group">
+                      <img 
+                        src={`https://img.youtube.com/vi/${video.videoId}/mqdefault.jpg`}
+                        alt={video.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors flex items-center justify-center">
+                        <div className="w-16 h-16 rounded-full bg-primary/90 flex items-center justify-center group-hover:scale-110 transition-transform">
+                          <Play className="w-8 h-8 text-white ml-1" />
                         </div>
-                        <Play className="w-8 h-8 text-primary" />
                       </div>
-                      <CardTitle className="text-lg mt-3">{video.title}</CardTitle>
+                      <div className={`absolute top-3 left-3 p-2 rounded-lg bg-white/90 backdrop-blur-sm`}>
+                        <Icon className="w-4 h-4 text-primary" />
+                      </div>
+                    </div>
+                    
+                    <CardHeader>
+                      <CardTitle className="text-lg">{video.title}</CardTitle>
                       <CardDescription>{video.description}</CardDescription>
                     </CardHeader>
                     <CardContent>
