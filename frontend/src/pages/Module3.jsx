@@ -17,6 +17,7 @@ import { quizQuestionsModule3 } from "@/data/quizQuestionsModule3";
 
 export default function Module3() {
   const navigate = useNavigate();
+  const [expandedVideo, setExpandedVideo] = React.useState(null);
 
   const moduleContext = `This is Module 3: Practical AI Applications for Your Role at Dynamics G-Ex.
 
