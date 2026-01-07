@@ -64,7 +64,13 @@ export const ModuleTutorial = ({ moduleId, moduleName }) => {
       if (element) {
         setHighlightedElement(element);
         // Scroll element into view smoothly
-        element.scrollIntoView({ behavior: "smooth", block: "center" });
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 100);
+      } else {
+        // If element not found, don't highlight but continue tutorial
+        setHighlightedElement(null);
+        console.warn(`Tutorial: Element not found for selector: ${steps[currentStep].target}`);
       }
     } else {
       setHighlightedElement(null);
@@ -100,15 +106,18 @@ export const ModuleTutorial = ({ moduleId, moduleName }) => {
   const step = steps[currentStep];
   const isFirstStep = currentStep === 0;
   const isLastStep = currentStep === steps.length - 1;
-  const isCenterPosition = step.position === "center";
+  const isCenterPosition = step.position === "center" || !highlightedElement;
 
   // Get position for tooltip
   const getTooltipPosition = () => {
     if (!highlightedElement || isCenterPosition) {
       return {
+        position: "fixed",
         top: "50%",
         left: "50%",
-        transform: "translate(-50%, -50%)"
+        transform: "translate(-50%, -50%)",
+        maxHeight: "90vh",
+        overflowY: "auto"
       };
     }
 
@@ -116,40 +125,86 @@ export const ModuleTutorial = ({ moduleId, moduleName }) => {
     const tooltipWidth = 400;
     const tooltipHeight = 250;
     const offset = 20;
+    const padding = 20;
 
     let position = {};
 
+    // Calculate viewport boundaries
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+
     switch (step.position) {
       case "bottom":
-        position = {
-          top: `${rect.bottom + offset}px`,
-          left: `${rect.left + rect.width / 2}px`,
-          transform: "translateX(-50%)"
-        };
+        if (rect.bottom + tooltipHeight + offset < viewportHeight) {
+          // Room below
+          position = {
+            position: "fixed",
+            top: `${Math.min(rect.bottom + offset, viewportHeight - tooltipHeight - padding)}px`,
+            left: `${Math.max(padding, Math.min(rect.left + rect.width / 2 - tooltipWidth / 2, viewportWidth - tooltipWidth - padding))}px`,
+          };
+        } else {
+          // Not enough room below, show above
+          position = {
+            position: "fixed",
+            top: `${Math.max(padding, rect.top - tooltipHeight - offset)}px`,
+            left: `${Math.max(padding, Math.min(rect.left + rect.width / 2 - tooltipWidth / 2, viewportWidth - tooltipWidth - padding))}px`,
+          };
+        }
         break;
       case "top":
-        position = {
-          top: `${rect.top - tooltipHeight - offset}px`,
-          left: `${rect.left + rect.width / 2}px`,
-          transform: "translateX(-50%)"
-        };
+        if (rect.top - tooltipHeight - offset > 0) {
+          // Room above
+          position = {
+            position: "fixed",
+            top: `${Math.max(padding, rect.top - tooltipHeight - offset)}px`,
+            left: `${Math.max(padding, Math.min(rect.left + rect.width / 2 - tooltipWidth / 2, viewportWidth - tooltipWidth - padding))}px`,
+          };
+        } else {
+          // Not enough room above, show below
+          position = {
+            position: "fixed",
+            top: `${Math.min(rect.bottom + offset, viewportHeight - tooltipHeight - padding)}px`,
+            left: `${Math.max(padding, Math.min(rect.left + rect.width / 2 - tooltipWidth / 2, viewportWidth - tooltipWidth - padding))}px`,
+          };
+        }
         break;
       case "left":
-        position = {
-          top: `${rect.top + rect.height / 2}px`,
-          left: `${rect.left - tooltipWidth - offset}px`,
-          transform: "translateY(-50%)"
-        };
+        if (rect.left - tooltipWidth - offset > 0) {
+          // Room on left
+          position = {
+            position: "fixed",
+            top: `${Math.max(padding, Math.min(rect.top + rect.height / 2 - tooltipHeight / 2, viewportHeight - tooltipHeight - padding))}px`,
+            left: `${Math.max(padding, rect.left - tooltipWidth - offset)}px`,
+          };
+        } else {
+          // Not enough room on left, show on right
+          position = {
+            position: "fixed",
+            top: `${Math.max(padding, Math.min(rect.top + rect.height / 2 - tooltipHeight / 2, viewportHeight - tooltipHeight - padding))}px`,
+            left: `${Math.min(rect.right + offset, viewportWidth - tooltipWidth - padding)}px`,
+          };
+        }
         break;
       case "right":
-        position = {
-          top: `${rect.top + rect.height / 2}px`,
-          left: `${rect.right + offset}px`,
-          transform: "translateY(-50%)"
-        };
+        if (rect.right + tooltipWidth + offset < viewportWidth) {
+          // Room on right
+          position = {
+            position: "fixed",
+            top: `${Math.max(padding, Math.min(rect.top + rect.height / 2 - tooltipHeight / 2, viewportHeight - tooltipHeight - padding))}px`,
+            left: `${Math.min(rect.right + offset, viewportWidth - tooltipWidth - padding)}px`,
+          };
+        } else {
+          // Not enough room on right, show on left
+          position = {
+            position: "fixed",
+            top: `${Math.max(padding, Math.min(rect.top + rect.height / 2 - tooltipHeight / 2, viewportHeight - tooltipHeight - padding))}px`,
+            left: `${Math.max(padding, rect.left - tooltipWidth - offset)}px`,
+          };
+        }
         break;
       default:
         position = {
+          position: "fixed",
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)"
