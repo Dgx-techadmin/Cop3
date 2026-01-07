@@ -73,9 +73,19 @@ export const ModuleTutorial = ({ moduleId, moduleName }) => {
           element.scrollIntoView({ behavior: "smooth", block: "center" });
         }, 100);
       } else {
-        // If element not found, don't highlight but continue tutorial
-        setHighlightedElement(null);
-        console.warn(`Tutorial: Element not found for selector: ${steps[currentStep].target}`);
+        // If element not found and it's optional, skip to next step automatically
+        if (steps[currentStep].optional) {
+          console.warn(`Tutorial: Optional element not found for selector: ${steps[currentStep].target}, skipping to next step`);
+          setTimeout(() => {
+            if (currentStep < steps.length - 1) {
+              setCurrentStep(currentStep + 1);
+            }
+          }, 500);
+        } else {
+          // If element not found but required, show centered modal
+          setHighlightedElement(null);
+          console.warn(`Tutorial: Element not found for selector: ${steps[currentStep].target}`);
+        }
       }
     } else {
       setHighlightedElement(null);
