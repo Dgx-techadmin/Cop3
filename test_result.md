@@ -200,8 +200,7 @@ metadata:
   run_ui: true
 
 test_plan:
-  current_focus:
-    - "Module 3 Video Tutorials with Timestamps"
+  current_focus: []
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
