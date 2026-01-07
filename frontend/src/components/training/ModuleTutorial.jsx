@@ -35,10 +35,9 @@ export const ModuleTutorial = ({ moduleId, moduleName }) => {
     },
     {
       title: "🏆 Test Your Knowledge",
-      description: "Scroll down to the bottom of the module to find the quiz. Take it to check your understanding and track your progress!",
-      target: "#quiz-section",
-      position: "top",
-      highlight: "single"
+      description: "As you scroll down through the module, you'll find a quiz at the bottom. Take it to check your understanding and track your progress!",
+      target: null,
+      position: "center"
     },
     {
       title: "You're All Set! 🚀",
