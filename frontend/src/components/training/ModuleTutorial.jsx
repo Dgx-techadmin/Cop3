@@ -55,13 +55,18 @@ export const ModuleTutorial = ({ moduleId, moduleName }) => {
     const forceTutorial = urlParams.get('tutorial') === 'true';
     
     const tutorialShown = localStorage.getItem(storageKey);
+    const reopenButtonShown = localStorage.getItem(reopenButtonKey);
+    
     if (!tutorialShown || forceTutorial) {
       const timer = setTimeout(() => {
         setIsOpen(true);
       }, 1000);
       return () => clearTimeout(timer);
+    } else if (reopenButtonShown === 'true') {
+      // Show the reopen button if tutorial was completed before
+      setShowReopenButton(true);
     }
-  }, [storageKey]);
+  }, [storageKey, reopenButtonKey]);
 
   useEffect(() => {
     if (isOpen && steps[currentStep].target) {
