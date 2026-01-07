@@ -255,11 +255,11 @@ export const ModuleTutorial = ({ moduleId, moduleName }) => {
         @keyframes pulse-border {
           0%, 100% {
             border-color: rgb(255, 140, 26);
-            box-shadow: 0 0 0 4px rgba(255, 140, 26, 0.2), 0 0 0 9999px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 0 0 4px rgba(255, 140, 26, 0.3), 0 0 0 9999px rgba(0, 0, 0, 0.5);
           }
           50% {
             border-color: rgb(255, 180, 80);
-            box-shadow: 0 0 0 8px rgba(255, 140, 26, 0.3), 0 0 0 9999px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 0 0 8px rgba(255, 140, 26, 0.4), 0 0 0 9999px rgba(0, 0, 0, 0.5);
           }
         }
         
