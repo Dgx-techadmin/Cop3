@@ -411,6 +411,8 @@ export const ModuleTutorial = ({ moduleId, moduleName }) => {
           </CardContent>
         </Card>
       </div>
+        </>
+      )}
     </>
   );
 };
