@@ -356,6 +356,45 @@ async def submit_quiz(submission: QuizSubmission):
         logging.error(f"Error submitting quiz: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Error submitting quiz: {str(e)}")
 
+@api_router.get("/module-stats")
+async def get_module_stats():
+    """
+    Get completion stats and average scores for each module
+    """
+    try:
+        # Get all quiz submissions
+        submissions = await db.quiz_submissions.find({}, {"_id": 0}).to_list(1000)
+        
+        # Calculate stats per module
+        module_stats = {}
+        for submission in submissions:
+            module_id = submission.get("module_id", 1)
+            if module_id not in module_stats:
+                module_stats[module_id] = {
+                    "completions": 0,
+                    "total_score": 0,
+                    "count": 0
+                }
+            
+            module_stats[module_id]["completions"] += 1
+            module_stats[module_id]["total_score"] += submission.get("score", 0)
+            module_stats[module_id]["count"] += 1
+        
+        # Calculate average scores
+        for module_id in module_stats:
+            if module_stats[module_id]["count"] > 0:
+                # Assuming 10 questions per quiz
+                avg_percentage = (module_stats[module_id]["total_score"] / (module_stats[module_id]["count"] * 10)) * 100
+                module_stats[module_id]["avgScore"] = round(avg_percentage)
+            else:
+                module_stats[module_id]["avgScore"] = 0
+        
+        return module_stats
+        
+    except Exception as e:
+        logging.error(f"Error fetching module stats: {str(e)}")
+        return {}
+
 @api_router.get("/quiz-results/download")
 async def download_quiz_results(password: str):
     """
