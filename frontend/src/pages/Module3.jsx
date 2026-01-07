@@ -662,36 +662,6 @@ Key Topics:
           </div>
         </section>
 
-        {/* Interactive Demo */}
-        <section className="py-12">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-            <div className="text-center space-y-2">
-              <h2 className="text-3xl font-heading font-bold text-foreground">
-                See Copilot in Action
-              </h2>
-              <p className="text-muted-foreground">
-                Watch this official Microsoft demo to see practical applications
-              </p>
-            </div>
-            <Card className="shadow-card">
-              <CardContent className="pt-6">
-                <div className="aspect-video rounded-lg overflow-hidden bg-muted">
-                  <iframe
-                    className="w-full h-full"
-                    src="https://www.youtube.com/embed/S7xTBa93TX8"
-                    title="Microsoft Copilot Demo"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
-                </div>
-                <p className="text-sm text-muted-foreground mt-4 text-center">
-                  Microsoft 365 Copilot - Official Overview (6 minutes)
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
-
         {/* Resources */}
         <section className="py-12 bg-secondary/30">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
