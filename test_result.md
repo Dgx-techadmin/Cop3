@@ -178,6 +178,18 @@ frontend:
           agent: "testing"
           comment: "Copy prompt functionality with toast notifications - needs testing"
 
+  - task: "Module 3 Video Tutorials with Timestamps"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/pages/Module3.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+        - working: "NA"
+          agent: "main"
+          comment: "Updated Module 3 video tutorials: 1) First card renamed to 'Copilot Full, Short Training' with Dougie Wood video 2) Other 6 cards use the same long video (4UkKFnuAHSY) with specific timestamps for each app (Excel 2:22, Outlook 31:53, Teams 50:02, Word 1:03:10, PowerPoint 1:18:18, M365 App 1:28:21) 3) Added disclaimer section with detailed steps to find updated tutorials"
+
 metadata:
   created_by: "testing_agent"
   version: "1.0"
