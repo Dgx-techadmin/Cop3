@@ -74,7 +74,7 @@ class ModuleAssistantRequest(BaseModel):
     module_id: int
     module_name: str
     module_context: str
-    conversation_id: str = None
+    conversation_id: str | None = None
 
 # Add your routes to the router instead of directly to app
 @api_router.get("/")
