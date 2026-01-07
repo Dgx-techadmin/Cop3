@@ -346,6 +346,8 @@ async def submit_quiz(submission: QuizSubmission):
             "score": submission.score,
             "time_taken": submission.time_taken,
             "feedback": submission.feedback,
+            "module_id": submission.module_id,
+            "module_name": submission.module_name,
             "timestamp": datetime.now(timezone.utc).isoformat()
         }
         await db.quiz_submissions.insert_one(doc)
