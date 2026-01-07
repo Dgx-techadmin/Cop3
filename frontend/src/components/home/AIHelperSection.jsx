@@ -9,7 +9,7 @@ import { Loader2, Sparkles, CheckCircle, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
 import axios from "axios";
 
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || import.meta.env.REACT_APP_BACKEND_URL || 'https://cop3-starter.preview.emergentagent.com';
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || import.meta.env.REACT_APP_BACKEND_URL || 'https://dgx-copilot-hub.preview.emergentagent.com';
 const API = `${BACKEND_URL}/api`;
 
 export const AIHelperSection = () => {
