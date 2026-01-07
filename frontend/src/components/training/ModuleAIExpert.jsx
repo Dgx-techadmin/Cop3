@@ -37,6 +37,15 @@ export const ModuleAIExpert = ({ moduleId, moduleName, moduleContext }) => {
     setLoading(true);
 
     try {
+      console.log('Module AI Expert - Submitting to:', `${BACKEND_URL}/api/module-assistant`);
+      console.log('Module AI Expert - BACKEND_URL:', BACKEND_URL);
+      console.log('Module AI Expert - Request data:', {
+        message: userMessage,
+        module_id: moduleId,
+        module_name: moduleName,
+        conversation_id: conversationId
+      });
+      
       const response = await axios.post(`${BACKEND_URL}/api/module-assistant`, {
         message: userMessage,
         module_id: moduleId,
@@ -44,6 +53,8 @@ export const ModuleAIExpert = ({ moduleId, moduleName, moduleContext }) => {
         module_context: moduleContext,
         conversation_id: conversationId
       });
+
+      console.log('Module AI Expert - Response:', response.data);
 
       // Add AI response to chat
       setMessages(prev => [...prev, { 
@@ -55,7 +66,10 @@ export const ModuleAIExpert = ({ moduleId, moduleName, moduleContext }) => {
         setConversationId(response.data.conversation_id);
       }
     } catch (error) {
-      console.error("Error getting AI response:", error);
+      console.error("Module AI Expert - Error getting AI response:", error);
+      console.error("Module AI Expert - Error response:", error.response?.data);
+      console.error("Module AI Expert - Error status:", error.response?.status);
+      console.error("Module AI Expert - Error message:", error.message);
       toast.error("Failed to get response. Please try again.");
       setMessages(prev => [...prev, { 
         role: "assistant", 
