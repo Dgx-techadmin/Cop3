@@ -768,9 +768,9 @@ Key Topics:
               <Button 
                 size="lg"
                 className="bg-accent hover:bg-accent/90"
-                disabled
+                onClick={() => navigate('/training/module-3')}
               >
-                Module 3: Coming Soon <ArrowRight className="w-5 h-5 ml-2" />
+                Module 3: Practical Applications <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </div>
             <div className="pt-6 border-t mt-6">
