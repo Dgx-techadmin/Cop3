@@ -367,9 +367,34 @@ export default function Module2() {
                       icon={CheckCircle}
                       defaultOpen={false}
                     >
-                      <p className="text-sm text-muted-foreground bg-green-50 dark:bg-green-950 p-3 rounded-lg">
-                        ✓ {item.description}
-                      </p>
+                      <div className="bg-green-50 dark:bg-green-950 p-3 rounded-lg space-y-3">
+                        <p className="text-sm text-muted-foreground">
+                          ✓ {item.description}
+                        </p>
+                        {item.tutorial && (
+                          <div className="pt-2 border-t border-green-200 dark:border-green-800">
+                            {item.tutorial.link ? (
+                              <a
+                                href={item.tutorial.link}
+                                target={item.tutorial.link.startsWith('http') ? '_blank' : '_self'}
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center text-xs font-semibold text-green-700 dark:text-green-400 hover:text-green-900 dark:hover:text-green-200 transition-colors"
+                              >
+                                <BookOpen className="w-3 h-3 mr-1" />
+                                {item.tutorial.text}
+                                {item.tutorial.link.startsWith('http') && (
+                                  <ExternalLink className="w-3 h-3 ml-1" />
+                                )}
+                              </a>
+                            ) : (
+                              <span className="inline-flex items-center text-xs font-semibold text-green-700 dark:text-green-400">
+                                <CheckCircle className="w-3 h-3 mr-1" />
+                                {item.tutorial.text}
+                              </span>
+                            )}
+                          </div>
+                        )}
+                      </div>
                     </CollapsibleSection>
                   ))}
                 </CardContent>
