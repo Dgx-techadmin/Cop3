@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { 
   Briefcase, ArrowRight, ExternalLink, BookOpen, Lightbulb,
   Users, Settings, HeadphonesIcon, Mail, FileText, TrendingUp,
-  Code, Sparkles, Play, CheckCircle
+  Code, Sparkles, Play, CheckCircle, X
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { CollapsibleSection } from "@/components/training/CollapsibleSection";
