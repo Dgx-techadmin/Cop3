@@ -1,7 +1,69 @@
-# DGX AI Expert - Implementation Guide
+# DGX AI Expert & Module Tutorial - Implementation Guide
 
 ## Overview
-The DGX AI Expert is a floating, collapsible sidebar AI assistant that helps users understand module content through interactive Q&A.
+The training modules include two interactive features:
+1. **Module Tutorial**: Quick start popup explaining module features
+2. **DGX AI Expert**: Floating AI assistant for module-specific questions
+
+## Module Tutorial
+
+### Features
+- Appears automatically on first visit
+- Shows after 800ms delay for smooth UX
+- Explains: content navigation, AI helper, and quiz
+- "Don't show again" stored in localStorage
+- Simple, concise, and visually appealing
+- Dismissible by clicking X or button
+
+### How to Add to a New Module
+
+#### Step 1: Import the Component
+```javascript
+import { ModuleTutorial } from "@/components/training/ModuleTutorial";
+```
+
+#### Step 2: Add Component to JSX
+Place after Footer, before AI Expert:
+```javascript
+<Footer />
+
+{/* Module Tutorial */}
+<ModuleTutorial 
+  moduleId={X}
+  moduleName="Your Module Name"
+/>
+
+{/* Module AI Expert */}
+<ModuleAIExpert 
+  moduleId={X}
+  moduleName="Your Module Name"
+  moduleContext={moduleContext}
+/>
+</div>
+```
+
+### Component Props
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `moduleId` | number | Unique module identifier (used for localStorage key) |
+| `moduleName` | string | Full module name displayed in tutorial header |
+
+### Tutorial Content
+
+The tutorial automatically shows:
+1. 📚 **Learn the Content**: How to navigate and use collapsible sections
+2. 💬 **Ask the DGX AI Expert**: Where to find and how to use the AI assistant
+3. 🏆 **Test Your Knowledge**: Information about the quiz at the end
+
+### Behavior
+
+- **First Visit**: Tutorial appears after 800ms
+- **Subsequent Visits**: Tutorial does not appear (stored in localStorage)
+- **Manual Reset**: Users can clear browser data to see it again
+- **Storage Key**: `module-{moduleId}-tutorial-shown`
+
+## DGX AI Expert
 
 ## Features
 - Floats on the right side of the screen
