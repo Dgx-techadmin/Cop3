@@ -4,7 +4,9 @@ import HomePage from "@/pages/HomePage";
 import TipsPage from "@/pages/TipsPage";
 import TutorialsPage from "@/pages/TutorialsPage";
 import DepartmentDetailPage from "@/pages/DepartmentDetailPage";
-import TrainingModuleEnhanced from "@/pages/TrainingModuleEnhanced";
+import TrainingHub from "@/pages/TrainingHub";
+import Module1 from "@/pages/Module1";
+import Module2 from "@/pages/Module2";
 import { Toaster } from "@/components/ui/sonner";
 
 function App() {
@@ -15,7 +17,9 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/tips" element={<TipsPage />} />
           <Route path="/tutorials" element={<TutorialsPage />} />
-          <Route path="/training" element={<TrainingModuleEnhanced />} />
+          <Route path="/training" element={<TrainingHub />} />
+          <Route path="/training/module-1" element={<Module1 />} />
+          <Route path="/training/module-2" element={<Module2 />} />
           <Route path="/department/:dept" element={<DepartmentDetailPage />} />
         </Routes>
       </BrowserRouter>
