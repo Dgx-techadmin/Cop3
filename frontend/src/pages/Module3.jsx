@@ -683,6 +683,36 @@ Key Topics:
                 💡 Pro Tip: Watch the tutorial for the tool you use most frequently first
               </p>
             </div>
+
+            {/* Disclaimer Section */}
+            <Card className="mt-8 border-amber-200 bg-amber-50/50 dark:bg-amber-950/20">
+              <CardContent className="pt-6">
+                <div className="flex items-start space-x-3">
+                  <div className="flex-shrink-0 p-2 bg-amber-100 dark:bg-amber-900/50 rounded-lg">
+                    <Lightbulb className="w-5 h-5 text-amber-600" />
+                  </div>
+                  <div className="space-y-3">
+                    <h4 className="font-semibold text-amber-800 dark:text-amber-200">
+                      ⚠️ Important: AI Technology Evolves Rapidly
+                    </h4>
+                    <p className="text-sm text-muted-foreground">
+                      These tutorials may not reflect the latest features or interface changes in Microsoft Copilot. 
+                      If something looks different, here's how to find up-to-date tutorials:
+                    </p>
+                    <ol className="text-sm text-muted-foreground space-y-2 ml-4 list-decimal">
+                      <li>Go to <span className="font-medium text-foreground">youtube.com</span></li>
+                      <li>Search for: <span className="font-mono bg-muted px-2 py-0.5 rounded text-xs">"Microsoft Copilot [App Name] tutorial 2025"</span></li>
+                      <li>Check the video's <span className="font-medium text-foreground">upload date</span> - look for videos from the last 3-6 months</li>
+                      <li>Prefer official <span className="font-medium text-foreground">Microsoft</span> channels or verified tech educators</li>
+                      <li>Review the comments section for any noted updates or changes</li>
+                    </ol>
+                    <p className="text-xs text-muted-foreground pt-2 border-t border-amber-200 dark:border-amber-800">
+                      💡 Bookmark helpful tutorials so you can easily revisit them as features update.
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </section>
 
