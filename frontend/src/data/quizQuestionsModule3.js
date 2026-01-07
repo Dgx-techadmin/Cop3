@@ -4,8 +4,8 @@ export const quizQuestionsModule3 = [
     question: "What is the PRIMARY benefit of using Microsoft Copilot for sales proposals?",
     options: [
       "It completely writes proposals alone",
-      "It replaces sales training",
-      "It drafts faster while you add expertise",
+      "It replaces sales training needs",
+      "It drafts faster, you add expertise",
       "It sends proposals automatically"
     ],
     correctAnswer: 2,
@@ -15,12 +15,12 @@ export const quizQuestionsModule3 = [
     id: 2,
     question: "When using Copilot to summarize customer emails, what should you ALWAYS do?",
     options: [
+      "Review for accuracy and context",
       "Send the summary directly",
       "Delete the original email",
-      "Share with entire team",
-      "Review for accuracy and context"
+      "Share with entire team"
     ],
-    correctAnswer: 3,
+    correctAnswer: 0,
     explanation: "Always review Copilot's summaries for accuracy and completeness. Add context, verify key details, and ensure nothing critical is missed."
   },
   {
@@ -30,7 +30,7 @@ export const quizQuestionsModule3 = [
       "Tell me everything about inventory",
       "Fix all inventory problems",
       "Show me all products",
-      "Analyze 3-month sales trends for Product A"
+      "Analyze 3-month Product A trends"
     ],
     correctAnswer: 3,
     explanation: "Specific, data-driven prompts work best. Include the product, timeframe, and desired outcome for accurate, actionable results."
@@ -40,7 +40,7 @@ export const quizQuestionsModule3 = [
     question: "What's the best way to use Copilot for customer service response templates?",
     options: [
       "Use generic templates only",
-      "Create templates, then personalize each",
+      "Create templates, then personalize",
       "Let Copilot respond directly",
       "Only use templates for VIPs"
     ],
@@ -51,12 +51,12 @@ export const quizQuestionsModule3 = [
     id: 5,
     question: "When should you use ChatGPT instead of Microsoft Copilot at Dynamics G-Ex?",
     options: [
-      "For brainstorming without company data",
       "For accessing customer databases",
       "For official communications",
+      "For brainstorming without data",
       "For processing confidential info"
     ],
-    correctAnswer: 0,
+    correctAnswer: 2,
     explanation: "Use ChatGPT for brainstorming, creative thinking, and general ideation WITHOUT company or customer data. Use Copilot for work within Microsoft 365."
   },
   {
@@ -66,7 +66,7 @@ export const quizQuestionsModule3 = [
       "Order exactly 500 as suggested",
       "Ignore Copilot completely",
       "Order 1000 without analysis",
-      "Adjust based on trade show demand"
+      "Adjust for trade show demand"
     ],
     correctAnswer: 3,
     explanation: "AI provides data-driven suggestions, but YOU know the business context. Use AI insights as a starting point, then apply your expertise."
@@ -75,12 +75,12 @@ export const quizQuestionsModule3 = [
     id: 7,
     question: "What's the correct way to prompt Copilot for creating a meeting summary?",
     options: [
-      "Summarize highlighting actions and decisions",
       "Summarize this",
+      "Highlight actions and decisions",
       "Tell me what happened",
       "Make it short"
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     explanation: "Be specific about what you want: action items, decisions, key points. Clear, structured prompts produce better, more useful results."
   },
   {
@@ -89,32 +89,32 @@ export const quizQuestionsModule3 = [
     options: [
       "Write posts",
       "Make social media content",
-      "Tell me what to post",
-      "Create 10 posts for operations managers"
+      "Create 10 posts for managers",
+      "Tell me what to post"
     ],
-    correctAnswer: 3,
+    correctAnswer: 2,
     explanation: "Detailed prompts with target audience, key themes, and desired tone produce better results. Specify what you want and who it's for."
   },
   {
     id: 9,
     question: "What's a practical way to test a new Copilot feature in your workflow?",
     options: [
-      "Use it for all critical work immediately",
-      "Avoid testing and wait for others",
-      "Use only when manager requires",
-      "Start with low-risk tasks first"
+      "Start with low-risk tasks first",
+      "Use it for critical work now",
+      "Avoid testing, wait for others",
+      "Use only when required"
     ],
-    correctAnswer: 3,
+    correctAnswer: 0,
     explanation: "Start small with low-risk tasks, validate results, build confidence, and gradually integrate into more critical workflows."
   },
   {
     id: 10,
     question: "According to Module 3, what's the key to becoming an 'AI Champion' at Dynamics G-Ex?",
     options: [
-      "Using AI for every single task",
+      "Using AI for every task",
       "Replacing all manual work",
       "Only using AI when told",
-      "Strategic use, quality, and sharing learnings"
+      "Strategic use and sharing"
     ],
     correctAnswer: 3,
     explanation: "AI Champions use AI strategically for routine tasks, maintain quality through review, save time for high-value work, and share best practices."
