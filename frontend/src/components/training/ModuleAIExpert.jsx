@@ -7,7 +7,7 @@ import { MessageSquare, X, Send, Sparkles, ChevronRight, Loader2 } from "lucide-
 import { toast } from "sonner";
 import axios from "axios";
 
-const BACKEND_URL = import.meta.env.REACT_APP_BACKEND_URL || 'http://localhost:8001';
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || import.meta.env.REACT_APP_BACKEND_URL || 'https://cop3-starter.preview.emergentagent.com';
 
 export const ModuleAIExpert = ({ moduleId, moduleName, moduleContext }) => {
   const [isOpen, setIsOpen] = useState(false);
