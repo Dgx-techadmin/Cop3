@@ -3,46 +3,46 @@ export const quizQuestionsModule3 = [
     id: 1,
     question: "What is the PRIMARY benefit of using Microsoft Copilot for sales proposals?",
     options: [
-      "It completely writes the proposal without any input",
-      "It helps draft proposals faster while you maintain control and add expertise",
-      "It replaces the need for sales training",
-      "It automatically sends proposals to customers"
+      "It completely writes proposals alone",
+      "It replaces sales training",
+      "It drafts faster while you add expertise",
+      "It sends proposals automatically"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation: "Copilot assists in drafting proposals faster, but you remain in control, adding your expertise, customizing content, and ensuring accuracy."
   },
   {
     id: 2,
     question: "When using Copilot to summarize customer emails, what should you ALWAYS do?",
     options: [
-      "Send the summary directly without reading it",
-      "Review the summary for accuracy and add any missing context",
-      "Delete the original email after summarizing",
-      "Share the summary with the entire team automatically"
+      "Send the summary directly",
+      "Delete the original email",
+      "Share with entire team",
+      "Review for accuracy and context"
     ],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation: "Always review Copilot's summaries for accuracy and completeness. Add context, verify key details, and ensure nothing critical is missed."
   },
   {
     id: 3,
     question: "For inventory management, which Copilot prompt is MOST effective?",
     options: [
-      "Just tell me everything about inventory",
-      "Analyze sales trends for Product A over the last 3 months and suggest reorder quantity",
+      "Tell me everything about inventory",
       "Fix all inventory problems",
-      "Show me all products"
+      "Show me all products",
+      "Analyze 3-month sales trends for Product A"
     ],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation: "Specific, data-driven prompts work best. Include the product, timeframe, and desired outcome for accurate, actionable results."
   },
   {
     id: 4,
     question: "What's the best way to use Copilot for customer service response templates?",
     options: [
-      "Use generic templates without customization",
-      "Create templates for common scenarios, then personalize for each customer",
-      "Let Copilot respond directly to customers without review",
-      "Only use templates for VIP customers"
+      "Use generic templates only",
+      "Create templates, then personalize each",
+      "Let Copilot respond directly",
+      "Only use templates for VIPs"
     ],
     correctAnswer: 1,
     explanation: "Create base templates for common scenarios, then personalize each response with customer-specific details, maintaining empathy and accuracy."
@@ -51,72 +51,72 @@ export const quizQuestionsModule3 = [
     id: 5,
     question: "When should you use ChatGPT instead of Microsoft Copilot at Dynamics G-Ex?",
     options: [
-      "For brainstorming and creative ideation without company data",
+      "For brainstorming without company data",
       "For accessing customer databases",
-      "For official company communications",
-      "For processing confidential information"
+      "For official communications",
+      "For processing confidential info"
     ],
     correctAnswer: 0,
     explanation: "Use ChatGPT for brainstorming, creative thinking, and general ideation WITHOUT company or customer data. Use Copilot for work within Microsoft 365."
   },
   {
     id: 6,
-    question: "You're using Copilot in Excel for inventory forecasting. The AI suggests ordering 500 units, but you know there's a trade show next month. What should you do?",
+    question: "Copilot suggests ordering 500 units, but you know there's a trade show next month. What should you do?",
     options: [
-      "Order exactly 500 units as Copilot suggested",
-      "Adjust the order based on your knowledge of the trade show demand",
+      "Order exactly 500 as suggested",
       "Ignore Copilot completely",
-      "Order 1000 units without analysis"
+      "Order 1000 without analysis",
+      "Adjust based on trade show demand"
     ],
-    correctAnswer: 1,
-    explanation: "AI provides data-driven suggestions, but YOU know the business context. Use AI insights as a starting point, then apply your expertise and knowledge."
+    correctAnswer: 3,
+    explanation: "AI provides data-driven suggestions, but YOU know the business context. Use AI insights as a starting point, then apply your expertise."
   },
   {
     id: 7,
     question: "What's the correct way to prompt Copilot for creating a meeting summary?",
     options: [
+      "Summarize highlighting actions and decisions",
       "Summarize this",
-      "Summarize this Teams meeting, highlighting action items, decisions made, and key discussion points",
       "Tell me what happened",
       "Make it short"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     explanation: "Be specific about what you want: action items, decisions, key points. Clear, structured prompts produce better, more useful results."
   },
   {
     id: 8,
     question: "For Marketing, you want Copilot to help with social media content. Which approach is MOST effective?",
     options: [
-      "Create 10 social media posts about mining products, highlighting safety, quality, and reliability. Target operations managers.",
       "Write posts",
       "Make social media content",
-      "Tell me what to post"
+      "Tell me what to post",
+      "Create 10 posts for operations managers"
     ],
-    correctAnswer: 0,
+    correctAnswer: 3,
     explanation: "Detailed prompts with target audience, key themes, and desired tone produce better results. Specify what you want and who it's for."
   },
   {
     id: 9,
     question: "What's a practical way to test a new Copilot feature in your workflow?",
     options: [
-      "Immediately use it for all critical work",
-      "Start with a low-risk task, compare results to your manual work, then gradually expand use",
-      "Avoid testing and wait for others to try it first",
-      "Use it only when your manager requires it"
+      "Use it for all critical work immediately",
+      "Avoid testing and wait for others",
+      "Use only when manager requires",
+      "Start with low-risk tasks first"
     ],
-    correctAnswer: 1,
-    explanation: "Start small with low-risk tasks, validate results, build confidence, and gradually integrate into more critical workflows. This ensures quality and trust."
+    correctAnswer: 3,
+    explanation: "Start small with low-risk tasks, validate results, build confidence, and gradually integrate into more critical workflows."
   },
   {
     id: 10,
     question: "According to Module 3, what's the key to becoming an 'AI Champion' at Dynamics G-Ex?",
     options: [
       "Using AI for every single task",
-      "Consistently applying AI to save time on routine tasks while maintaining quality and sharing learnings",
-      "Replacing all manual work with AI",
-      "Only using AI when told to do so"
+      "Replacing all manual work",
+      "Only using AI when told",
+      "Strategic use, quality, and sharing learnings"
     ],
-    correctAnswer: 1,
-    explanation: "AI Champions use AI strategically for routine tasks, maintain quality through review, save time for high-value work, and share best practices with the team."
+    correctAnswer: 3,
+    explanation: "AI Champions use AI strategically for routine tasks, maintain quality through review, save time for high-value work, and share best practices."
   }
 ];
