@@ -20,23 +20,67 @@ export default function Module2() {
   const governanceDos = [
     {
       title: "Always fact-check AI outputs",
-      description: "Verify information against reliable sources before using it. AI can hallucinate or provide outdated data."
+      description: "Verify information against reliable sources before using it. AI can hallucinate or provide outdated data.",
+      tutorial: {
+        text: "Learn how to fact-check AI content",
+        link: "https://support.microsoft.com/en-us/topic/fact-check-copilot-responses-7fa7338c-8173-4d63-824e-c5c1c95c8364"
+      }
     },
     {
       title: "Opt-out of data training",
-      description: "Configure tools like ChatGPT to NOT use your inputs for model training. This protects sensitive information."
+      description: "Configure tools like ChatGPT to NOT use your inputs for model training. This protects sensitive information.",
+      tutorial: {
+        text: "Step-by-step: Turn off ChatGPT data training",
+        link: "https://help.openai.com/en/articles/5722486-how-your-data-is-used-to-improve-model-performance"
+      }
     },
     {
       title: "Use general, non-confidential data",
-      description: "It's safe to ask about industry trends, general processes, or public knowledge."
+      description: "It's safe to ask about industry trends, general processes, or public knowledge.",
+      tutorial: {
+        text: "Best practices for data anonymization",
+        link: "https://learn.microsoft.com/en-us/compliance/assurance/assurance-data-anonymization"
+      }
     },
     {
       title: "Review and edit all AI outputs",
-      description: "You are accountable for the final work. Always apply your expertise and judgment."
+      description: "You are accountable for the final work. Always apply your expertise and judgment.",
+      tutorial: {
+        text: "How to review and edit Copilot content",
+        link: "https://support.microsoft.com/en-us/office/review-and-edit-content-created-by-copilot-dd10b874-71e7-4f3c-8d8a-729fcf8442bc"
+      }
     },
     {
       title: "Report accidental data exposure immediately",
-      description: "If you accidentally input confidential data, delete the conversation and notify IT/Leadership right away."
+      description: "If you accidentally input confidential data, delete the conversation and notify IT/Leadership right away.",
+      tutorial: {
+        text: "Data breach response checklist",
+        link: "https://learn.microsoft.com/en-us/compliance/assurance/assurance-incident-response-overview"
+      }
+    },
+    {
+      title: "Complete mandatory training before use",
+      description: "All Workforce members must complete annual AI awareness training before using authorised AI applications for business.",
+      tutorial: {
+        text: "You're doing it now!",
+        link: null
+      }
+    },
+    {
+      title: "Use only authorised AI applications",
+      description: "Stick to Microsoft Copilot and other approved tools. Unauthorised applications pose security risks.",
+      tutorial: {
+        text: "List of authorised AI tools at G-Ex",
+        link: "/ai-governance-policy.pdf"
+      }
+    },
+    {
+      title: "Ensure data protection settings are configured",
+      description: "Set up data protection options to prevent your prompts from being used to train AI models.",
+      tutorial: {
+        text: "Configure privacy settings in Copilot",
+        link: "https://learn.microsoft.com/en-us/copilot/microsoft-365/microsoft-365-copilot-privacy"
+      }
     }
   ];
 
