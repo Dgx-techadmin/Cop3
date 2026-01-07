@@ -13,6 +13,7 @@ import { CollapsibleSection } from "@/components/training/CollapsibleSection";
 import { UseCaseCard } from "@/components/training/UseCaseCard";
 import { QuizComponent } from "@/components/training/QuizComponent";
 import { ModuleAIExpert } from "@/components/training/ModuleAIExpert";
+import { ModuleTutorial } from "@/components/training/ModuleTutorial";
 import { quizQuestionsModule2 } from "@/data/quizQuestionsModule2";
 
 export default function Module2() {
