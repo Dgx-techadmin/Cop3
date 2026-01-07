@@ -62,6 +62,8 @@ class QuizSubmission(BaseModel):
     score: int
     time_taken: int  # in seconds
     feedback: str
+    module_id: int = 1
+    module_name: str = "Module 1"
 
 class ChatMessage(BaseModel):
     message: str
