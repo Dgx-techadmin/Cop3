@@ -129,24 +129,48 @@ export default function Module2() {
 
   const departmentExamples = [
     {
+      title: "Sales",
+      icon: Briefcase,
+      color: "bg-blue-100",
+      iconColor: "text-blue-600",
+      description: "Using AI for sales insights without exposing customer data",
+      examples: [
+        {
+          title: "✅ GOOD: Sales Forecasting",
+          prompt: "Analyze anonymized sales trends: Region A (15% growth), Region B (8% growth), Region C (12% growth). Suggest focus areas for Q2.",
+          note: "Uses aggregated, anonymized data without customer names or specific deal details."
+        },
+        {
+          title: "❌ BAD: Customer Analysis",
+          prompt: "Analyze John Smith's buying patterns at ABC Mining Corp, including budget and contact details.",
+          note: "NEVER input customer names, company details, or personal information."
+        },
+        {
+          title: "✅ GOOD: Email Templates",
+          prompt: "Draft a follow-up email template for mining industry prospects interested in safety equipment, emphasizing reliability.",
+          note: "General template without specific customer data or pricing."
+        }
+      ]
+    },
+    {
       title: "Marketing",
       icon: Briefcase,
       color: "bg-purple-100",
       iconColor: "text-purple-600",
-      description: "Using Copilot for campaign ideas without exposing customer data",
+      description: "Creating campaigns without exposing customer data",
       examples: [
         {
-          title: "✅ GOOD: Brainstorm Campaign Themes",
+          title: "✅ GOOD: Campaign Brainstorming",
           prompt: "Suggest 5 creative campaign themes for a B2B mining equipment company targeting safety-conscious operations managers.",
-          note: "This uses general industry knowledge without exposing customer data."
+          note: "Uses general industry knowledge without exposing customer data."
         },
         {
-          title: "❌ BAD: Analyzing Customer Data",
+          title: "❌ BAD: Customer Database Analysis",
           prompt: "Analyze this customer list: [Customer names, contact info, purchase history]",
           note: "NEVER input customer PII or purchase data into AI tools."
         },
         {
-          title: "✅ GOOD: Content Ideas",
+          title: "✅ GOOD: Content Creation",
           prompt: "Draft 3 LinkedIn post ideas highlighting the benefits of high-quality sample bags for mining labs.",
           note: "General product benefits without confidential pricing or customer info."
         }
@@ -155,24 +179,96 @@ export default function Module2() {
     {
       title: "Operations",
       icon: Settings,
-      color: "bg-blue-100",
-      iconColor: "text-blue-600",
-      description: "Generating inventory reports responsibly without supplier details",
+      color: "bg-green-100",
+      iconColor: "text-green-600",
+      description: "Optimizing processes without exposing supplier details",
       examples: [
         {
-          title: "✅ GOOD: Inventory Trend Analysis",
+          title: "✅ GOOD: Inventory Analysis",
           prompt: "Analyze these anonymized inventory trends: Product A (1200 units), Product B (850 units), Product C (2100 units). Suggest reorder priorities.",
           note: "Using anonymized data without supplier names or pricing."
         },
         {
-          title: "❌ BAD: Supplier Pricing Analysis",
+          title: "❌ BAD: Supplier Pricing",
           prompt: "Compare supplier pricing: Supplier X ($45/unit), Supplier Y ($42/unit) for Core Trays.",
           note: "NEVER share supplier pricing or contract details with AI."
         },
         {
-          title: "✅ GOOD: Process Optimization",
+          title: "✅ GOOD: Process Improvement",
           prompt: "Suggest ways to optimize warehouse receiving process for mining equipment suppliers.",
           note: "General process improvement without confidential operational data."
+        }
+      ]
+    },
+    {
+      title: "Leadership",
+      icon: Users,
+      color: "bg-orange-100",
+      iconColor: "text-orange-600",
+      description: "Strategic planning without exposing confidential business data",
+      examples: [
+        {
+          title: "✅ GOOD: Executive Summary",
+          prompt: "Create a framework for quarterly business review presentations covering performance metrics, challenges, and strategic initiatives.",
+          note: "General framework without actual company financials or strategic plans."
+        },
+        {
+          title: "❌ BAD: Strategic Planning",
+          prompt: "Analyze our FY26 expansion plan: targeting 3 new markets with $2M budget, key suppliers are...",
+          note: "NEVER share strategic plans, budgets, or confidential business strategies."
+        },
+        {
+          title: "✅ GOOD: Communication Templates",
+          prompt: "Draft a template for all-hands communication about organizational changes, maintaining transparency and positivity.",
+          note: "General template without actual organizational details or personnel changes."
+        }
+      ]
+    },
+    {
+      title: "IT",
+      icon: Code,
+      color: "bg-indigo-100",
+      iconColor: "text-indigo-600",
+      description: "Technical documentation without exposing system details",
+      examples: [
+        {
+          title: "✅ GOOD: Documentation Template",
+          prompt: "Create a step-by-step guide template for onboarding new employees to Microsoft 365, including security best practices.",
+          note: "General template without actual system configurations or credentials."
+        },
+        {
+          title: "❌ BAD: Security Analysis",
+          prompt: "Here's our firewall configuration and VPN settings. Analyze security vulnerabilities: [system details]",
+          note: "NEVER share system configurations, credentials, or security infrastructure details."
+        },
+        {
+          title: "✅ GOOD: Troubleshooting Guide",
+          prompt: "Create a general troubleshooting guide for common Microsoft Teams connectivity issues.",
+          note: "General IT knowledge without company-specific infrastructure details."
+        }
+      ]
+    },
+    {
+      title: "Customer Service",
+      icon: HeadphonesIcon,
+      color: "bg-pink-100",
+      iconColor: "text-pink-600",
+      description: "Improving support without exposing customer information",
+      examples: [
+        {
+          title: "✅ GOOD: Response Templates",
+          prompt: "Draft empathetic response templates for common customer concerns: delayed shipments, product quality questions, and return requests.",
+          note: "General templates without actual customer names or specific issues."
+        },
+        {
+          title: "❌ BAD: Customer Complaint Analysis",
+          prompt: "Analyze these customer complaints: [John at ABC Corp complained about..., Sarah at XYZ Mining said...]",
+          note: "NEVER input customer names, company names, or specific complaint details."
+        },
+        {
+          title: "✅ GOOD: FAQ Development",
+          prompt: "Generate FAQ content for mining industry customers about sample bag quality standards and certifications.",
+          note: "General product knowledge without customer-specific information."
         }
       ]
     }
