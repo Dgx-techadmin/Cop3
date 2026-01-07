@@ -420,7 +420,7 @@ Your goal is to help the user master this module's content through interactive Q
         
         # Store conversation
         await db.module_conversations.update_one(
-            {"conversation_id": conversation.get("conversation_id", conversation_id)},
+            {"conversation_id": conversation_id},
             {
                 "$push": {
                     "messages": {
@@ -434,7 +434,7 @@ Your goal is to help the user master this module's content through interactive Q
         
         return {
             "response": assistant_response,
-            "conversation_id": conversation.get("conversation_id", conversation_id)
+            "conversation_id": conversation_id
         }
         
     except Exception as e:
