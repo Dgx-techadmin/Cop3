@@ -276,15 +276,15 @@ export const ModuleTutorial = ({ moduleId, moduleName }) => {
         }
       `}</style>
 
-      {/* Backdrop */}
-      {!isCenterPosition && highlightedElement && (
+      {/* Backdrop with spotlight effect */}
+      {highlightedElement && (
         <div 
           style={getHighlightStyle()}
           className="animate-in fade-in duration-300"
         />
       )}
 
-      {/* Dark overlay for center position */}
+      {/* Dark overlay for center position only */}
       {isCenterPosition && (
         <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-[98]" />
       )}
