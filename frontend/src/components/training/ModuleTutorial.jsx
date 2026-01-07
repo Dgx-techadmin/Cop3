@@ -65,6 +65,7 @@ export const ModuleTutorial = ({ moduleId, moduleName }) => {
 
   useEffect(() => {
     if (isOpen && steps[currentStep].target) {
+      // Try to find the element
       const element = document.querySelector(steps[currentStep].target);
       if (element) {
         setHighlightedElement(element);
@@ -73,19 +74,9 @@ export const ModuleTutorial = ({ moduleId, moduleName }) => {
           element.scrollIntoView({ behavior: "smooth", block: "center" });
         }, 100);
       } else {
-        // If element not found and it's optional, skip to next step automatically
-        if (steps[currentStep].optional) {
-          console.warn(`Tutorial: Optional element not found for selector: ${steps[currentStep].target}, skipping to next step`);
-          setTimeout(() => {
-            if (currentStep < steps.length - 1) {
-              setCurrentStep(currentStep + 1);
-            }
-          }, 500);
-        } else {
-          // If element not found but required, show centered modal
-          setHighlightedElement(null);
-          console.warn(`Tutorial: Element not found for selector: ${steps[currentStep].target}`);
-        }
+        // Element not found - show modal centered instead of highlighting
+        setHighlightedElement(null);
+        console.warn(`Tutorial: Element not found for selector: ${steps[currentStep].target}, showing modal centered`);
       }
     } else {
       setHighlightedElement(null);
