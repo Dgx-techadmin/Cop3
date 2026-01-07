@@ -348,11 +348,26 @@ async def module_assistant(request: ModuleAssistantRequest):
     """
     try:
         # Create or retrieve conversation
-        if request.conversation_id:
+        conversation_id = request.conversation_id
+        
+        if conversation_id:
+            # Try to retrieve existing conversation
             conversation = await db.module_conversations.find_one(
-                {"conversation_id": request.conversation_id},
+                {"conversation_id": conversation_id},
                 {"_id": 0}
             )
+            if not conversation:
+                # Conversation not found, create new one
+                logging.warning(f"Conversation {conversation_id} not found, creating new one")
+                conversation_id = str(uuid.uuid4())
+                conversation = {
+                    "conversation_id": conversation_id,
+                    "module_id": request.module_id,
+                    "module_name": request.module_name,
+                    "messages": [],
+                    "timestamp": datetime.now(timezone.utc).isoformat()
+                }
+                await db.module_conversations.insert_one(conversation)
         else:
             # Create new conversation
             conversation_id = str(uuid.uuid4())
