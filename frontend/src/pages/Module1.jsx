@@ -625,7 +625,11 @@ export default function TrainingModuleEnhanced() {
         {/* Quiz Section */}
         <section id="quiz-section" className="py-12 bg-muted/30">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <QuizComponent questions={quizQuestions} />
+            <QuizComponent 
+              questions={quizQuestions} 
+              moduleId={1}
+              moduleName="Intro to AI & Dynamics G-Ex Strategy"
+            />
           </div>
         </section>
 
