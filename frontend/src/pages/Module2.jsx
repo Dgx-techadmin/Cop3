@@ -197,38 +197,53 @@ export default function Module2() {
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2">
                   <AlertTriangle className="w-6 h-6 text-amber-600" />
-                  <span>Why AI Governance Matters</span>
+                  <span>Why AI Governance Matters at Dynamics G-Ex</span>
                 </CardTitle>
+                <CardDescription>
+                  Our AI policy ensures informed and responsible use of AI while maximizing benefits and minimizing risks
+                </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-6">
+                <div className="bg-amber-50 dark:bg-amber-950 border-l-4 border-amber-500 p-4 rounded-r-lg">
+                  <p className="text-sm text-foreground font-semibold mb-2">
+                    Policy Scope: This applies to ALL Workforce members
+                  </p>
+                  <ul className="text-xs text-muted-foreground space-y-1 ml-4">
+                    <li>• During work hours AND outside of work hours</li>
+                    <li>• On personal OR company-owned devices</li>
+                    <li>• At office, home, or remote locations</li>
+                    <li>• When AI use serves business objectives</li>
+                  </ul>
+                </div>
+
                 <p className="text-muted-foreground">
-                  AI is transforming how we work, but it also introduces new risks. Proper governance ensures we:
+                  AI is transforming how we work, but it also introduces new risks. Our governance framework ensures we:
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="flex items-start space-x-3 p-4 bg-green-50 dark:bg-green-950 rounded-lg">
                     <Lock className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                     <div>
-                      <h4 className="font-semibold text-sm mb-1">Protect Customer Privacy</h4>
+                      <h4 className="font-semibold text-sm mb-1">Protect Data Privacy</h4>
                       <p className="text-xs text-muted-foreground">
-                        Never expose customer PII or confidential data to AI systems
+                        No personal data, customer PII, or confidential information in AI prompts. Strict DLP monitoring in place.
                       </p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3 p-4 bg-blue-50 dark:bg-blue-950 rounded-lg">
                     <Shield className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
                     <div>
-                      <h4 className="font-semibold text-sm mb-1">Maintain Competitive Advantage</h4>
+                      <h4 className="font-semibold text-sm mb-1">Safeguard Intellectual Property</h4>
                       <p className="text-xs text-muted-foreground">
-                        Keep proprietary business strategies and supplier info secure
+                        Protect proprietary business strategies, supplier pricing, and competitive intelligence from AI training.
                       </p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3 p-4 bg-purple-50 dark:bg-purple-950 rounded-lg">
                     <Eye className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
                     <div>
-                      <h4 className="font-semibold text-sm mb-1">Ensure Accuracy</h4>
+                      <h4 className="font-semibold text-sm mb-1">Ensure Accuracy & Reliability</h4>
                       <p className="text-xs text-muted-foreground">
-                        AI can hallucinate - verification prevents costly mistakes
+                        Mandatory fact-checking and verification of all AI outputs before use in business decisions.
                       </p>
                     </div>
                   </div>
@@ -237,10 +252,42 @@ export default function Module2() {
                     <div>
                       <h4 className="font-semibold text-sm mb-1">Maintain Human Accountability</h4>
                       <p className="text-xs text-muted-foreground">
-                        You remain responsible for all AI-assisted work
+                        You remain fully responsible for all AI-assisted work. AI augments, never replaces, human judgment.
                       </p>
                     </div>
                   </div>
+                  <div className="flex items-start space-x-3 p-4 bg-red-50 dark:bg-red-950 rounded-lg">
+                    <Shield className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <h4 className="font-semibold text-sm mb-1">Prevent Misuse</h4>
+                      <p className="text-xs text-muted-foreground">
+                        No impersonation, harassment, discrimination, or generation of offensive content.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3 p-4 bg-indigo-50 dark:bg-indigo-950 rounded-lg">
+                    <BookOpen className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <h4 className="font-semibold text-sm mb-1">Ensure Compliance</h4>
+                      <p className="text-xs text-muted-foreground">
+                        Mandatory annual training, clear record-keeping, and adherence to Cyber Security Policy.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-primary/5 border border-primary/20 p-4 rounded-lg">
+                  <p className="text-sm font-semibold text-foreground mb-2 flex items-center">
+                    <AlertTriangle className="w-4 h-4 mr-2 text-primary" />
+                    Key Policy Principles
+                  </p>
+                  <ul className="text-sm text-muted-foreground space-y-1 ml-6">
+                    <li>• Use only <strong>authorised</strong> AI applications (Microsoft Copilot, approved tools)</li>
+                    <li>• Complete mandatory training before using AI for business</li>
+                    <li>• Apply critical thinking and verify all AI outputs</li>
+                    <li>• Report any policy breaches immediately to your line manager and IT</li>
+                    <li>• Manage costs responsibly - avoid unnecessary personal subscriptions</li>
+                  </ul>
                 </div>
               </CardContent>
             </Card>
