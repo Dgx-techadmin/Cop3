@@ -87,23 +87,43 @@ export default function Module2() {
   const governanceDonts = [
     {
       title: "NEVER input customer personal information (PII)",
-      description: "No names, emails, phone numbers, addresses, or any identifiable customer data."
+      description: "No names, emails, phone numbers, addresses, or any identifiable customer data. This includes de-identified or aggregated data that could be re-identified.",
+      example: "❌ Bad: 'Analyze sales for John Smith at john@email.com' | ✅ Good: 'Analyze sales trends for mining sector customers'"
     },
     {
       title: "NEVER share proprietary business data",
-      description: "No supplier pricing, financial data, strategic plans, or competitive intelligence."
+      description: "No supplier pricing, financial data, strategic plans, or competitive intelligence.",
+      example: "❌ Bad: 'Compare our supplier costs: Supplier X $45/unit vs Supplier Y $42/unit' | ✅ Good: 'General strategies for supplier cost optimization'"
     },
     {
       title: "NEVER blindly trust AI outputs",
-      description: "AI can confidently provide wrong answers. Always verify critical information."
+      description: "AI can confidently provide wrong answers. Always verify critical information with authoritative sources.",
+      example: "❌ Bad: Using AI-generated legal advice without lawyer review | ✅ Good: Use AI for drafting, then verify with subject matter expert"
     },
     {
       title: "NEVER use AI for final decision-making",
-      description: "AI assists; humans decide. You remain accountable for all business decisions."
+      description: "AI assists; humans decide. You remain accountable for all business decisions.",
+      example: "❌ Bad: 'AI said to fire this employee, so I will' | ✅ Good: 'AI highlighted performance patterns, now I'll consult HR and review properly'"
     },
     {
-      title: "NEVER share confidential documents or full datasets",
-      description: "No uploading contracts, customer lists, or sensitive spreadsheets to AI tools."
+      title: "NEVER upload confidential documents",
+      description: "No contracts, customer lists, or sensitive spreadsheets to AI tools.",
+      example: "❌ Bad: Upload full customer database to ChatGPT | ✅ Good: Create anonymized sample data for analysis"
+    },
+    {
+      title: "NEVER use unauthorised AI applications",
+      description: "Only use approved tools like Microsoft Copilot. Unauthorised apps pose security risks and may not have proper data protection.",
+      example: "❌ Bad: Using random AI tools found online | ✅ Good: Stick to Microsoft Copilot and approved G-Ex tools"
+    },
+    {
+      title: "NEVER input third-party proprietary data without permission",
+      description: "Respect intellectual property rights and licensing conditions of third-party materials.",
+      example: "❌ Bad: 'Summarize this competitor's confidential report I found' | ✅ Good: Use publicly available competitive intelligence"
+    },
+    {
+      title: "NEVER use AI to impersonate, bully, or harass",
+      description: "AI must be used ethically and professionally. No offensive, discriminatory, or inappropriate content.",
+      example: "❌ Bad: Generate fake emails from colleagues | ✅ Good: Draft professional business communications under your own name"
     }
   ];
 
