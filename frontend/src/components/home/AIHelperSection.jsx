@@ -37,11 +37,15 @@ export const AIHelperSection = () => {
     setChatMessages([]);
     
     try {
+      console.log('Submitting to:', `${API}/ai-helper`);
+      console.log('BACKEND_URL:', BACKEND_URL);
       const result = await axios.post(`${API}/ai-helper`, formData);
       setResponse(result.data);
       toast.success("AI suggestions generated!");
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Error details:", error);
+      console.error("Error response:", error.response?.data);
+      console.error("Error status:", error.response?.status);
       toast.error("Oops! Something went wrong. Give it another go.");
     } finally {
       setLoading(false);
