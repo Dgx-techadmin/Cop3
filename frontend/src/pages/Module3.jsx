@@ -49,7 +49,7 @@ Key Topics:
       videoId: "4UkKFnuAHSY",
       app: "Excel",
       icon: TrendingUp,
-      timestamp: "?t=142"
+      timestamp: "?start=142"
     },
     {
       title: "Copilot in Outlook",
@@ -57,7 +57,7 @@ Key Topics:
       videoId: "4UkKFnuAHSY",
       app: "Outlook",
       icon: Mail,
-      timestamp: "?t=1913"
+      timestamp: "?start=1913"
     },
     {
       title: "Copilot in Teams",
@@ -65,7 +65,7 @@ Key Topics:
       videoId: "4UkKFnuAHSY",
       app: "Teams",
       icon: Users,
-      timestamp: "?t=3002"
+      timestamp: "?start=3002"
     },
     {
       title: "Copilot in Word",
@@ -73,7 +73,7 @@ Key Topics:
       videoId: "4UkKFnuAHSY",
       app: "Word",
       icon: FileText,
-      timestamp: "?t=3790"
+      timestamp: "?start=3790"
     },
     {
       title: "Copilot in PowerPoint",
@@ -81,7 +81,7 @@ Key Topics:
       videoId: "4UkKFnuAHSY",
       app: "PowerPoint",
       icon: FileText,
-      timestamp: "?t=4701"
+      timestamp: "?start=4698"
     },
     {
       title: "Microsoft 365 Copilot App",
@@ -89,7 +89,7 @@ Key Topics:
       videoId: "4UkKFnuAHSY",
       app: "M365 App",
       icon: Briefcase,
-      timestamp: "?t=5301"
+      timestamp: "?start=5301"
     }
   ];
 
