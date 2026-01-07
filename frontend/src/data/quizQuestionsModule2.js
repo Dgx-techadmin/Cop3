@@ -1,122 +1,122 @@
 export const quizQuestionsModule2 = [
   {
     id: 1,
-    question: "What is the PRIMARY reason for AI governance at Dynamics G-Ex?",
+    question: "According to G-Ex AI Policy, when does this policy apply to Workforce members?",
     options: [
-      "To limit AI usage",
-      "To ensure responsible and secure AI use while maximizing benefits",
-      "To monitor employee productivity",
-      "To replace human decision-making"
+      "Only during official work hours at the office",
+      "During work hours and outside work hours, on any device, any location - when AI serves business objectives",
+      "Only when using company-owned devices",
+      "Only for full-time employees, not contractors"
     ],
     correctAnswer: 1,
-    explanation: "AI governance ensures we use AI responsibly, securely, and ethically while maximizing business value and protecting sensitive data."
+    explanation: "The policy applies comprehensively: during AND outside work hours, on personal OR company devices, at office/home/remote locations - whenever AI use serves business objectives."
   },
   {
     id: 2,
-    question: "According to the Generative AI Workplace Policy, which data should NEVER be input into AI tools?",
+    question: "Which of the following is an AUTHORISED AI application at Dynamics G-Ex?",
     options: [
-      "General industry knowledge",
-      "Confidential customer data, personal information, or proprietary business data",
-      "Public company announcements",
-      "General process questions"
+      "Any free AI tool found online",
+      "Microsoft Copilot and other IT-approved applications",
+      "Personal ChatGPT account without data protection settings",
+      "AI tools recommended by friends outside the company"
     ],
     correctAnswer: 1,
-    explanation: "Never input confidential, personal, proprietary, or sensitive data into AI tools. This protects customer privacy and company intellectual property."
+    explanation: "Only Microsoft Copilot and IT-approved applications are authorised. Using unauthorised AI tools poses security risks and violates policy."
   },
   {
     id: 3,
-    question: "What does 'opt-out of data training' mean?",
+    question: "What MUST you do before using any authorised AI applications for business at G-Ex?",
     options: [
-      "Refuse to attend AI training",
-      "Configure AI tools to NOT use your inputs to improve their models",
-      "Disable AI features completely",
-      "Request ChatGPT access"
+      "Get approval from your manager each time",
+      "Complete mandatory AI awareness training",
+      "Sign a waiver form",
+      "Install special security software"
     ],
     correctAnswer: 1,
-    explanation: "Opting out of data training prevents AI providers from using your prompts and outputs to train future AI models, protecting sensitive information."
+    explanation: "Mandatory annual AI awareness training must be completed before using any authorised AI applications for business purposes."
   },
   {
     id: 4,
-    question: "How should you verify AI-generated content before using it?",
+    question: "According to the policy, which type of data should NEVER be input into AI prompts?",
     options: [
-      "Trust it completely if it looks professional",
-      "Fact-check against reliable sources and apply your expertise",
-      "Only check spelling and grammar",
-      "No verification needed for internal use"
+      "General industry trends and public knowledge",
+      "Confidential customer data, personal information, or proprietary business data",
+      "Publicly available company announcements",
+      "General process improvement questions"
     ],
     correctAnswer: 1,
-    explanation: "Always fact-check AI outputs against reliable sources and apply your professional expertise. AI can hallucinate or provide outdated information."
+    explanation: "Never input confidential, personal, proprietary data, or PII. This includes customer names, supplier pricing, strategic plans, or any sensitive information - even if de-identified."
   },
   {
     id: 5,
-    question: "Which is an ACCEPTABLE use of AI for marketing campaigns?",
+    question: "What does 'opt-out of data training' mean and why is it important?",
     options: [
-      "Inputting full customer database with contact details",
-      "Brainstorming campaign themes using general industry trends",
-      "Sharing competitor's confidential strategies",
-      "Uploading customer purchase history with names"
+      "Refusing to attend AI training sessions",
+      "Configuring AI tools to NOT use your inputs to train their models, protecting sensitive information",
+      "Disabling all AI features completely",
+      "Opting out of using AI for your job"
     ],
     correctAnswer: 1,
-    explanation: "It's safe to use AI for creative brainstorming with general, non-confidential information. Never input customer PII or confidential data."
+    explanation: "Opting out prevents AI providers from using your prompts and outputs to train future models. This is critical for protecting any information you input, even if you believe it's non-sensitive."
   },
   {
     id: 6,
-    question: "For Operations, what's a RESPONSIBLE way to use AI for inventory reports?",
+    question: "A Marketing team member wants to analyze customer engagement. Which approach follows G-Ex policy?",
     options: [
-      "Upload full inventory database with supplier pricing",
-      "Ask AI to analyze anonymized inventory trends without supplier details",
-      "Share detailed supplier contracts for review",
-      "Input customer names and order quantities"
+      "Upload full customer database with names and emails to analyze",
+      "Use anonymized metrics: 'Region A: 15% engagement, Region B: 22% engagement' without customer names",
+      "Share customer contact list with AI to generate insights",
+      "Input specific customer names to get personalized recommendations"
     ],
     correctAnswer: 1,
-    explanation: "Use AI with anonymized, aggregated data. Remove sensitive supplier pricing, customer names, and confidential details before analysis."
+    explanation: "Always use anonymized, aggregated data. Remove all PII (names, emails, contact info) before analysis. The policy strictly prohibits inputting any customer personal information."
   },
   {
     id: 7,
-    question: "What is the correct approach when AI provides conflicting information?",
+    question: "What should you do immediately if you accidentally input confidential data into an AI tool?",
     options: [
-      "Always trust the first response",
-      "Use the response that sounds more professional",
-      "Cross-reference with authoritative sources and consult subject matter experts",
-      "Discard all AI outputs"
+      "Continue working and hope no one notices",
+      "Delete the conversation and immediately report to line manager and IT Department",
+      "Just don't use that AI tool again",
+      "Wait to see if there are any consequences"
     ],
-    correctAnswer: 2,
-    explanation: "When AI provides conflicting info, verify against authoritative sources and consult experts. AI is a tool to augment, not replace, human judgment."
+    correctAnswer: 1,
+    explanation: "Immediately delete the conversation and report to your line manager and IT Department. Quick action helps mitigate potential data exposure risks and is required by policy."
   },
   {
     id: 8,
-    question: "Which scenario violates the AI governance policy?",
+    question: "An Operations team member needs help with supplier analysis. Which is policy-compliant?",
     options: [
-      "Using Copilot to draft a general project plan template",
-      "Asking ChatGPT to analyze a customer's private financial data",
-      "Using Copilot in Word to improve writing clarity",
-      "Brainstorming product names with AI"
+      "Ask AI: 'Compare Supplier X pricing ($45/unit) vs Supplier Y ($42/unit)'",
+      "Ask AI: 'Suggest general strategies for supplier cost optimization in mining industry'",
+      "Upload supplier contracts for AI review",
+      "Share supplier names and pricing details for competitive analysis"
     ],
     correctAnswer: 1,
-    explanation: "Analyzing customer private financial data with AI violates confidentiality and data protection policies. Never input customer PII or sensitive data."
+    explanation: "Use general industry questions without supplier names, pricing, or contract details. Supplier pricing and relationships are proprietary business data that must never be shared with AI."
   },
   {
     id: 9,
-    question: "What should you do if you accidentally input confidential data into an AI tool?",
+    question: "What is the role of Data Loss Prevention (DLP) monitoring in G-Ex's AI governance?",
     options: [
-      "Ignore it - AI doesn't remember",
-      "Delete the conversation and immediately report to IT/Leadership",
-      "Just don't do it again",
-      "Wait to see if there are consequences"
+      "DLP is not used for AI tools",
+      "DLP monitors prompts and outputs for sensitive/confidential information to prevent inappropriate transmission",
+      "DLP only monitors emails, not AI tools",
+      "DLP automatically fixes all AI mistakes"
     ],
     correctAnswer: 1,
-    explanation: "Immediately delete the conversation and report the incident to IT/Leadership. Quick action helps mitigate potential data exposure risks."
+    explanation: "DLP actively monitors content in AI prompts and outputs to prevent unintentional disclosure of sensitive/confidential information and protect intellectual property."
   },
   {
     id: 10,
-    question: "Which is a KEY principle of responsible AI use at Dynamics G-Ex?",
+    question: "Which statement best reflects human accountability in AI use at G-Ex?",
     options: [
-      "AI outputs are always accurate and need no review",
-      "Humans remain accountable for all AI-assisted work",
-      "AI should make all final decisions",
-      "AI governance only applies to executives"
+      "AI-generated content doesn't need review since it's automated",
+      "Humans remain fully accountable for all AI-assisted work and must fact-check, verify, and take responsibility",
+      "Only managers are accountable for AI outputs",
+      "The AI vendor is responsible if something goes wrong"
     ],
     correctAnswer: 1,
-    explanation: "Humans are ALWAYS accountable for AI-assisted work. You review, verify, and take responsibility for all outputs, regardless of AI involvement."
+    explanation: "YOU are always accountable for AI-assisted work. You must review, fact-check, verify outputs against reliable sources, and apply your expertise. AI augments human judgment but never replaces it."
   }
 ];
