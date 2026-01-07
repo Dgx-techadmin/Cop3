@@ -18,7 +18,7 @@ export const quizQuestions = [
       "General business questions",
       "Requests for writing assistance",
       "Questions about processes",
-      "Confidential customer data or personal information"
+      "Confidential customer data"
     ],
     correctAnswer: 3,
     explanation: "Never input confidential, personal, or sensitive data into AI tools. Always follow our data governance policies."
@@ -28,11 +28,11 @@ export const quizQuestions = [
     question: "Which strategic pillar does AI adoption most directly support?",
     options: [
       "STOCKSMART only",
-      "ONE TEAM only",
+      "All strategic pillars",
       "Innovation Focus only",
-      "All of the above"
+      "ONE TEAM only"
     ],
-    correctAnswer: 3,
+    correctAnswer: 1,
     explanation: "AI supports ALL our strategic pillars: Innovation Focus, ONE TEAM, STOCKSMART, and GLOBAL EDGE."
   },
   {
@@ -41,7 +41,7 @@ export const quizQuestions = [
     options: [
       "Download a separate app",
       "It's not available in Teams",
-      "Click the Copilot icon in the sidebar",
+      "Click the Copilot sidebar icon",
       "Only through admin access"
     ],
     correctAnswer: 2,
@@ -51,24 +51,24 @@ export const quizQuestions = [
     id: 5,
     question: "What is AI NOT capable of?",
     options: [
+      "Replacing human judgment",
       "Analyzing large datasets",
       "Drafting documents",
-      "Generating insights",
-      "Replacing human judgment and empathy"
+      "Generating insights"
     ],
-    correctAnswer: 3,
+    correctAnswer: 0,
     explanation: "AI augments human capabilities but cannot replace human judgment, emotional intelligence, and strategic decision-making."
   },
   {
     id: 6,
     question: "When using ChatGPT Free, what is the most important data protection step?",
     options: [
-      "Never input confidential data",
       "Use a VPN connection",
+      "Never input confidential data",
       "Use incognito mode",
       "Clear your browser history"
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     explanation: "The critical rule is: NEVER input confidential, customer, or proprietary data into free AI tools."
   },
   {
@@ -78,7 +78,7 @@ export const quizQuestions = [
       "Delete all emails automatically",
       "Send emails without review",
       "Only check spelling errors",
-      "Draft responses and summarize threads"
+      "Draft and summarize threads"
     ],
     correctAnswer: 3,
     explanation: "Copilot in Outlook can draft responses, summarize long email threads, adjust tone, and more - but you always review before sending."
@@ -88,23 +88,23 @@ export const quizQuestions = [
     question: "What can Copilot do during Teams meetings?",
     options: [
       "Join meetings for you",
-      "Provide summaries and action items",
       "Make decisions automatically",
+      "Provide summaries and actions",
       "Replace note-taking entirely"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation: "Copilot provides real-time summaries, captures action items, and highlights key points - but you should still pay attention!"
   },
   {
     id: 9,
     question: "Which low-level task can Copilot automate in Excel?",
     options: [
-      "Making strategic business decisions",
-      "Approving financial transactions",
-      "Formatting data and creating charts",
+      "Format data and create charts",
+      "Make strategic decisions",
+      "Approve transactions",
       "Hiring employees"
     ],
-    correctAnswer: 2,
+    correctAnswer: 0,
     explanation: "Copilot excels at automating repetitive tasks like formatting, formula creation, data analysis, and visualization."
   },
   {
@@ -112,11 +112,11 @@ export const quizQuestions = [
     question: "Can you request professional ChatGPT access at Dynamics G-Ex?",
     options: [
       "No, it's not allowed",
+      "Yes, with business justification",
       "Only for executives",
-      "Yes, with valid business justification",
-      "Yes, automatically for everyone"
+      "Yes, automatically for all"
     ],
-    correctAnswer: 2,
+    correctAnswer: 1,
     explanation: "Professional ChatGPT access can be requested if you have a valid business justification, following our AI Governance policy."
   }
 ];
