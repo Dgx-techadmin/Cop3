@@ -149,13 +149,33 @@ export default function Module2() {
     <div className="min-h-screen flex flex-col">
       <Navigation />
       <main className="flex-1 bg-gradient-to-b from-background to-secondary/20">
+        {/* Module Banner */}
+        <div 
+          className="relative bg-green-600 overflow-hidden"
+          style={{
+            backgroundImage: `url('/dynamics-gex-logo.png')`,
+            backgroundSize: '120px',
+            backgroundRepeat: 'repeat',
+            backgroundPosition: 'center',
+            opacity: 0.95
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-green-600/95 via-green-600/90 to-green-600/95"></div>
+          <div className="relative py-8 px-4">
+            <div className="max-w-4xl mx-auto text-center">
+              <div className="inline-flex items-center space-x-3 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full border border-white/20">
+                <Shield className="w-6 h-6 text-white" />
+                <span className="text-2xl sm:text-3xl font-heading font-bold text-white">
+                  Module 2: Governance
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Hero Section */}
         <section className="py-16 bg-gradient-to-br from-green-50 via-background to-blue-50 dark:from-green-950 dark:via-background dark:to-blue-950">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-            <Badge className="text-sm px-4 py-2 bg-green-600 text-white">
-              <Shield className="w-4 h-4 mr-2" />
-              Module 2: Governance
-            </Badge>
             <h1 className="text-4xl sm:text-5xl font-heading font-bold text-foreground">
               <span className="text-green-600">Governance</span> & Responsible AI Use
             </h1>
