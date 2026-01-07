@@ -340,6 +340,92 @@ Keep responses concise (2-4 paragraphs max) but helpful."""},
         logging.error(f"Error in chat: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Error processing chat: {str(e)}")
 
+@api_router.post("/module-assistant")
+async def module_assistant(request: ModuleAssistantRequest):
+    """
+    AI assistant for module-specific questions.
+    Trained on module content to help users understand the material.
+    """
+    try:
+        # Create or retrieve conversation
+        if request.conversation_id:
+            conversation = await db.module_conversations.find_one(
+                {"conversation_id": request.conversation_id},
+                {"_id": 0}
+            )
+        else:
+            # Create new conversation
+            conversation_id = str(uuid.uuid4())
+            conversation = {
+                "conversation_id": conversation_id,
+                "module_id": request.module_id,
+                "module_name": request.module_name,
+                "messages": [],
+                "timestamp": datetime.now(timezone.utc).isoformat()
+            }
+            await db.module_conversations.insert_one(conversation)
+        
+        # Build context-aware system prompt
+        system_prompt = f"""You are the DGX AI Expert, an intelligent assistant helping employees at Dynamics G-Ex learn about: {request.module_name}.
+
+IMPORTANT INSTRUCTIONS:
+- ONLY answer questions related to {request.module_name} content
+- Use the module context provided to give accurate, relevant answers
+- If a question is outside the module scope, politely redirect: "That's a great question, but I'm specifically here to help with {request.module_name}. Could you ask something about the module content?"
+- Keep responses concise (2-4 paragraphs max) but helpful
+- Use a professional yet friendly tone
+- Reference specific examples from the module when relevant
+- If you're unsure, acknowledge it and suggest reviewing the module content
+
+MODULE CONTEXT:
+{request.module_context}
+
+Your goal is to help the user master this module's content through interactive Q&A."""
+
+        # Build message history
+        messages = [{"role": "system", "content": system_prompt}]
+        
+        # Add previous messages
+        for msg in conversation.get("messages", []):
+            messages.append({"role": "user", "content": msg["user"]})
+            messages.append({"role": "assistant", "content": msg["assistant"]})
+        
+        # Add current message
+        messages.append({"role": "user", "content": request.message})
+        
+        # Call OpenAI
+        response = await openai_client.chat.completions.create(
+            model="gpt-4o",
+            messages=messages,
+            temperature=0.7,
+            max_tokens=500
+        )
+        
+        assistant_response = response.choices[0].message.content
+        
+        # Store conversation
+        await db.module_conversations.update_one(
+            {"conversation_id": conversation.get("conversation_id", conversation_id)},
+            {
+                "$push": {
+                    "messages": {
+                        "user": request.message,
+                        "assistant": assistant_response,
+                        "timestamp": datetime.now(timezone.utc).isoformat()
+                    }
+                }
+            }
+        )
+        
+        return {
+            "response": assistant_response,
+            "conversation_id": conversation.get("conversation_id", conversation_id)
+        }
+        
+    except Exception as e:
+        logging.error(f"Error in module assistant: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error processing request: {str(e)}")
+
 @api_router.post("/quiz-submit")
 async def submit_quiz(submission: QuizSubmission):
     """
