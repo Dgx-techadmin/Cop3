@@ -33,6 +33,49 @@ Key Topics:
 - Testing approach: Start with low-risk tasks, validate results, gradually expand
 - AI Champion mindset: Use strategically, maintain quality, share learnings`;
 
+  const copilotVideos = [
+    {
+      title: "Microsoft 365 Copilot Overview",
+      description: "Official overview of Copilot capabilities (6 min)",
+      videoId: "S7xTBa93TX8",
+      duration: "6:03"
+    },
+    {
+      title: "Copilot in Outlook",
+      description: "Email management and communication (12 min)",
+      videoId: "d0Nix0-NErw",
+      duration: "12:35"
+    },
+    {
+      title: "Copilot in Word",
+      description: "Document creation and editing (Part of comprehensive demo)",
+      videoId: "e6nPqCQ-5ms",
+      duration: "Various segments",
+      timestamp: "?t=120"
+    },
+    {
+      title: "Copilot in Excel",
+      description: "Data analysis and forecasting (Part of comprehensive demo)",
+      videoId: "kLxOCW2Em7M",
+      duration: "30 min demo",
+      timestamp: "?t=600"
+    },
+    {
+      title: "Copilot in PowerPoint",
+      description: "Presentation creation (Part of comprehensive demo)",
+      videoId: "kLxOCW2Em7M",
+      duration: "30 min demo",
+      timestamp: "?t=1188"
+    },
+    {
+      title: "Copilot in Teams & Meetings",
+      description: "Collaboration and meeting assistant (Part of comprehensive demo)",
+      videoId: "kLxOCW2Em7M",
+      duration: "30 min demo",
+      timestamp: "?t=300"
+    }
+  ];
+
   const salesMarketingExamples = [
     {
       title: "Draft Sales Proposals",
