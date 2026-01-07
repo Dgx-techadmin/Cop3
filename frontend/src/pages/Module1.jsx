@@ -14,6 +14,7 @@ import { StepByStepGuide } from "@/components/training/StepByStepGuide";
 import { UseCaseCard } from "@/components/training/UseCaseCard";
 import { QuizComponent } from "@/components/training/QuizComponent";
 import { ModuleAIExpert } from "@/components/training/ModuleAIExpert";
+import { ModuleTutorial } from "@/components/training/ModuleTutorial";
 import { quizQuestions } from "@/data/quizQuestions";
 
 export default function TrainingModuleEnhanced() {
