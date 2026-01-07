@@ -791,6 +791,12 @@ Key Topics:
       </main>
       <Footer />
       
+      {/* Module Tutorial */}
+      <ModuleTutorial 
+        moduleId={2}
+        moduleName="Governance & Responsible AI Use"
+      />
+      
       {/* Module AI Expert */}
       <ModuleAIExpert 
         moduleId={2}
