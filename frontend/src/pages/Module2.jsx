@@ -436,9 +436,18 @@ export default function Module2() {
                       icon={XCircle}
                       defaultOpen={false}
                     >
-                      <p className="text-sm text-muted-foreground bg-red-50 dark:bg-red-950 p-3 rounded-lg">
-                        ✗ {item.description}
-                      </p>
+                      <div className="bg-red-50 dark:bg-red-950 p-3 rounded-lg space-y-2">
+                        <p className="text-sm text-muted-foreground">
+                          ✗ {item.description}
+                        </p>
+                        {item.example && (
+                          <div className="pt-2 border-t border-red-200 dark:border-red-800">
+                            <p className="text-xs text-muted-foreground font-mono">
+                              {item.example}
+                            </p>
+                          </div>
+                        )}
+                      </div>
                     </CollapsibleSection>
                   ))}
                 </CardContent>
