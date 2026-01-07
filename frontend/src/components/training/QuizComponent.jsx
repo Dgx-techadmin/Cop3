@@ -96,7 +96,9 @@ export const QuizComponent = ({ questions, moduleId = 1, moduleName = "Module 1"
         answers: answersDetail,
         score: correctCount,
         time_taken: timeTaken,
-        feedback: feedback
+        feedback: feedback,
+        module_id: moduleId,
+        module_name: moduleName
       });
       
       toast.success(`Quiz completed! You scored ${correctCount}/${questions.length}`);
