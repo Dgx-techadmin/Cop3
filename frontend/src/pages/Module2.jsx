@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { 
   Shield, AlertTriangle, CheckCircle, XCircle, ArrowRight, 
   FileText, ExternalLink, Eye, Lock, UserCheck, BookOpen,
-  Briefcase, Settings, Download
+  Briefcase, Settings, Download, Users, Code, HeadphonesIcon
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { CollapsibleSection } from "@/components/training/CollapsibleSection";
