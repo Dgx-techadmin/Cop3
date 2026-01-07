@@ -6,7 +6,7 @@ export const CollapsibleSection = ({ title, children, icon: Icon, defaultOpen = 
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
-    <Collapsible open={isOpen} onOpenChange={setIsOpen}>
+    <Collapsible open={isOpen} onOpenChange={setIsOpen} className="collapsible-section-demo">
       <CollapsibleTrigger className="w-full">
         <div className="flex items-center justify-between p-4 bg-muted/30 hover:bg-muted/50 rounded-lg transition-colors cursor-pointer">
           <div className="flex items-center space-x-3">
