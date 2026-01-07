@@ -12,10 +12,27 @@ import { useNavigate } from "react-router-dom";
 import { CollapsibleSection } from "@/components/training/CollapsibleSection";
 import { UseCaseCard } from "@/components/training/UseCaseCard";
 import { QuizComponent } from "@/components/training/QuizComponent";
+import { ModuleAIExpert } from "@/components/training/ModuleAIExpert";
 import { quizQuestionsModule2 } from "@/data/quizQuestionsModule2";
 
 export default function Module2() {
   const navigate = useNavigate();
+
+  const moduleContext = `This is Module 2: Governance & Responsible AI Use at Dynamics G-Ex.
+
+Key Topics:
+- Policy Scope: Applies to ALL Workforce members, all times (work hours and outside), all devices (personal or company), all locations (office, home, remote)
+- Authorized AI: Only Microsoft Copilot and IT-approved applications. Unauthorized tools pose security risks
+- Mandatory Training: Must complete annual AI awareness training before using AI for business
+- Data Protection: NEVER input customer PII, confidential data, proprietary business data, supplier pricing, strategic plans, or third-party proprietary data
+- Opt-Out of Data Training: Configure tools to NOT use your inputs to train their models - protects sensitive information
+- Key DOs: Fact-check outputs, opt-out of training, use general/non-confidential data, review and edit outputs, report accidental exposure, complete training, use only authorized apps, configure privacy settings
+- Key DON'Ts: No customer PII, no proprietary data, no blind trust of outputs, no AI for final decisions, no uploading confidential docs, no unauthorized apps, no third-party data without permission, no impersonation/harassment
+- Human Accountability: YOU are always responsible for AI-assisted work. Review, verify, and apply expertise
+- DLP Monitoring: Data Loss Prevention monitors prompts and outputs for sensitive/confidential information
+- Incident Reporting: Delete conversation immediately and report to line manager and IT if confidential data is accidentally input
+- Department Examples: Sales (anonymized forecasting), Marketing (general campaigns), Operations (anonymized inventory), Leadership (general frameworks), IT (general documentation), Customer Service (template responses)`;
+
 
   const governanceDos = [
     {
