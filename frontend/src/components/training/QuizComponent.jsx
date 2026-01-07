@@ -12,7 +12,7 @@ import axios from "axios";
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
-export const QuizComponent = ({ questions }) => {
+export const QuizComponent = ({ questions, moduleId = 1, moduleName = "Module 1" }) => {
   const [quizStarted, setQuizStarted] = useState(false);
   const [showUserForm, setShowUserForm] = useState(true);
   const [userName, setUserName] = useState("");
