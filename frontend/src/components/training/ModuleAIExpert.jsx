@@ -78,7 +78,7 @@ export const ModuleAIExpert = ({ moduleId, moduleName, moduleContext }) => {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed right-0 top-1/2 -translate-y-1/2 bg-primary text-white p-4 rounded-l-lg shadow-lg hover:bg-primary/90 transition-all z-50 group"
+          className="ai-expert-button fixed right-0 top-1/2 -translate-y-1/2 bg-primary text-white p-4 rounded-l-lg shadow-lg hover:bg-primary/90 transition-all z-50 group"
           aria-label="Open DGX AI Expert"
         >
           <div className="flex items-center space-x-2">
