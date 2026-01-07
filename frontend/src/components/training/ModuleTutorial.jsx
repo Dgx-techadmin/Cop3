@@ -283,8 +283,8 @@ export const ModuleTutorial = ({ moduleId, moduleName }) => {
         />
       )}
 
-      {/* Dark overlay - always show when tutorial is open */}
-      <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-[98]" onClick={(e) => {
+      {/* Dark overlay - lighter for better content visibility */}
+      <div className="fixed inset-0 bg-black/40 z-[98]" onClick={(e) => {
         // Prevent clicks on backdrop from closing, but allow clicks on buttons
         e.stopPropagation();
       }} />
