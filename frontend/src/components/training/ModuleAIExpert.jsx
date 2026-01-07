@@ -181,7 +181,7 @@ export const ModuleAIExpert = ({ moduleId, moduleName, moduleContext }) => {
           </div>
 
           {/* Input Area */}
-          <div className="p-4 border-t bg-background">
+          <div className="p-4 pb-20 border-t bg-background">
             {messages.length > 0 && (
               <Button
                 variant="outline"
