@@ -105,7 +105,10 @@ export const ModuleTutorial = ({ moduleId, moduleName }) => {
   const handleClose = () => {
     setIsOpen(false);
     setHighlightedElement(null);
+    setCurrentStep(0); // Reset to first step
     localStorage.setItem(storageKey, "true");
+    localStorage.setItem(reopenButtonKey, "true");
+    setShowReopenButton(true); // Show the reopen button
     
     // Scroll to top of page smoothly
     setTimeout(() => {
@@ -114,14 +117,19 @@ export const ModuleTutorial = ({ moduleId, moduleName }) => {
     
     // Log instructions for testing
     console.log(`%c✨ Want to see the tutorial again?`, 'color: #FF8C1A; font-size: 14px; font-weight: bold');
-    console.log(`%cAdd ?tutorial=true to the URL or run: localStorage.removeItem('${storageKey}')`, 'color: #2B8FBD; font-size: 12px');
+    console.log(`%cClick the tutorial button on the left side or add ?tutorial=true to the URL`, 'color: #2B8FBD; font-size: 12px');
   };
 
   const handleSkip = () => {
     handleClose();
   };
 
-  if (!isOpen) return null;
+  const handleReopen = () => {
+    setIsOpen(true);
+    setShowReopenButton(false);
+  };
+
+  if (!isOpen && !showReopenButton) return null;
 
   const step = steps[currentStep];
   const isFirstStep = currentStep === 0;
