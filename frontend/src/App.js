@@ -7,12 +7,14 @@ import DepartmentDetailPage from "@/pages/DepartmentDetailPage";
 import TrainingHub from "@/pages/TrainingHub";
 import Module1 from "@/pages/Module1";
 import Module2 from "@/pages/Module2";
+import ScrollToTop from "@/components/ScrollToTop";
 import { Toaster } from "@/components/ui/sonner";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/tips" element={<TipsPage />} />
