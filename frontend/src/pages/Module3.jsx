@@ -35,43 +35,41 @@ Key Topics:
 
   const copilotVideos = [
     {
-      title: "Microsoft 365 Copilot Overview",
-      description: "Official overview of Copilot capabilities (6 min)",
-      videoId: "S7xTBa93TX8",
-      duration: "6:03"
-    },
-    {
       title: "Copilot in Outlook",
-      description: "Email management and communication (12 min)",
+      description: "Learn email management, drafting, and summarization",
       videoId: "d0Nix0-NErw",
-      duration: "12:35"
+      app: "Outlook",
+      icon: Mail
     },
     {
       title: "Copilot in Word",
-      description: "Document creation and editing (Part of comprehensive demo)",
+      description: "Document creation, editing, and formatting assistance",
       videoId: "e6nPqCQ-5ms",
-      duration: "Various segments",
-      timestamp: "?t=120"
+      app: "Word",
+      icon: FileText
     },
     {
       title: "Copilot in Excel",
-      description: "Data analysis and forecasting (Part of comprehensive demo)",
+      description: "Data analysis, formulas, and insights",
       videoId: "kLxOCW2Em7M",
-      duration: "30 min demo",
+      app: "Excel",
+      icon: TrendingUp,
       timestamp: "?t=600"
     },
     {
       title: "Copilot in PowerPoint",
-      description: "Presentation creation (Part of comprehensive demo)",
+      description: "Create and design presentations quickly",
       videoId: "kLxOCW2Em7M",
-      duration: "30 min demo",
+      app: "PowerPoint",
+      icon: FileText,
       timestamp: "?t=1188"
     },
     {
-      title: "Copilot in Teams & Meetings",
-      description: "Collaboration and meeting assistant (Part of comprehensive demo)",
+      title: "Copilot in Teams",
+      description: "Meeting summaries and collaboration features",
       videoId: "kLxOCW2Em7M",
-      duration: "30 min demo",
+      app: "Teams",
+      icon: Users,
       timestamp: "?t=300"
     }
   ];
