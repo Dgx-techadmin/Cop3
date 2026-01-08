@@ -301,8 +301,8 @@ export default function ChampionsToolkit() {
                 key={index} 
                 className={`border-2 transition-all ${colorClasses[dept.color]}`}
               >
-                <CardHeader 
-                  className="cursor-pointer pb-3"
+                <div 
+                  className="cursor-pointer p-6 pb-3"
                   onClick={() => setExpandedDept(expandedDept === index ? null : index)}
                 >
                   <div className="flex items-center justify-between">
@@ -310,17 +310,17 @@ export default function ChampionsToolkit() {
                       <div className={`p-2 rounded-lg ${iconColorClasses[dept.color]}`}>
                         <dept.icon className="w-5 h-5" />
                       </div>
-                      <CardTitle className="text-lg">{dept.name} Toolkit</CardTitle>
+                      <h3 className="text-lg font-semibold">{dept.name} Toolkit</h3>
                     </div>
                     {expandedDept === index ? 
                       <ChevronUp className="w-5 h-5 text-muted-foreground" /> : 
                       <ChevronDown className="w-5 h-5 text-muted-foreground" />
                     }
                   </div>
-                  <CardDescription className="mt-2 ml-12">
+                  <p className="mt-2 ml-12 text-sm text-muted-foreground">
                     {dept.prompts.length} ready-to-use prompts
-                  </CardDescription>
-                </CardHeader>
+                  </p>
+                </div>
                 
                 {expandedDept === index && (
                   <CardContent className="pt-0">
