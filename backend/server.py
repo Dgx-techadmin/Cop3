@@ -57,6 +57,7 @@ class AIHelperResponse(BaseModel):
 
 class QuizSubmission(BaseModel):
     name: str
+    email: str = ""
     department: str
     answers: dict
     score: int
