@@ -76,8 +76,55 @@ def test_quiz_submission_flow():
     print(f"   Module: {test_submission['module_name']}")
     print()
     
-    # Test 1: Submit Quiz
-    print("🔄 Test 1: Submitting Quiz...")
+    # Get initial module stats for comparison
+    print("📊 Getting initial module stats...")
+    try:
+        response = requests.get(f"{API_BASE}/module-stats", timeout=10)
+        if response.status_code == 200:
+            initial_stats = response.json()
+            initial_completions = initial_stats.get("1", {}).get("completions", 0)
+            print(f"   Initial Module 1 completions: {initial_completions}")
+        else:
+            print(f"   ❌ Could not get initial stats: {response.status_code}")
+            initial_completions = 0
+    except Exception as e:
+        print(f"   ❌ Error getting initial stats: {e}")
+        initial_completions = 0
+    
+    # Test 1: Submit Quiz with unique data
+    print(f"\n🔄 Test 1: Submitting Unique Quiz...")
+    print(f"   Unique Email: {unique_test_submission['email']}")
+    try:
+        response = requests.post(
+            f"{API_BASE}/quiz-submit",
+            json=unique_test_submission,
+            headers={"Content-Type": "application/json"},
+            timeout=10
+        )
+        
+        print(f"   Status Code: {response.status_code}")
+        print(f"   Response: {response.text}")
+        
+        if response.status_code == 200:
+            response_data = response.json()
+            if response_data.get("success"):
+                print("   ✅ Unique quiz submission API returned success")
+            else:
+                print("   ❌ Unique quiz submission API returned success=false")
+                return False
+        else:
+            print(f"   ❌ Unique quiz submission failed with status {response.status_code}")
+            return False
+            
+    except requests.exceptions.RequestException as e:
+        print(f"   ❌ Unique quiz submission request failed: {e}")
+        return False
+    
+    # Wait for database write
+    time.sleep(3)
+    
+    # Test 2: Submit original test data
+    print(f"\n🔄 Test 2: Submitting Original Test Data...")
     try:
         response = requests.post(
             f"{API_BASE}/quiz-submit",
