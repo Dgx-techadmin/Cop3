@@ -41,6 +41,9 @@ export default function Module4() {
   
   // Expanded adoption strategy cards
   const [expandedStrategy, setExpandedStrategy] = useState(null);
+  
+  // Expanded department cards
+  const [expandedDept, setExpandedDept] = useState(null);
 
   const moduleContext = `This is Module 4: Advanced Tips for AI Champions at Dynamics G-Ex.
 
