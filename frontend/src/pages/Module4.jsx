@@ -141,14 +141,21 @@ Key Topics:
         { responseType: 'blob' }
       );
       
-      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const blob = new Blob([response.data], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      
+      // Open in new tab for preview
+      window.open(url, '_blank');
+      
+      // Also trigger download
       const link = document.createElement('a');
       link.href = url;
       link.setAttribute('download', `DGX_AI_Champion_Certificate_${certForm.name.replace(/\s+/g, '_')}.pdf`);
       document.body.appendChild(link);
       link.click();
       link.remove();
-      toast.success("Certificate downloaded!");
+      
+      toast.success("Certificate opened and downloaded!");
     } catch (error) {
       toast.error("Failed to download certificate");
     }
