@@ -561,7 +561,7 @@ async def download_quiz_results(password: str):
         if submissions:
             # Get all unique answer keys from first submission
             first_submission = submissions[0]
-            fieldnames = ["name", "department", "score", "time_taken", "feedback", "timestamp"]
+            fieldnames = ["name", "email", "department", "module_id", "module_name", "score", "time_taken", "feedback", "timestamp"]
             
             # Add answer columns
             if "answers" in first_submission and first_submission["answers"]:
@@ -577,7 +577,10 @@ async def download_quiz_results(password: str):
             for sub in submissions:
                 row = {
                     "name": sub.get("name", ""),
+                    "email": sub.get("email", ""),
                     "department": sub.get("department", ""),
+                    "module_id": sub.get("module_id", 1),
+                    "module_name": sub.get("module_name", f"Module {sub.get('module_id', 1)}"),
                     "score": sub.get("score", 0),
                     "time_taken": sub.get("time_taken", 0),
                     "feedback": sub.get("feedback", ""),
