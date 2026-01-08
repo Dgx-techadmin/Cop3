@@ -778,8 +778,14 @@ Key Topics:
                 onClick={() => window.open('https://learn.microsoft.com/en-us/collections/6wpf7tdggkn5g', '_blank')}
               >
                 <CardContent className="p-6 flex items-center space-x-4">
-                  <div className="p-4 bg-gradient-to-br from-orange-500 to-amber-500 rounded-xl flex-shrink-0">
-                    <ExternalLink className="w-8 h-8 text-white" />
+                  <div className="p-4 bg-gradient-to-br from-[#7B83EB] to-[#5B5FC7] rounded-xl flex-shrink-0">
+                    {/* Microsoft Copilot Icon */}
+                    <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M11.5 3C7.36 3 4 6.36 4 10.5C4 14.64 7.36 18 11.5 18H12V21L16 17H16.5C18.71 17 20.5 15.21 20.5 13V10.5C20.5 6.36 17.14 3 13 3H11.5Z" fill="white" fillOpacity="0.9"/>
+                      <path d="M8.5 9.5C8.5 8.67 9.17 8 10 8C10.83 8 11.5 8.67 11.5 9.5C11.5 10.33 10.83 11 10 11C9.17 11 8.5 10.33 8.5 9.5Z" fill="#5B5FC7"/>
+                      <path d="M12.5 9.5C12.5 8.67 13.17 8 14 8C14.83 8 15.5 8.67 15.5 9.5C15.5 10.33 14.83 11 14 11C13.17 11 12.5 10.33 12.5 9.5Z" fill="#5B5FC7"/>
+                      <path d="M10 12.5C10 12.5 10.5 14 12 14C13.5 14 14 12.5 14 12.5" stroke="#5B5FC7" strokeWidth="1.5" strokeLinecap="round"/>
+                    </svg>
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center space-x-2 mb-1">
