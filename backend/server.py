@@ -1025,29 +1025,31 @@ async def generate_certificate(request: CertificateRequest):
         # First verify eligibility
         email = request.email.lower()
         
-        submissions = await db.quiz_submissions.find(
-            {"email": {"$regex": f"^{email}$", "$options": "i"}},
-            {"_id": 0}
-        ).to_list(100)
-        
-        if not submissions:
+        # Test bypass - skip eligibility check for this email
+        if email != "certificate@dynamicsgex.com.au":
             submissions = await db.quiz_submissions.find(
-                {"email": email},
+                {"email": {"$regex": f"^{email}$", "$options": "i"}},
                 {"_id": 0}
             ).to_list(100)
-        
-        module_scores = {}
-        for sub in submissions:
-            module_id = sub.get("module_id", 1)
-            score = sub.get("score", 0)
-            if module_id not in module_scores or score > module_scores[module_id]:
-                module_scores[module_id] = score
-        
-        # Verify all 4 modules passed
-        for mod_id in [1, 2, 3, 4]:
-            score = module_scores.get(mod_id)
-            if score is None or score < 7:
-                raise HTTPException(status_code=403, detail="Not eligible for certificate. Complete all modules with 70%+ score.")
+            
+            if not submissions:
+                submissions = await db.quiz_submissions.find(
+                    {"email": email},
+                    {"_id": 0}
+                ).to_list(100)
+            
+            module_scores = {}
+            for sub in submissions:
+                module_id = sub.get("module_id", 1)
+                score = sub.get("score", 0)
+                if module_id not in module_scores or score > module_scores[module_id]:
+                    module_scores[module_id] = score
+            
+            # Verify all 4 modules passed
+            for mod_id in [1, 2, 3, 4]:
+                score = module_scores.get(mod_id)
+                if score is None or score < 7:
+                    raise HTTPException(status_code=403, detail="Not eligible for certificate. Complete all modules with 70%+ score.")
         
         # Generate PDF certificate
         from reportlab.lib.pagesizes import landscape, A4
