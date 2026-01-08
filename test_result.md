@@ -44,3 +44,5 @@ test_plan:
 agent_communication:
   - agent: "testing"
     message: "Backend quiz submission API is fully functional. Tested POST /api/quiz-submit with exact user test data. All tests pass: API returns success, data saves to MongoDB, module stats update correctly, admin interface shows submissions. The user's reported issue (success message but no database save) is NOT a backend problem. Issue is likely in frontend quiz form submission logic, error handling, or user-specific browser/network issues. Recommend main agent investigate frontend quiz submission code and error handling."
+  - agent: "testing"
+    message: "CRITICAL BUG FOUND AND FIXED: Environment variable issue in QuizComponent.jsx. Frontend was using wrong env var (`import.meta.env.VITE_BACKEND_URL` instead of `process.env.REACT_APP_BACKEND_URL`) causing API calls to fail with 404 error to malformed URL `/training/undefined/api/quiz-submit`. Fixed the environment variable reference. Quiz submission now works perfectly - tested end-to-end with successful API response (200 status), data saves to database, backend logs confirm receipt. The reported issue is now resolved."
