@@ -190,6 +190,17 @@ export const QuizComponent = ({ questions, moduleId = 1, moduleName = "Module 1"
                     onChange={(e) => setUserName(e.target.value)}
                   />
                 </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="quiz-email">Your Email</Label>
+                  <Input
+                    id="quiz-email"
+                    type="email"
+                    placeholder="your.email@dynamicsgex.com"
+                    value={userEmail}
+                    onChange={(e) => setUserEmail(e.target.value)}
+                  />
+                </div>
                 
                 <div className="space-y-2">
                   <Label htmlFor="quiz-department">Department</Label>
