@@ -1279,7 +1279,6 @@ async def generate_certificate(request: CertificateRequest):
             points.append((seal_x + 18 * math.cos(angle), seal_y + 18 * math.sin(angle)))
             angle = math.pi / 2 + i * 4 * math.pi / 5 + 2 * math.pi / 5
             points.append((seal_x + 8 * math.cos(angle), seal_y + 8 * math.sin(angle)))
-            points.append((seal_x + 7 * math.cos(angle), seal_y + 7 * math.sin(angle)))
         
         path = c.beginPath()
         path.moveTo(points[0][0], points[0][1])
