@@ -16,6 +16,7 @@ export const QuizComponent = ({ questions, moduleId = 1, moduleName = "Module 1"
   const [quizStarted, setQuizStarted] = useState(false);
   const [showUserForm, setShowUserForm] = useState(true);
   const [userName, setUserName] = useState("");
+  const [userEmail, setUserEmail] = useState("");
   const [userDepartment, setUserDepartment] = useState("");
   const [startTime, setStartTime] = useState(null);
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -26,8 +27,8 @@ export const QuizComponent = ({ questions, moduleId = 1, moduleName = "Module 1"
   const [adminPassword, setAdminPassword] = useState("");
 
   const handleStartQuiz = () => {
-    if (!userName.trim() || !userDepartment) {
-      toast.error("Please enter your name and select your department");
+    if (!userName.trim() || !userEmail.trim() || !userDepartment) {
+      toast.error("Please enter your name, email, and select your department");
       return;
     }
     
