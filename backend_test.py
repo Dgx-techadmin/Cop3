@@ -19,10 +19,35 @@ def test_quiz_submission_flow():
     print("🧪 Testing Quiz Submission Flow")
     print("=" * 50)
     
-    # Test data matching the user's test case
+    # Test data matching the user's test case EXACTLY
     test_submission = {
         "name": "Quiz Test User",
         "email": "quiztest@example.com", 
+        "department": "Sales",
+        "answers": {
+            "1": {"selected": "A", "correct": True},
+            "2": {"selected": "B", "correct": False},
+            "3": {"selected": "C", "correct": True},
+            "4": {"selected": "A", "correct": True},
+            "5": {"selected": "B", "correct": True},
+            "6": {"selected": "C", "correct": False},
+            "7": {"selected": "A", "correct": True},
+            "8": {"selected": "B", "correct": True},
+            "9": {"selected": "C", "correct": True},
+            "10": {"selected": "A", "correct": True}
+        },
+        "score": 8,  # 8 out of 10 correct
+        "time_taken": 300,  # 5 minutes
+        "feedback": "Good understanding of AI fundamentals with room for improvement in governance concepts.",
+        "module_id": 1,
+        "module_name": "Module 1"
+    }
+    
+    # Also test with a unique timestamp-based email to verify new submissions
+    timestamp = int(time.time())
+    unique_test_submission = {
+        "name": "Quiz Test User Unique",
+        "email": f"quiztest{timestamp}@example.com", 
         "department": "Sales",
         "answers": {
             "1": {"selected": "A", "correct": True},
