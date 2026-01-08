@@ -930,6 +930,121 @@ async def like_story(story_id: str, like: StoryLike):
         logging.error(f"Error liking story: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
+# ==================== CHAMPIONS DASHBOARD ENDPOINTS ====================
+
+@api_router.get("/champions/dashboard")
+async def get_champions_dashboard():
+    """Get dashboard stats and leaderboard for Champions Toolkit"""
+    try:
+        # Get all quiz submissions
+        quiz_submissions = await db.quiz_submissions.find({}, {"_id": 0}).to_list(1000)
+        
+        # Get all success stories
+        stories = await db.success_stories.find({}, {"_id": 0}).to_list(100)
+        
+        # Calculate stats
+        total_likes = sum(story.get("likes", 0) for story in stories)
+        
+        # Count unique users who completed all 4 modules with 70%+
+        certified_champions = set()
+        user_quiz_data = {}
+        
+        for sub in quiz_submissions:
+            email = sub.get("email", "").lower()
+            name = sub.get("name", "Unknown")
+            dept = sub.get("department", "")
+            module_id = sub.get("module_id", 1)
+            score = sub.get("score", 0)
+            
+            if email:
+                if email not in user_quiz_data:
+                    user_quiz_data[email] = {
+                        "name": name,
+                        "department": dept,
+                        "modules": {},
+                        "total_quizzes": 0
+                    }
+                
+                # Track best score per module
+                if module_id not in user_quiz_data[email]["modules"] or score > user_quiz_data[email]["modules"][module_id]:
+                    user_quiz_data[email]["modules"][module_id] = score
+                
+                user_quiz_data[email]["total_quizzes"] += 1
+        
+        # Count certified champions (all 4 modules with 70%+)
+        for email, data in user_quiz_data.items():
+            modules = data["modules"]
+            if len(modules) >= 4:
+                all_passed = all(modules.get(i, 0) >= 70 for i in [1, 2, 3, 4])
+                if all_passed:
+                    certified_champions.add(email)
+        
+        # Build leaderboard combining quiz and story data
+        leaderboard_data = {}
+        
+        # Add quiz data to leaderboard
+        for email, data in user_quiz_data.items():
+            leaderboard_data[email] = {
+                "name": data["name"],
+                "department": data["department"],
+                "quizzesCompleted": len(data["modules"]),
+                "avgScore": sum(data["modules"].values()) / len(data["modules"]) if data["modules"] else 0,
+                "storiesShared": 0,
+                "likesReceived": 0
+            }
+        
+        # Add story data to leaderboard
+        for story in stories:
+            email = story.get("email", "").lower()
+            if email:
+                if email not in leaderboard_data:
+                    leaderboard_data[email] = {
+                        "name": story.get("name", "Unknown"),
+                        "department": story.get("department", ""),
+                        "quizzesCompleted": 0,
+                        "avgScore": 0,
+                        "storiesShared": 0,
+                        "likesReceived": 0
+                    }
+                leaderboard_data[email]["storiesShared"] += 1
+                leaderboard_data[email]["likesReceived"] += story.get("likes", 0)
+        
+        # Calculate impact score and create sorted leaderboard
+        leaderboard = []
+        for email, data in leaderboard_data.items():
+            # Impact score: quizzes completed * 20 + stories * 15 + likes * 5 + avg score bonus
+            impact_score = (
+                data["quizzesCompleted"] * 20 +
+                data["storiesShared"] * 15 +
+                data["likesReceived"] * 5 +
+                (data["avgScore"] / 10)  # Bonus for high quiz scores
+            )
+            leaderboard.append({
+                "name": data["name"],
+                "department": data["department"],
+                "quizzesCompleted": data["quizzesCompleted"],
+                "storiesShared": data["storiesShared"],
+                "impactScore": round(impact_score)
+            })
+        
+        # Sort by impact score descending, take top 10
+        leaderboard.sort(key=lambda x: x["impactScore"], reverse=True)
+        leaderboard = leaderboard[:10]
+        
+        return {
+            "stats": {
+                "champions": len(certified_champions),
+                "modulesCompleted": len(quiz_submissions),
+                "storiesShared": len(stories),
+                "totalLikes": total_likes
+            },
+            "leaderboard": leaderboard
+        }
+        
+    except Exception as e:
+        logging.error(f"Error fetching champions dashboard: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
 # ==================== CERTIFICATE ENDPOINTS ====================
 
 @api_router.post("/certificate/check")
