@@ -743,7 +743,9 @@ async def view_quiz_results(password: str):
                         <tr>
                             <th>#</th>
                             <th>Name</th>
+                            <th>Email</th>
                             <th>Department</th>
+                            <th>Module</th>
                             <th>Score</th>
                             <th>Time (sec)</th>
                             <th>Feedback</th>
@@ -767,11 +769,15 @@ async def view_quiz_results(password: str):
             
             score_class = "score-high" if percentage >= 80 else "score-medium" if percentage >= 60 else "score-low"
             
+            module_name = sub.get("module_name", f"Module {sub.get('module_id', 1)}")
+            
             html += f"""
             <tr>
                 <td>{idx}</td>
                 <td><strong>{sub.get("name", "")}</strong></td>
+                <td>{sub.get("email", "N/A")}</td>
                 <td>{sub.get("department", "").title()}</td>
+                <td>{module_name}</td>
                 <td class="{score_class}">{score}/{total} ({percentage:.0f}%)</td>
                 <td>{sub.get("time_taken", 0)}s</td>
                 <td>{sub.get("feedback", "")}</td>
