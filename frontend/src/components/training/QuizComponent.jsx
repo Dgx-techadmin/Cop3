@@ -352,6 +352,7 @@ export const QuizComponent = ({ questions, moduleId = 1, moduleName = "Module 1"
                     setShowUserForm(true);
                     setQuizStarted(false);
                     setUserName("");
+                    setUserEmail("");
                     setUserDepartment("");
                   }}
                 >
