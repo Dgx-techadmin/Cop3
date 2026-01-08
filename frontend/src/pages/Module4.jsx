@@ -778,23 +778,12 @@ Key Topics:
                 onClick={() => window.open('https://learn.microsoft.com/en-us/collections/6wpf7tdggkn5g', '_blank')}
               >
                 <CardContent className="p-6 flex items-center space-x-4">
-                  <div className="p-3 bg-gradient-to-br from-[#0F6CBD] via-[#5B5FC7] to-[#9B4DCA] rounded-xl flex-shrink-0">
-                    {/* Microsoft Copilot Icon - Infinity/Ribbon Style */}
-                    <svg className="w-10 h-10" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <defs>
-                        <linearGradient id="copilotGradA" x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" stopColor="#0FAFFF"/>
-                          <stop offset="100%" stopColor="#70D6FF"/>
-                        </linearGradient>
-                        <linearGradient id="copilotGradB" x1="100%" y1="0%" x2="0%" y2="100%">
-                          <stop offset="0%" stopColor="#9B4DCA"/>
-                          <stop offset="100%" stopColor="#FF6B9D"/>
-                        </linearGradient>
-                      </defs>
-                      <path d="M72 32C72 32 64 20 48 20C32 20 24 32 24 48C24 64 32 76 48 76C56 76 62 72 66 66" stroke="url(#copilotGradA)" strokeWidth="8" strokeLinecap="round" fill="none"/>
-                      <path d="M24 64C24 64 32 76 48 76C64 76 72 64 72 48C72 32 64 20 48 20C40 20 34 24 30 30" stroke="url(#copilotGradB)" strokeWidth="8" strokeLinecap="round" fill="none"/>
-                      <circle cx="48" cy="48" r="8" fill="white"/>
-                    </svg>
+                  <div className="p-2 bg-white rounded-xl flex-shrink-0 shadow-sm">
+                    <img 
+                      src="/copilot-logo.png" 
+                      alt="Microsoft Copilot" 
+                      className="w-12 h-12 object-contain"
+                    />
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center space-x-2 mb-1">
