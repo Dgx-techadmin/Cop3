@@ -186,22 +186,126 @@ Key Topics:
     {
       title: "Share Quick Wins",
       description: "Document and share small victories - 30 minutes saved on a report, a perfectly drafted email. These relatable wins inspire others.",
-      icon: Trophy
+      icon: Trophy,
+      expandedContent: {
+        intro: "Quick wins are the foundation of AI adoption. Here's how to capture and share them effectively:",
+        steps: [
+          {
+            title: "Identify Your Win",
+            detail: "Look for tasks where AI saved you time, improved quality, or reduced effort. Even 10 minutes saved counts!"
+          },
+          {
+            title: "Document the Before & After",
+            detail: "Note how long the task took before AI vs. after. 'Report formatting: 45 mins → 10 mins with Copilot'"
+          },
+          {
+            title: "Keep It Relatable",
+            detail: "Focus on common tasks your colleagues also do. Email drafting, meeting summaries, data formatting – universal wins!"
+          },
+          {
+            title: "Share in Team Channels",
+            detail: "Post in Teams or Slack with a simple format: Task + Time Saved + How You Did It. Keep it to 3-4 sentences."
+          },
+          {
+            title: "Use the Success Stories Feature",
+            detail: "Share your wins on this platform! Your story could inspire dozens of colleagues to try AI."
+          }
+        ],
+        tip: "💡 Pro Tip: Screenshot your Copilot conversation and share it – visual proof is powerful!"
+      }
     },
     {
       title: "Live Demonstrations",
       description: "Show, don't tell. Run 15-minute 'Copilot Coffee' sessions where you solve real problems live. Seeing is believing.",
-      icon: Target
+      icon: Target,
+      expandedContent: {
+        intro: "Nothing beats seeing AI in action. Here's your guide to running engaging demos:",
+        steps: [
+          {
+            title: "Pick a Real Problem",
+            detail: "Choose a task your audience actually does – drafting emails, summarizing documents, analyzing data. Relevance is key."
+          },
+          {
+            title: "Keep It Short (15 mins max)",
+            detail: "Attention spans are limited. Demo one or two use cases well rather than rushing through many."
+          },
+          {
+            title: "Embrace Imperfection",
+            detail: "If Copilot gives an imperfect response, show how to refine the prompt. This teaches more than a 'perfect' demo!"
+          },
+          {
+            title: "Invite Participation",
+            detail: "Ask attendees to suggest prompts or bring their own challenges. Interactive demos are memorable demos."
+          },
+          {
+            title: "Follow Up with Resources",
+            detail: "Share the prompts you used and links to training materials. Make it easy for them to try it themselves."
+          }
+        ],
+        tip: "💡 Pro Tip: Schedule recurring 'Copilot Coffee' sessions – 15 mins, same time each week. Consistency builds attendance."
+      }
     },
     {
       title: "Create Template Libraries",
       description: "Build a shared repository of proven prompts for common tasks. Lower the barrier to entry for colleagues.",
-      icon: FileText
+      icon: FileText,
+      expandedContent: {
+        intro: "Great prompts shouldn't be reinvented every time. Build a team resource everyone can use:",
+        steps: [
+          {
+            title: "Start with High-Impact Tasks",
+            detail: "Identify the 5-10 tasks your team does most often. Email responses, report formatting, meeting agendas – start there."
+          },
+          {
+            title: "Create a Prompt Template Format",
+            detail: "Use a consistent structure: Task Name, Prompt Text, Expected Output, Tips for Customization."
+          },
+          {
+            title: "Test Before You Share",
+            detail: "Run each prompt multiple times. Refine until it consistently produces good results."
+          },
+          {
+            title: "Make It Accessible",
+            detail: "Store prompts in a shared location – Teams channel, SharePoint, or OneNote. Easy access = higher adoption."
+          },
+          {
+            title: "Keep It Updated",
+            detail: "Assign someone to review and update prompts monthly. AI capabilities evolve, and so should your templates."
+          }
+        ],
+        tip: "💡 Pro Tip: Create a 'Prompt of the Week' email – introduce one new template each week to gradually build the library."
+      }
     },
     {
       title: "Celebrate Champions",
       description: "Recognize team members who find innovative AI uses. Public recognition encourages experimentation.",
-      icon: Star
+      icon: Star,
+      expandedContent: {
+        intro: "Recognition fuels innovation. Here's how to create a culture that celebrates AI experimentation:",
+        steps: [
+          {
+            title: "Spot the Innovators",
+            detail: "Watch for colleagues trying new things with AI – even failed experiments show initiative worth recognizing."
+          },
+          {
+            title: "Make Recognition Public",
+            detail: "Share wins in team meetings, newsletters, or all-hands. 'Sarah saved 3 hours on client reports using Copilot!'"
+          },
+          {
+            title: "Create an 'AI Champion of the Month'",
+            detail: "Formal recognition programs drive behaviour. A simple certificate or shout-out goes a long way."
+          },
+          {
+            title: "Reward Sharing, Not Just Using",
+            detail: "Recognize people who teach others, not just those who use AI themselves. Multipliers matter most."
+          },
+          {
+            title: "Connect Wins to Business Impact",
+            detail: "Frame recognition around outcomes: time saved, quality improved, customer satisfaction increased."
+          }
+        ],
+        tip: "💡 Pro Tip: Create a dedicated Teams channel for AI wins. Encourage peer recognition – it's more powerful than top-down praise."
+      }
     }
   ];
 
