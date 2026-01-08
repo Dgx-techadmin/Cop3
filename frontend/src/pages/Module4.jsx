@@ -982,7 +982,7 @@ Key Topics:
 
         {/* Department Use Cases */}
         <section className="py-12 bg-secondary/30">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
             <div className="text-center space-y-2">
               <h2 className="text-3xl font-heading font-bold text-foreground">
                 🎯 Departmental Champion Tips
@@ -990,28 +990,56 @@ Key Topics:
               <p className="text-muted-foreground">
                 Advanced AI strategies tailored for each department
               </p>
+              <p className="text-xs text-muted-foreground">
+                Click a department to view tips
+              </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               {departmentUseCases.map((dept, idx) => {
                 const Icon = dept.icon;
+                const isExpanded = expandedDept === idx;
                 return (
-                  <Card key={idx} className={`shadow-card border-2 ${colorClasses[dept.color]}`}>
-                    <CardHeader>
-                      <CardTitle className={`flex items-center space-x-2 ${textColorClasses[dept.color]}`}>
+                  <div
+                    key={idx}
+                    className={`cursor-pointer transition-all duration-300 rounded-lg border-2 ${
+                      isExpanded 
+                        ? `col-span-2 md:col-span-3 ${colorClasses[dept.color]} border-current shadow-lg` 
+                        : `${colorClasses[dept.color]} hover:shadow-md hover:scale-[1.02]`
+                    }`}
+                    onClick={() => setExpandedDept(isExpanded ? null : idx)}
+                  >
+                    <div className={`p-4 flex items-center justify-between ${isExpanded ? 'border-b border-current/20' : ''}`}>
+                      <div className={`flex items-center space-x-2 ${textColorClasses[dept.color]}`}>
                         <Icon className="w-5 h-5" />
-                        <span>{dept.dept}</span>
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-3">
-                      {dept.tips.map((tip, tipIdx) => (
-                        <div key={tipIdx} className="border-l-2 border-current pl-3 py-1">
-                          <h4 className="text-sm font-semibold">{tip.title}</h4>
-                          <p className="text-xs text-muted-foreground">{tip.tip}</p>
-                        </div>
-                      ))}
-                    </CardContent>
-                  </Card>
+                        <span className="font-semibold text-sm">{dept.dept}</span>
+                      </div>
+                      <ChevronDown className={`w-4 h-4 ${textColorClasses[dept.color]} transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
+                    </div>
+                    
+                    {isExpanded && (
+                      <div className="p-4 space-y-3 animate-in slide-in-from-top-2 duration-300">
+                        {dept.tips.map((tip, tipIdx) => (
+                          <div key={tipIdx} className="flex items-start space-x-3 p-3 bg-white/50 dark:bg-background/50 rounded-lg">
+                            <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0 ${
+                              dept.color === 'purple' ? 'bg-purple-500' :
+                              dept.color === 'green' ? 'bg-green-500' :
+                              dept.color === 'blue' ? 'bg-blue-500' :
+                              dept.color === 'orange' ? 'bg-orange-500' :
+                              dept.color === 'indigo' ? 'bg-indigo-500' :
+                              'bg-teal-500'
+                            }`}>
+                              {tipIdx + 1}
+                            </div>
+                            <div>
+                              <h4 className="text-sm font-semibold">{tip.title}</h4>
+                              <p className="text-xs text-muted-foreground">{tip.tip}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 );
               })}
             </div>
