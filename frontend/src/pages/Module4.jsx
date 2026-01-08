@@ -12,7 +12,8 @@ import {
   HeadphonesIcon, Mail, FileText, TrendingUp, Code, Sparkles, CheckCircle, 
   AlertTriangle, Target, Megaphone, BarChart3, Package, Award, Heart,
   MessageSquare, Send, Download, Star, Clock, Briefcase, Loader2, X,
-  Image as ImageIcon, Link as LinkIcon
+  Image as ImageIcon, Link as LinkIcon, Shield, Zap, RefreshCw, Brain,
+  Rocket, Calendar, UserCheck, Eye, ThumbsUp, CircleDot
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { CollapsibleSection } from "@/components/training/CollapsibleSection";
