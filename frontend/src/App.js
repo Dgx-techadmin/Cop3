@@ -25,6 +25,7 @@ function App() {
           <Route path="/training/module-1" element={<Module1 />} />
           <Route path="/training/module-2" element={<Module2 />} />
           <Route path="/training/module-3" element={<Module3 />} />
+          <Route path="/training/module-4" element={<Module4 />} />
           <Route path="/department/:dept" element={<DepartmentDetailPage />} />
         </Routes>
       </BrowserRouter>
