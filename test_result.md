@@ -14,15 +14,18 @@ backend:
 frontend:
   - task: "Quiz UI Integration"
     implemented: true
-    working: "NA"
-    file: "frontend/src"
+    working: true
+    file: "frontend/src/components/training/QuizComponent.jsx"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "testing"
         comment: "Not tested - backend testing agent does not test frontend components per system limitations. User reports success message appears but data not saved, however backend API is confirmed working. Issue likely in frontend quiz form submission logic or error handling."
+      - working: true
+        agent: "testing"
+        comment: "ISSUE IDENTIFIED AND FIXED: Environment variable bug in QuizComponent.jsx line 12. Code was using `import.meta.env.VITE_BACKEND_URL` but should use `process.env.REACT_APP_BACKEND_URL` for Create React App. This caused API calls to go to `/training/undefined/api/quiz-submit` (404 error) instead of correct `/api/quiz-submit`. Fixed environment variable reference. Quiz submission now works correctly - API returns 200 status, data saves to database, backend logs confirm successful submissions. Users see success message AND data is properly saved."
 
 metadata:
   created_by: "testing_agent"
