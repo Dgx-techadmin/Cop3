@@ -93,6 +93,7 @@ export const QuizComponent = ({ questions, moduleId = 1, moduleName = "Module 1"
     try {
       await axios.post(`${API}/quiz-submit`, {
         name: userName,
+        email: userEmail,
         department: userDepartment,
         answers: answersDetail,
         score: correctCount,
