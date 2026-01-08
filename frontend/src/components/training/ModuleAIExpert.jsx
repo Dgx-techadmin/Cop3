@@ -7,7 +7,7 @@ import { MessageSquare, X, Send, Sparkles, ChevronRight, Loader2 } from "lucide-
 import { toast } from "sonner";
 import axios from "axios";
 
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || import.meta.env.REACT_APP_BACKEND_URL || 'https://dgx-copilot-hub.preview.emergentagent.com';
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || import.meta.env.REACT_APP_BACKEND_URL || 'https://ai-learning-hub-168.preview.emergentagent.com';
 
 export const ModuleAIExpert = ({ moduleId, moduleName, moduleContext }) => {
   const [isOpen, setIsOpen] = useState(false);

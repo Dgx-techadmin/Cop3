@@ -24,7 +24,7 @@ import { quizQuestionsModule4 } from "@/data/quizQuestionsModule4";
 import { toast } from "sonner";
 import axios from "axios";
 
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'https://dgx-copilot-hub.preview.emergentagent.com';
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'https://ai-learning-hub-168.preview.emergentagent.com';
 
 export default function Module4() {
   const navigate = useNavigate();
