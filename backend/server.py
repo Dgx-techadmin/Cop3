@@ -1117,14 +1117,14 @@ async def generate_certificate(request: CertificateRequest):
                         # Draw molecule logo with very low opacity
                         if os.path.exists(molecule_logo_path):
                             c.saveState()
-                            c.setFillAlpha(0.04)  # Very subtle
+                            c.setFillAlpha(0.07)  # 7% opacity
                             c.drawImage(molecule_logo_path, x, y, width=logo_size, height=logo_size, preserveAspectRatio=True, mask='auto')
                             c.restoreState()
                     else:
                         # Draw copilot logo with very low opacity
                         if os.path.exists(copilot_logo_path):
                             c.saveState()
-                            c.setFillAlpha(0.04)  # Very subtle
+                            c.setFillAlpha(0.07)  # 7% opacity
                             c.drawImage(copilot_logo_path, x, y, width=logo_size, height=logo_size, preserveAspectRatio=True, mask='auto')
                             c.restoreState()
                 except:
