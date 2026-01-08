@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Sparkles, Lightbulb, GraduationCap, Menu, X } from "lucide-react";
+import { Sparkles, Lightbulb, GraduationCap, Menu, X, PlayCircle } from "lucide-react";
 import { useState } from "react";
 
 export const Navigation = () => {
@@ -11,9 +11,9 @@ export const Navigation = () => {
   
   const navLinks = [
     { path: "/", label: "Home", icon: Sparkles },
+    { path: "/training", label: "Training", icon: GraduationCap, alwaysHighlighted: true },
+    { path: "/tutorials", label: "Tutorials", icon: PlayCircle },
     { path: "/tips", label: "Tips & Use Cases", icon: Lightbulb },
-    { path: "/tutorials", label: "Tutorials", icon: GraduationCap },
-    { path: "/training", label: "Training", icon: GraduationCap },
   ];
   
   return (
@@ -34,12 +34,12 @@ export const Navigation = () => {
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1">
-            {navLinks.map(({ path, label, icon: Icon }) => (
+            {navLinks.map(({ path, label, icon: Icon, alwaysHighlighted }) => (
               <Link key={path} to={path}>
                 <Button
-                  variant={isActive(path) ? "default" : "ghost"}
+                  variant={isActive(path) || alwaysHighlighted ? "default" : "ghost"}
                   size="sm"
-                  className="flex items-center space-x-2"
+                  className={`flex items-center space-x-2 ${alwaysHighlighted && !isActive(path) ? 'bg-primary/90 hover:bg-primary' : ''}`}
                 >
                   <Icon className="w-4 h-4" />
                   <span>{label}</span>
@@ -64,12 +64,12 @@ export const Navigation = () => {
       {mobileMenuOpen && (
         <div className="md:hidden border-t border-border bg-card">
           <div className="px-4 py-3 space-y-2">
-            {navLinks.map(({ path, label, icon: Icon }) => (
+            {navLinks.map(({ path, label, icon: Icon, alwaysHighlighted }) => (
               <Link key={path} to={path} onClick={() => setMobileMenuOpen(false)}>
                 <Button
-                  variant={isActive(path) ? "default" : "ghost"}
+                  variant={isActive(path) || alwaysHighlighted ? "default" : "ghost"}
                   size="sm"
-                  className="w-full justify-start flex items-center space-x-2"
+                  className={`w-full justify-start flex items-center space-x-2 ${alwaysHighlighted && !isActive(path) ? 'bg-primary/90 hover:bg-primary' : ''}`}
                 >
                   <Icon className="w-4 h-4" />
                   <span>{label}</span>
