@@ -424,9 +424,9 @@ Key Topics:
     {
       title: "Feedback Form",
       description: "Share your AI experience and suggestions",
-      link: "#feedback",
+      link: "https://forms.office.com/Pages/ResponsePage.aspx?id=TAgG8Mt-OU6jS71NMvpy6uMGTzC6judNqxQqmzhgyl1UNEJIVkVXV0NaSVdSNVBIUEhWSkdOOFZCVC4u",
       icon: MessageSquare,
-      comingSoon: true
+      comingSoon: false
     }
   ];
 

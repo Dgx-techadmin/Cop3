@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Sparkles, Mail, Globe, Download, Shield } from "lucide-react";
+import { Sparkles, Mail, Globe, Download, Shield, MessageSquare } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
