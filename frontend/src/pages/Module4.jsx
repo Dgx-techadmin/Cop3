@@ -378,6 +378,330 @@ Key Topics:
           </div>
         </section>
 
+        {/* AI Champion Role Section - New */}
+        <section className="py-16 bg-gradient-to-br from-blue-50 via-background to-orange-50 dark:from-blue-950 dark:via-background dark:to-orange-950">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+            {/* Section Header */}
+            <div className="text-center space-y-4">
+              <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-orange-500 rounded-full mb-4">
+                <Brain className="w-10 h-10 text-white" />
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-heading font-bold text-foreground">
+                What It Means to Be an <span className="text-blue-600">AI Champion</span>
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Your role as an AI Champion is crucial – but don't worry, you won't need a cape. 
+                Just a passion for innovation and a knack for helping others succeed! 🦸‍♂️
+              </p>
+            </div>
+
+            {/* Expectations & Responsibilities Grid */}
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* Expectations Card */}
+              <Card className="shadow-lg border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-white dark:from-blue-950 dark:to-background">
+                <CardHeader>
+                  <div className="flex items-center space-x-3">
+                    <div className="p-3 bg-blue-100 dark:bg-blue-900 rounded-xl">
+                      <Target className="w-6 h-6 text-blue-600" />
+                    </div>
+                    <CardTitle className="text-xl text-blue-700 dark:text-blue-300">Expectations</CardTitle>
+                  </div>
+                  <CardDescription>What your team and organisation expect from you</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="flex items-start space-x-3 p-3 bg-white/50 dark:bg-white/5 rounded-lg">
+                    <UserCheck className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <p className="text-sm font-medium text-foreground">Be the Go-To AI Expert</p>
+                      <p className="text-xs text-muted-foreground">Your team's first stop for AI queries, guidance, and support</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3 p-3 bg-white/50 dark:bg-white/5 rounded-lg">
+                    <Target className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <p className="text-sm font-medium text-foreground">Align with SOAP</p>
+                      <p className="text-xs text-muted-foreground">AI adoption only counts when it directly supports our Strategic Objectives and Priorities</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3 p-3 bg-white/50 dark:bg-white/5 rounded-lg">
+                    <Shield className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <p className="text-sm font-medium text-foreground">Promote Responsible AI</p>
+                      <p className="text-xs text-muted-foreground">Champion AI use aligned with Dynamics G-Ex governance policies</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3 p-3 bg-white/50 dark:bg-white/5 rounded-lg">
+                    <Sparkles className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <p className="text-sm font-medium text-foreground">Encourage Experimentation</p>
+                      <p className="text-xs text-muted-foreground">Microsoft Copilot (primary) and ChatGPT (secondary) – authorised tools only!</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Responsibilities Card */}
+              <Card className="shadow-lg border-2 border-orange-200 bg-gradient-to-br from-orange-50 to-white dark:from-orange-950 dark:to-background">
+                <CardHeader>
+                  <div className="flex items-center space-x-3">
+                    <div className="p-3 bg-orange-100 dark:bg-orange-900 rounded-xl">
+                      <CheckCircle className="w-6 h-6 text-orange-600" />
+                    </div>
+                    <CardTitle className="text-xl text-orange-700 dark:text-orange-300">Responsibilities</CardTitle>
+                  </div>
+                  <CardDescription>Your key duties as an AI Champion</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="flex items-start space-x-3 p-3 bg-white/50 dark:bg-white/5 rounded-lg">
+                    <Users className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <p className="text-sm font-medium text-foreground">Support Your Team</p>
+                      <p className="text-xs text-muted-foreground">Help colleagues learn and confidently apply AI tools in their work</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3 p-3 bg-white/50 dark:bg-white/5 rounded-lg">
+                    <Star className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <p className="text-sm font-medium text-foreground">Share Best Practices</p>
+                      <p className="text-xs text-muted-foreground">Post success stories and tips on G-Ex AI Hub – be the inspiration!</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3 p-3 bg-white/50 dark:bg-white/5 rounded-lg">
+                    <Eye className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <p className="text-sm font-medium text-foreground">Monitor Compliance</p>
+                      <p className="text-xs text-muted-foreground">Keep an eye on AI governance – DOs and DON'Ts matter!</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3 p-3 bg-white/50 dark:bg-white/5 rounded-lg">
+                    <BarChart3 className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <p className="text-sm font-medium text-foreground">Collect & Report</p>
+                      <p className="text-xs text-muted-foreground">Gather feedback and track adoption progress for continuous improvement</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Balancing Your Role & Fostering Innovation */}
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* Balancing Your Role */}
+              <Card className="shadow-lg border-2 border-green-200">
+                <CardHeader>
+                  <div className="flex items-center space-x-3">
+                    <div className="p-3 bg-green-100 dark:bg-green-900 rounded-xl">
+                      <RefreshCw className="w-6 h-6 text-green-600" />
+                    </div>
+                    <CardTitle className="text-xl text-green-700 dark:text-green-300">Balancing Your Role</CardTitle>
+                  </div>
+                  <CardDescription>
+                    Being an AI Champion doesn't mean working extra hours – it means working smarter! 🧠
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <div className="flex items-center space-x-3 p-3 border rounded-lg bg-green-50/50 dark:bg-green-950/30">
+                    <Calendar className="w-5 h-5 text-green-600 flex-shrink-0" />
+                    <div>
+                      <p className="text-sm font-medium">Dedicate Short Weekly Slots</p>
+                      <p className="text-xs text-muted-foreground">Just 30 mins/week for AI support makes a huge difference</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-3 p-3 border rounded-lg bg-green-50/50 dark:bg-green-950/30">
+                    <Zap className="w-5 h-5 text-green-600 flex-shrink-0" />
+                    <div>
+                      <p className="text-sm font-medium">Use Copilot to Free Up Time</p>
+                      <p className="text-xs text-muted-foreground">Automate your repetitive tasks first – lead by example!</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-3 p-3 border rounded-lg bg-green-50/50 dark:bg-green-950/30">
+                    <Target className="w-5 h-5 text-green-600 flex-shrink-0" />
+                    <div>
+                      <p className="text-sm font-medium">Prioritise High-Impact Initiatives</p>
+                      <p className="text-xs text-muted-foreground">Delegate where possible, focus on what moves the needle</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Fostering Team Innovation */}
+              <Card className="shadow-lg border-2 border-purple-200">
+                <CardHeader>
+                  <div className="flex items-center space-x-3">
+                    <div className="p-3 bg-purple-100 dark:bg-purple-900 rounded-xl">
+                      <Rocket className="w-6 h-6 text-purple-600" />
+                    </div>
+                    <CardTitle className="text-xl text-purple-700 dark:text-purple-300">Fostering Team Innovation</CardTitle>
+                  </div>
+                  <CardDescription>
+                    Create an environment where AI curiosity thrives! 🚀
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <div className="flex items-center space-x-3 p-3 border rounded-lg bg-purple-50/50 dark:bg-purple-950/30">
+                    <Lightbulb className="w-5 h-5 text-purple-600 flex-shrink-0" />
+                    <div>
+                      <p className="text-sm font-medium">Encourage New Use Cases</p>
+                      <p className="text-xs text-muted-foreground">Ask team members: "What task takes too long?" – AI might help!</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-3 p-3 border rounded-lg bg-purple-50/50 dark:bg-purple-950/30">
+                    <Users className="w-5 h-5 text-purple-600 flex-shrink-0" />
+                    <div>
+                      <p className="text-sm font-medium">Run AI Power Hours</p>
+                      <p className="text-xs text-muted-foreground">Quick demos with Copilot & ChatGPT – show don't tell!</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-3 p-3 border rounded-lg bg-purple-50/50 dark:bg-purple-950/30">
+                    <ThumbsUp className="w-5 h-5 text-purple-600 flex-shrink-0" />
+                    <div>
+                      <p className="text-sm font-medium">Create a Safe Space</p>
+                      <p className="text-xs text-muted-foreground">Mistakes are learning opportunities – celebrate experiments!</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Champion Journey Flowchart */}
+            <Card className="shadow-lg border-2 border-amber-200 bg-gradient-to-r from-amber-50 via-white to-amber-50 dark:from-amber-950 dark:via-background dark:to-amber-950">
+              <CardHeader className="text-center">
+                <CardTitle className="text-xl text-amber-700 dark:text-amber-300 flex items-center justify-center space-x-2">
+                  <TrendingUp className="w-5 h-5" />
+                  <span>The AI Champion Journey</span>
+                </CardTitle>
+                <CardDescription>Your continuous impact cycle</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4">
+                  {/* Step 1 */}
+                  <div className="flex flex-col items-center text-center p-4 bg-blue-100 dark:bg-blue-900/50 rounded-xl min-w-[140px]">
+                    <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mb-2">
+                      <Trophy className="w-6 h-6 text-white" />
+                    </div>
+                    <p className="text-sm font-semibold text-blue-700 dark:text-blue-300">Champion</p>
+                    <p className="text-xs text-muted-foreground">Lead by example</p>
+                  </div>
+                  
+                  <ArrowRight className="w-8 h-8 text-amber-400 hidden md:block" />
+                  <div className="w-8 h-8 text-amber-400 md:hidden">↓</div>
+                  
+                  {/* Step 2 */}
+                  <div className="flex flex-col items-center text-center p-4 bg-green-100 dark:bg-green-900/50 rounded-xl min-w-[140px]">
+                    <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mb-2">
+                      <Users className="w-6 h-6 text-white" />
+                    </div>
+                    <p className="text-sm font-semibold text-green-700 dark:text-green-300">Team Support</p>
+                    <p className="text-xs text-muted-foreground">Help others succeed</p>
+                  </div>
+                  
+                  <ArrowRight className="w-8 h-8 text-amber-400 hidden md:block" />
+                  <div className="w-8 h-8 text-amber-400 md:hidden">↓</div>
+                  
+                  {/* Step 3 */}
+                  <div className="flex flex-col items-center text-center p-4 bg-orange-100 dark:bg-orange-900/50 rounded-xl min-w-[140px]">
+                    <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center mb-2">
+                      <MessageSquare className="w-6 h-6 text-white" />
+                    </div>
+                    <p className="text-sm font-semibold text-orange-700 dark:text-orange-300">Feedback</p>
+                    <p className="text-xs text-muted-foreground">Collect insights</p>
+                  </div>
+                  
+                  <ArrowRight className="w-8 h-8 text-amber-400 hidden md:block" />
+                  <div className="w-8 h-8 text-amber-400 md:hidden">↓</div>
+                  
+                  {/* Step 4 */}
+                  <div className="flex flex-col items-center text-center p-4 bg-purple-100 dark:bg-purple-900/50 rounded-xl min-w-[140px]">
+                    <div className="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mb-2">
+                      <RefreshCw className="w-6 h-6 text-white" />
+                    </div>
+                    <p className="text-sm font-semibold text-purple-700 dark:text-purple-300">Improve</p>
+                    <p className="text-xs text-muted-foreground">Continuous growth</p>
+                  </div>
+                </div>
+                
+                {/* Loop indicator */}
+                <div className="hidden md:flex justify-center mt-4">
+                  <div className="text-sm text-muted-foreground flex items-center space-x-2 bg-amber-100 dark:bg-amber-900/30 px-4 py-2 rounded-full">
+                    <RefreshCw className="w-4 h-4 text-amber-600" />
+                    <span>Repeat & Scale Success</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Compliance Reminder */}
+            <Card className="shadow-lg border-2 border-red-200 bg-gradient-to-r from-red-50 to-white dark:from-red-950 dark:to-background">
+              <CardContent className="pt-6">
+                <div className="flex items-start space-x-4">
+                  <div className="p-3 bg-red-100 dark:bg-red-900 rounded-xl flex-shrink-0">
+                    <Shield className="w-6 h-6 text-red-600" />
+                  </div>
+                  <div className="space-y-3">
+                    <h4 className="font-semibold text-red-700 dark:text-red-300 text-lg">
+                      🛡️ Champion Compliance Reminders
+                    </h4>
+                    <p className="text-sm text-muted-foreground">
+                      As an AI Champion, you lead by example. Always model these critical behaviours:
+                    </p>
+                    <div className="grid sm:grid-cols-3 gap-4">
+                      <div className="p-3 bg-red-50 dark:bg-red-950/50 rounded-lg border border-red-100 dark:border-red-900">
+                        <p className="text-xs font-semibold text-red-700 dark:text-red-300 mb-1">❌ NEVER</p>
+                        <p className="text-xs text-muted-foreground">Input confidential or proprietary data into AI tools</p>
+                      </div>
+                      <div className="p-3 bg-green-50 dark:bg-green-950/50 rounded-lg border border-green-100 dark:border-green-900">
+                        <p className="text-xs font-semibold text-green-700 dark:text-green-300 mb-1">✅ ALWAYS</p>
+                        <p className="text-xs text-muted-foreground">Opt out of data training in all AI tools you use</p>
+                      </div>
+                      <div className="p-3 bg-blue-50 dark:bg-blue-950/50 rounded-lg border border-blue-100 dark:border-blue-900">
+                        <p className="text-xs font-semibold text-blue-700 dark:text-blue-300 mb-1">✅ ALWAYS</p>
+                        <p className="text-xs text-muted-foreground">Fact-check AI outputs before using or sharing them</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Quick Resources */}
+            <div className="grid md:grid-cols-3 gap-4">
+              <Button 
+                variant="outline" 
+                className="h-auto p-4 flex items-center space-x-3 border-2 hover:border-blue-300 hover:bg-blue-50 dark:hover:bg-blue-950"
+                onClick={() => toast.info("Champions Toolkit coming soon!")}
+              >
+                <BookOpen className="w-5 h-5 text-blue-600" />
+                <div className="text-left">
+                  <p className="text-sm font-semibold">Champions Toolkit</p>
+                  <p className="text-xs text-muted-foreground">Templates & guides</p>
+                </div>
+              </Button>
+              <Button 
+                variant="outline" 
+                className="h-auto p-4 flex items-center space-x-3 border-2 hover:border-orange-300 hover:bg-orange-50 dark:hover:bg-orange-950"
+                onClick={() => window.open('https://learn.microsoft.com/en-us/copilot/', '_blank')}
+              >
+                <ExternalLink className="w-5 h-5 text-orange-600" />
+                <div className="text-left">
+                  <p className="text-sm font-semibold">Copilot Training</p>
+                  <p className="text-xs text-muted-foreground">Microsoft Learn</p>
+                </div>
+              </Button>
+              <Button 
+                variant="outline" 
+                className="h-auto p-4 flex items-center space-x-3 border-2 hover:border-green-300 hover:bg-green-50 dark:hover:bg-green-950"
+                onClick={() => navigate('/training/module-2')}
+              >
+                <Shield className="w-5 h-5 text-green-600" />
+                <div className="text-left">
+                  <p className="text-sm font-semibold">Governance Guide</p>
+                  <p className="text-xs text-muted-foreground">Module 2 refresh</p>
+                </div>
+              </Button>
+            </div>
+          </div>
+        </section>
+
         {/* Troubleshooting Section */}
         <section className="py-12">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
