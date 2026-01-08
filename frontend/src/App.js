@@ -9,6 +9,7 @@ import Module1 from "@/pages/Module1";
 import Module2 from "@/pages/Module2";
 import Module3 from "@/pages/Module3";
 import Module4 from "@/pages/Module4";
+import ChampionsToolkit from "@/pages/ChampionsToolkit";
 import ScrollToTop from "@/components/ScrollToTop";
 import { Toaster } from "@/components/ui/sonner";
 
@@ -26,6 +27,7 @@ function App() {
           <Route path="/training/module-2" element={<Module2 />} />
           <Route path="/training/module-3" element={<Module3 />} />
           <Route path="/training/module-4" element={<Module4 />} />
+          <Route path="/training/champions-toolkit" element={<ChampionsToolkit />} />
           <Route path="/department/:dept" element={<DepartmentDetailPage />} />
         </Routes>
       </BrowserRouter>
