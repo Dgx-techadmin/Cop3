@@ -99,6 +99,14 @@ export default function ChampionsToolkit() {
       link: "https://www.microsoft.com/en-us/microsoft-365/copilot/copilot-for-work",
       linkText: "Calculate",
       color: "teal"
+    },
+    {
+      title: "Share Feedback",
+      description: "Share your AI experience and suggestions with us",
+      icon: MessageSquare,
+      link: "https://forms.office.com/Pages/ResponsePage.aspx?id=TAgG8Mt-OU6jS71NMvpy6uMGTzC6judNqxQqmzhgyl1UNEJIVkVXV0NaSVdSNVBIUEhWSkdOOFZCVC4u",
+      linkText: "Give Feedback",
+      color: "indigo"
     }
   ];
 
