@@ -849,7 +849,7 @@ Key Topics:
             </h2>
             <p className="text-lg text-muted-foreground">
               You have the practical skills to use AI effectively in your daily work. 
-              Try one Copilot feature today!
+              Ready to become an AI Champion?
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
@@ -862,15 +862,15 @@ Key Topics:
               </Button>
               <Button 
                 size="lg"
-                className="bg-accent hover:bg-accent/90"
-                disabled
+                className="bg-amber-600 hover:bg-amber-700"
+                onClick={() => navigate('/training/module-4')}
               >
-                Module 4: Coming Soon <ArrowRight className="w-5 h-5 ml-2" />
+                Module 4: AI Champions <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </div>
             <div className="pt-6 border-t mt-6">
               <p className="text-sm text-muted-foreground mb-4">
-                💡 Action Item: Try one Copilot feature today and share your experience!
+                🏆 Complete Module 4 to earn your DGX AI Champion Certificate!
               </p>
               <Button 
                 variant="outline"
