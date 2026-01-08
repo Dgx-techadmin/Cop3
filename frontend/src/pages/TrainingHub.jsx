@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001';
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8001';
 
 export default function TrainingHub() {
   const navigate = useNavigate();
