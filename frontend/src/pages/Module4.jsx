@@ -770,41 +770,59 @@ Key Topics:
               </CardContent>
             </Card>
 
-            {/* Quick Resources */}
-            <div className="grid md:grid-cols-3 gap-4">
-              <Button 
-                variant="outline" 
-                className="h-auto p-4 flex items-center space-x-3 border-2 hover:border-blue-300 hover:bg-blue-50 dark:hover:bg-blue-950"
-                onClick={() => toast.info("Champions Toolkit coming soon!")}
-              >
-                <BookOpen className="w-5 h-5 text-blue-600" />
-                <div className="text-left">
-                  <p className="text-sm font-semibold">Champions Toolkit</p>
-                  <p className="text-xs text-muted-foreground">Templates & guides</p>
-                </div>
-              </Button>
-              <Button 
-                variant="outline" 
-                className="h-auto p-4 flex items-center space-x-3 border-2 hover:border-orange-300 hover:bg-orange-50 dark:hover:bg-orange-950"
+            {/* Quick Resources - 2 Column Layout */}
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* Main Resource - Official Advanced Copilot Training */}
+              <Card 
+                className="shadow-lg border-2 border-orange-300 bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-950 dark:to-amber-950 cursor-pointer hover:shadow-xl hover:border-orange-400 transition-all"
                 onClick={() => window.open('https://learn.microsoft.com/en-us/collections/6wpf7tdggkn5g', '_blank')}
               >
-                <ExternalLink className="w-5 h-5 text-orange-600" />
-                <div className="text-left">
-                  <p className="text-sm font-semibold">Copilot Training</p>
-                  <p className="text-xs text-muted-foreground">Microsoft Learn</p>
-                </div>
-              </Button>
-              <Button 
-                variant="outline" 
-                className="h-auto p-4 flex items-center space-x-3 border-2 hover:border-green-300 hover:bg-green-50 dark:hover:bg-green-950"
-                onClick={() => navigate('/training/module-2')}
-              >
-                <Shield className="w-5 h-5 text-green-600" />
-                <div className="text-left">
-                  <p className="text-sm font-semibold">Governance Guide</p>
-                  <p className="text-xs text-muted-foreground">Module 2 refresh</p>
-                </div>
-              </Button>
+                <CardContent className="p-6 flex items-center space-x-4">
+                  <div className="p-4 bg-gradient-to-br from-orange-500 to-amber-500 rounded-xl flex-shrink-0">
+                    <ExternalLink className="w-8 h-8 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center space-x-2 mb-1">
+                      <p className="text-lg font-bold text-orange-700 dark:text-orange-300">Official Advanced Copilot Training</p>
+                      <Badge className="bg-orange-500 text-white text-xs">Recommended</Badge>
+                    </div>
+                    <p className="text-sm text-muted-foreground">Microsoft Learn collection with comprehensive tutorials for power users</p>
+                    <div className="flex items-center space-x-1 mt-2 text-xs text-orange-600">
+                      <ExternalLink className="w-3 h-3" />
+                      <span>Opens in new tab</span>
+                    </div>
+                  </div>
+                  <ArrowRight className="w-6 h-6 text-orange-400" />
+                </CardContent>
+              </Card>
+
+              {/* Secondary Resources - Stacked */}
+              <div className="flex flex-col gap-4">
+                <Button 
+                  variant="outline" 
+                  className="h-auto p-4 flex items-center space-x-3 border-2 hover:border-blue-300 hover:bg-blue-50 dark:hover:bg-blue-950 flex-1"
+                  onClick={() => toast.info("Champions Toolkit coming soon!")}
+                >
+                  <BookOpen className="w-5 h-5 text-blue-600" />
+                  <div className="text-left flex-1">
+                    <p className="text-sm font-semibold">Champions Toolkit</p>
+                    <p className="text-xs text-muted-foreground">Templates & guides</p>
+                  </div>
+                  <Badge variant="secondary" className="text-xs">Coming Soon</Badge>
+                </Button>
+                <Button 
+                  variant="outline" 
+                  className="h-auto p-4 flex items-center space-x-3 border-2 hover:border-green-300 hover:bg-green-50 dark:hover:bg-green-950 flex-1"
+                  onClick={() => navigate('/training/module-2')}
+                >
+                  <Shield className="w-5 h-5 text-green-600" />
+                  <div className="text-left flex-1">
+                    <p className="text-sm font-semibold">Governance Guide</p>
+                    <p className="text-xs text-muted-foreground">Module 2 refresh</p>
+                  </div>
+                  <ArrowRight className="w-4 h-4 text-green-400" />
+                </Button>
+              </div>
             </div>
           </div>
         </section>
