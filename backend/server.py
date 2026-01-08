@@ -1236,48 +1236,49 @@ async def generate_certificate(request: CertificateRequest):
         
         c.setFont("Times-Roman", 11)
         c.setFillColor(colors.Color(0.4, 0.4, 0.4))
-        c.drawCentredString(width / 2, height - 460, "Awarded on")
+        c.drawCentredString(width / 2, height - 455, "Awarded on")
         
         c.setFont("Times-Bold", 14)
         c.setFillColor(colors.Color(0.3, 0.3, 0.3))
-        c.drawCentredString(width / 2, height - 478, today)
+        c.drawCentredString(width / 2, height - 473, today)
         
         # Footer section
         c.setStrokeColor(colors.Color(0.8, 0.8, 0.8))
         c.setLineWidth(0.5)
-        c.line(60, 90, width - 60, 90)
+        c.line(60, 85, width - 60, 85)
         
         # Footer logos/text
         c.setFont("Times-Bold", 10)
         c.setFillColor(dgx_orange)
-        c.drawString(70, 70, "Dynamics G-Ex AI Hub")
+        c.drawString(70, 68, "Dynamics G-Ex AI Hub")
         
         c.setFillColor(copilot_purple)
-        c.drawRightString(width - 70, 70, "Powered by Microsoft Copilot")
+        c.drawRightString(width - 70, 68, "Powered by Microsoft Copilot")
         
         # Certificate ID
         cert_id = str(uuid.uuid4())[:8].upper()
         c.setFont("Times-Roman", 8)
         c.setFillColor(colors.Color(0.6, 0.6, 0.6))
-        c.drawCentredString(width / 2, 55, f"Certificate ID: DGX-CHAMPION-{cert_id}")
+        c.drawCentredString(width / 2, 50, f"Certificate ID: DGX-CHAMPION-{cert_id}")
         
-        # Seal/Badge in bottom center
-        seal_x, seal_y = width / 2, 115
-        c.setFillColor(colors.Color(gold.red, gold.green, gold.blue, 0.15))
-        c.circle(seal_x, seal_y, 30, fill=True, stroke=False)
-        c.setStrokeColor(gold)
-        c.setLineWidth(2)
+        # Seal/Badge - smaller and positioned to the right, not overlapping date
+        seal_x, seal_y = width - 120, height - 460
+        c.setFillColor(colors.Color(gold.red, gold.green, gold.blue, 0.08))
+        c.circle(seal_x, seal_y, 35, fill=True, stroke=False)
+        c.setStrokeColor(colors.Color(gold.red, gold.green, gold.blue, 0.5))
+        c.setLineWidth(1.5)
+        c.circle(seal_x, seal_y, 35, fill=False, stroke=True)
+        c.setLineWidth(0.8)
         c.circle(seal_x, seal_y, 30, fill=False, stroke=True)
-        c.setLineWidth(1)
-        c.circle(seal_x, seal_y, 25, fill=False, stroke=True)
         
-        # Star in seal
-        c.setFillColor(gold)
+        # Star in seal - more subtle
+        c.setFillColor(colors.Color(gold.red, gold.green, gold.blue, 0.4))
         points = []
         for i in range(5):
             angle = math.pi / 2 + i * 4 * math.pi / 5
-            points.append((seal_x + 15 * math.cos(angle), seal_y + 15 * math.sin(angle)))
+            points.append((seal_x + 18 * math.cos(angle), seal_y + 18 * math.sin(angle)))
             angle = math.pi / 2 + i * 4 * math.pi / 5 + 2 * math.pi / 5
+            points.append((seal_x + 8 * math.cos(angle), seal_y + 8 * math.sin(angle)))
             points.append((seal_x + 7 * math.cos(angle), seal_y + 7 * math.sin(angle)))
         
         path = c.beginPath()
