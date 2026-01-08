@@ -778,13 +778,25 @@ Key Topics:
                 onClick={() => window.open('https://learn.microsoft.com/en-us/collections/6wpf7tdggkn5g', '_blank')}
               >
                 <CardContent className="p-6 flex items-center space-x-4">
-                  <div className="p-4 bg-gradient-to-br from-[#7B83EB] to-[#5B5FC7] rounded-xl flex-shrink-0">
+                  <div className="p-3 bg-gradient-to-br from-[#7B83EB] via-[#6264D8] to-[#3B41AC] rounded-xl flex-shrink-0">
                     {/* Microsoft Copilot Icon */}
-                    <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M11.5 3C7.36 3 4 6.36 4 10.5C4 14.64 7.36 18 11.5 18H12V21L16 17H16.5C18.71 17 20.5 15.21 20.5 13V10.5C20.5 6.36 17.14 3 13 3H11.5Z" fill="white" fillOpacity="0.9"/>
-                      <path d="M8.5 9.5C8.5 8.67 9.17 8 10 8C10.83 8 11.5 8.67 11.5 9.5C11.5 10.33 10.83 11 10 11C9.17 11 8.5 10.33 8.5 9.5Z" fill="#5B5FC7"/>
-                      <path d="M12.5 9.5C12.5 8.67 13.17 8 14 8C14.83 8 15.5 8.67 15.5 9.5C15.5 10.33 14.83 11 14 11C13.17 11 12.5 10.33 12.5 9.5Z" fill="#5B5FC7"/>
-                      <path d="M10 12.5C10 12.5 10.5 14 12 14C13.5 14 14 12.5 14 12.5" stroke="#5B5FC7" strokeWidth="1.5" strokeLinecap="round"/>
+                    <svg className="w-10 h-10" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <defs>
+                        <linearGradient id="copilotGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stopColor="#70D6FF"/>
+                          <stop offset="50%" stopColor="#9EF4E6"/>
+                          <stop offset="100%" stopColor="#70D6FF"/>
+                        </linearGradient>
+                        <linearGradient id="copilotGrad2" x1="0%" y1="100%" x2="100%" y2="0%">
+                          <stop offset="0%" stopColor="#FF6B9D"/>
+                          <stop offset="50%" stopColor="#C77DFF"/>
+                          <stop offset="100%" stopColor="#9381FF"/>
+                        </linearGradient>
+                      </defs>
+                      <path d="M16 4C10.48 4 6 8.48 6 14C6 17.31 7.67 20.22 10.19 21.93C10.07 22.27 10 22.63 10 23C10 24.66 11.34 26 13 26H14V28L18 24H19C22.31 24 25 21.31 25 18C25 17.45 24.93 16.91 24.8 16.4C25.54 15.12 26 13.61 26 12C26 7.58 22.42 4 18 4H16Z" fill="url(#copilotGrad1)"/>
+                      <path d="M12 13C12 11.9 12.9 11 14 11C15.1 11 16 11.9 16 13C16 14.1 15.1 15 14 15C12.9 15 12 14.1 12 13Z" fill="white"/>
+                      <path d="M18 13C18 11.9 18.9 11 20 11C21.1 11 22 11.9 22 13C22 14.1 21.1 15 20 15C18.9 15 18 14.1 18 13Z" fill="white"/>
+                      <path d="M14 17C14 17 15 19 17 19C19 19 20 17 20 17" stroke="white" strokeWidth="2" strokeLinecap="round"/>
                     </svg>
                   </div>
                   <div className="flex-1">
