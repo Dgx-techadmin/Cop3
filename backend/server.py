@@ -850,6 +850,305 @@ async def view_quiz_results(password: str):
         logging.error(f"Error viewing quiz results: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Error viewing results: {str(e)}")
 
+# ==================== SUCCESS STORIES ENDPOINTS ====================
+
+@api_router.get("/success-stories")
+async def get_success_stories():
+    """Get all success stories"""
+    try:
+        stories = await db.success_stories.find({}, {"_id": 0}).sort("timestamp", -1).to_list(100)
+        return {"stories": stories}
+    except Exception as e:
+        logging.error(f"Error fetching success stories: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@api_router.post("/success-stories")
+async def create_success_story(story: SuccessStory):
+    """Create a new success story"""
+    try:
+        doc = {
+            "id": str(uuid.uuid4()),
+            "name": story.name,
+            "email": story.email,
+            "department": story.department,
+            "title": story.title,
+            "content": story.content,
+            "imageUrl": story.imageUrl,
+            "linkUrl": story.linkUrl,
+            "likes": 0,
+            "liked_by": [],
+            "timestamp": datetime.now(timezone.utc).isoformat()
+        }
+        await db.success_stories.insert_one(doc)
+        return {"message": "Story created successfully", "id": doc["id"]}
+    except Exception as e:
+        logging.error(f"Error creating success story: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@api_router.post("/success-stories/{story_id}/like")
+async def like_story(story_id: str, like: StoryLike):
+    """Like a success story (requires email that has completed a quiz)"""
+    try:
+        # Check if user has completed at least one quiz
+        quiz_submission = await db.quiz_submissions.find_one(
+            {"email": like.email.lower()},
+            {"_id": 0}
+        )
+        
+        # Also check with case-insensitive search
+        if not quiz_submission:
+            quiz_submission = await db.quiz_submissions.find_one(
+                {"email": {"$regex": f"^{like.email}$", "$options": "i"}},
+                {"_id": 0}
+            )
+        
+        if not quiz_submission:
+            raise HTTPException(status_code=403, detail="You must complete at least one quiz to like stories")
+        
+        # Check if already liked
+        story = await db.success_stories.find_one({"id": story_id}, {"_id": 0})
+        if not story:
+            raise HTTPException(status_code=404, detail="Story not found")
+        
+        if like.email.lower() in [e.lower() for e in story.get("liked_by", [])]:
+            raise HTTPException(status_code=400, detail="You've already liked this story")
+        
+        # Add like
+        await db.success_stories.update_one(
+            {"id": story_id},
+            {
+                "$inc": {"likes": 1},
+                "$push": {"liked_by": like.email.lower()}
+            }
+        )
+        
+        return {"message": "Story liked!"}
+    except HTTPException:
+        raise
+    except Exception as e:
+        logging.error(f"Error liking story: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+# ==================== CERTIFICATE ENDPOINTS ====================
+
+@api_router.post("/certificate/check")
+async def check_certificate_eligibility(request: CertificateRequest):
+    """Check if user is eligible for AI Champion certificate"""
+    try:
+        email = request.email.lower()
+        
+        # Get all quiz submissions for this email
+        submissions = await db.quiz_submissions.find(
+            {"email": {"$regex": f"^{email}$", "$options": "i"}},
+            {"_id": 0}
+        ).to_list(100)
+        
+        # Also try exact match
+        if not submissions:
+            submissions = await db.quiz_submissions.find(
+                {"email": email},
+                {"_id": 0}
+            ).to_list(100)
+        
+        # Group by module and get best score for each
+        module_scores = {}
+        for sub in submissions:
+            module_id = sub.get("module_id", 1)
+            score = sub.get("score", 0)
+            if module_id not in module_scores or score > module_scores[module_id]:
+                module_scores[module_id] = score
+        
+        # Check all 4 modules
+        modules = [
+            {"id": 1, "name": "Module 1: AI Fundamentals"},
+            {"id": 2, "name": "Module 2: Governance"},
+            {"id": 3, "name": "Module 3: Practical Applications"},
+            {"id": 4, "name": "Module 4: AI Champions"}
+        ]
+        
+        result_modules = []
+        all_passed = True
+        missing_modules = []
+        
+        for mod in modules:
+            score = module_scores.get(mod["id"])
+            passed = score is not None and score >= 7
+            if not passed:
+                all_passed = False
+                if score is None:
+                    missing_modules.append(mod["name"])
+                else:
+                    missing_modules.append(f"{mod['name']} (score: {score}/10, need 7+)")
+            
+            result_modules.append({
+                "name": mod["name"],
+                "score": score * 10 if score is not None else None,  # Convert to percentage
+                "passed": passed
+            })
+        
+        if all_passed:
+            return {
+                "eligible": True,
+                "message": "Congratulations! You've completed all modules with 70%+ scores!",
+                "modules": result_modules
+            }
+        else:
+            message = "To earn your certificate, please complete the following:\n" + "\n".join(f"• {m}" for m in missing_modules)
+            return {
+                "eligible": False,
+                "message": message,
+                "modules": result_modules
+            }
+            
+    except Exception as e:
+        logging.error(f"Error checking certificate eligibility: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@api_router.post("/certificate/generate")
+async def generate_certificate(request: CertificateRequest):
+    """Generate PDF certificate for eligible users"""
+    try:
+        # First verify eligibility
+        email = request.email.lower()
+        
+        submissions = await db.quiz_submissions.find(
+            {"email": {"$regex": f"^{email}$", "$options": "i"}},
+            {"_id": 0}
+        ).to_list(100)
+        
+        if not submissions:
+            submissions = await db.quiz_submissions.find(
+                {"email": email},
+                {"_id": 0}
+            ).to_list(100)
+        
+        module_scores = {}
+        for sub in submissions:
+            module_id = sub.get("module_id", 1)
+            score = sub.get("score", 0)
+            if module_id not in module_scores or score > module_scores[module_id]:
+                module_scores[module_id] = score
+        
+        # Verify all 4 modules passed
+        for mod_id in [1, 2, 3, 4]:
+            score = module_scores.get(mod_id)
+            if score is None or score < 7:
+                raise HTTPException(status_code=403, detail="Not eligible for certificate. Complete all modules with 70%+ score.")
+        
+        # Generate PDF certificate
+        from reportlab.lib.pagesizes import landscape, A4
+        from reportlab.lib import colors
+        from reportlab.lib.units import inch
+        from reportlab.pdfgen import canvas
+        from reportlab.lib.styles import getSampleStyleSheet
+        from io import BytesIO
+        
+        buffer = BytesIO()
+        c = canvas.Canvas(buffer, pagesize=landscape(A4))
+        width, height = landscape(A4)
+        
+        # Background gradient effect (simple version)
+        c.setFillColor(colors.Color(0.98, 0.96, 0.93))  # Light cream
+        c.rect(0, 0, width, height, fill=True)
+        
+        # Border
+        c.setStrokeColor(colors.Color(0.85, 0.65, 0.13))  # Gold
+        c.setLineWidth(8)
+        c.rect(30, 30, width - 60, height - 60, fill=False)
+        
+        c.setLineWidth(2)
+        c.rect(45, 45, width - 90, height - 90, fill=False)
+        
+        # Header
+        c.setFillColor(colors.Color(0.85, 0.65, 0.13))  # Gold
+        c.setFont("Helvetica-Bold", 14)
+        c.drawCentredString(width / 2, height - 80, "DYNAMICS G-EX")
+        
+        c.setFont("Helvetica", 11)
+        c.setFillColor(colors.Color(0.4, 0.4, 0.4))
+        c.drawCentredString(width / 2, height - 100, "Making Life Easier")
+        
+        # Certificate Title
+        c.setFillColor(colors.Color(0.2, 0.2, 0.2))
+        c.setFont("Helvetica-Bold", 36)
+        c.drawCentredString(width / 2, height - 160, "CERTIFICATE OF ACHIEVEMENT")
+        
+        # Subtitle
+        c.setFont("Helvetica", 16)
+        c.setFillColor(colors.Color(0.4, 0.4, 0.4))
+        c.drawCentredString(width / 2, height - 195, "This is to certify that")
+        
+        # Name
+        c.setFont("Helvetica-Bold", 32)
+        c.setFillColor(colors.Color(0.85, 0.65, 0.13))  # Gold
+        c.drawCentredString(width / 2, height - 250, request.name)
+        
+        # Decorative line under name
+        c.setStrokeColor(colors.Color(0.85, 0.65, 0.13))
+        c.setLineWidth(1)
+        c.line(width/2 - 150, height - 265, width/2 + 150, height - 265)
+        
+        # Achievement text
+        c.setFont("Helvetica", 14)
+        c.setFillColor(colors.Color(0.3, 0.3, 0.3))
+        c.drawCentredString(width / 2, height - 300, "has successfully completed the")
+        
+        c.setFont("Helvetica-Bold", 22)
+        c.setFillColor(colors.Color(0.2, 0.2, 0.2))
+        c.drawCentredString(width / 2, height - 335, "DGX AI Champions Training Program")
+        
+        c.setFont("Helvetica", 14)
+        c.setFillColor(colors.Color(0.3, 0.3, 0.3))
+        c.drawCentredString(width / 2, height - 365, "and is hereby certified as a")
+        
+        # Champion Badge
+        c.setFont("Helvetica-Bold", 28)
+        c.setFillColor(colors.Color(0.85, 0.65, 0.13))
+        c.drawCentredString(width / 2, height - 410, "DGX AI CHAMPION")
+        
+        # Copilot mention
+        c.setFont("Helvetica", 11)
+        c.setFillColor(colors.Color(0.5, 0.5, 0.5))
+        c.drawCentredString(width / 2, height - 445, "Proficient in Microsoft Copilot and AI Best Practices")
+        
+        # Date
+        from datetime import datetime
+        today = datetime.now().strftime("%B %d, %Y")
+        c.setFont("Helvetica", 12)
+        c.setFillColor(colors.Color(0.4, 0.4, 0.4))
+        c.drawCentredString(width / 2, height - 490, f"Awarded on {today}")
+        
+        # Footer logos/badges area
+        c.setFont("Helvetica-Bold", 10)
+        c.setFillColor(colors.Color(0.6, 0.6, 0.6))
+        c.drawString(80, 70, "Dynamics G-Ex AI Hub")
+        c.drawRightString(width - 80, 70, "Powered by Microsoft Copilot")
+        
+        # Certificate ID
+        cert_id = str(uuid.uuid4())[:8].upper()
+        c.setFont("Helvetica", 8)
+        c.setFillColor(colors.Color(0.7, 0.7, 0.7))
+        c.drawCentredString(width / 2, 55, f"Certificate ID: DGX-CHAMPION-{cert_id}")
+        
+        c.save()
+        
+        buffer.seek(0)
+        
+        from fastapi.responses import StreamingResponse
+        return StreamingResponse(
+            buffer,
+            media_type="application/pdf",
+            headers={
+                "Content-Disposition": f"attachment; filename=DGX_AI_Champion_Certificate_{request.name.replace(' ', '_')}.pdf"
+            }
+        )
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logging.error(f"Error generating certificate: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
 # Include the router in the main app
 app.include_router(api_router)
 
