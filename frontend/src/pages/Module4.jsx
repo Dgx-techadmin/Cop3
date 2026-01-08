@@ -38,6 +38,9 @@ export default function Module4() {
   const [certForm, setCertForm] = useState({ name: '', email: '' });
   const [certLoading, setCertLoading] = useState(false);
   const [certResult, setCertResult] = useState(null);
+  
+  // Expanded adoption strategy cards
+  const [expandedStrategy, setExpandedStrategy] = useState(null);
 
   const moduleContext = `This is Module 4: Advanced Tips for AI Champions at Dynamics G-Ex.
 
