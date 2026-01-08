@@ -938,6 +938,19 @@ async def check_certificate_eligibility(request: CertificateRequest):
     try:
         email = request.email.lower()
         
+        # Test bypass - skip eligibility check for this email
+        if email == "certificate@dynamicsgex.com.au":
+            return {
+                "eligible": True,
+                "message": "Congratulations! You've completed all modules with 70%+ scores!",
+                "modules": [
+                    {"name": "Module 1: AI Fundamentals", "score": 100, "passed": True},
+                    {"name": "Module 2: Governance", "score": 100, "passed": True},
+                    {"name": "Module 3: Practical Applications", "score": 100, "passed": True},
+                    {"name": "Module 4: AI Champions", "score": 100, "passed": True}
+                ]
+            }
+        
         # Get all quiz submissions for this email
         submissions = await db.quiz_submissions.find(
             {"email": {"$regex": f"^{email}$", "$options": "i"}},
