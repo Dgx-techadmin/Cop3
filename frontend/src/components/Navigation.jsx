@@ -18,6 +18,19 @@ export const Navigation = () => {
   
   return (
     <nav className="sticky top-0 z-50 bg-card/80 backdrop-blur-lg border-b border-border shadow-soft">
+      <style>{`
+        @keyframes subtlePulse {
+          0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.4); }
+          50% { opacity: 0.9; box-shadow: 0 0 8px 2px rgba(249, 115, 22, 0.3); }
+        }
+        .training-highlight {
+          background: linear-gradient(135deg, #f97316 0%, #ea580c 100%) !important;
+          animation: subtlePulse 2s ease-in-out infinite;
+        }
+        .training-highlight:hover {
+          background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%) !important;
+        }
+      `}</style>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -39,7 +52,7 @@ export const Navigation = () => {
                 <Button
                   variant={isActive(path) || alwaysHighlighted ? "default" : "ghost"}
                   size="sm"
-                  className={`flex items-center space-x-2 ${alwaysHighlighted && !isActive(path) ? 'bg-primary/90 hover:bg-primary' : ''}`}
+                  className={`flex items-center space-x-2 ${alwaysHighlighted ? 'training-highlight text-white' : ''}`}
                 >
                   <Icon className="w-4 h-4" />
                   <span>{label}</span>
@@ -69,7 +82,7 @@ export const Navigation = () => {
                 <Button
                   variant={isActive(path) || alwaysHighlighted ? "default" : "ghost"}
                   size="sm"
-                  className={`w-full justify-start flex items-center space-x-2 ${alwaysHighlighted && !isActive(path) ? 'bg-primary/90 hover:bg-primary' : ''}`}
+                  className={`w-full justify-start flex items-center space-x-2 ${alwaysHighlighted ? 'training-highlight text-white' : ''}`}
                 >
                   <Icon className="w-4 h-4" />
                   <span>{label}</span>
