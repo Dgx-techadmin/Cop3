@@ -482,6 +482,7 @@ async def submit_quiz(submission: QuizSubmission):
     try:
         doc = {
             "name": submission.name,
+            "email": submission.email,
             "department": submission.department,
             "answers": submission.answers,
             "score": submission.score,
