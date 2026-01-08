@@ -409,9 +409,10 @@ Key Topics:
     {
       title: "G-Ex AI Champions Toolkit",
       description: "Templates, prompts, and best practices for AI Champions",
-      link: "#toolkit",
+      link: "/training/champions-toolkit",
       icon: BookOpen,
-      comingSoon: true
+      comingSoon: false,
+      isInternal: true
     },
     {
       title: "Microsoft Copilot Advanced Training",
