@@ -1060,6 +1060,7 @@ async def generate_certificate(request: CertificateRequest):
         from reportlab.pdfbase.ttfonts import TTFont
         from io import BytesIO
         import math
+        import os
         
         buffer = BytesIO()
         c = canvas.Canvas(buffer, pagesize=landscape(A4))
