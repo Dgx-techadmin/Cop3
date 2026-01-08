@@ -76,6 +76,22 @@ class ModuleAssistantRequest(BaseModel):
     module_context: str
     conversation_id: str | None = None
 
+class SuccessStory(BaseModel):
+    name: str
+    email: str
+    department: str = ""
+    title: str
+    content: str
+    imageUrl: str = ""
+    linkUrl: str = ""
+
+class StoryLike(BaseModel):
+    email: str
+
+class CertificateRequest(BaseModel):
+    name: str
+    email: str
+
 # Add your routes to the router instead of directly to app
 @api_router.get("/")
 async def root():
