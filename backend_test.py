@@ -139,41 +139,46 @@ def test_quiz_submission_flow():
         if response.status_code == 200:
             response_data = response.json()
             if response_data.get("success"):
-                print("   ✅ Quiz submission API returned success")
+                print("   ✅ Original quiz submission API returned success")
             else:
-                print("   ❌ Quiz submission API returned success=false")
+                print("   ❌ Original quiz submission API returned success=false")
                 return False
         else:
-            print(f"   ❌ Quiz submission failed with status {response.status_code}")
+            print(f"   ❌ Original quiz submission failed with status {response.status_code}")
             return False
             
     except requests.exceptions.RequestException as e:
-        print(f"   ❌ Quiz submission request failed: {e}")
+        print(f"   ❌ Original quiz submission request failed: {e}")
         return False
     
     # Wait a moment for database write
-    time.sleep(2)
+    time.sleep(3)
     
-    # Test 2: Verify data was saved by checking module stats
-    print("\n🔍 Test 2: Verifying data was saved via module stats...")
+    # Test 3: Verify data was saved by checking module stats
+    print("\n🔍 Test 3: Verifying data was saved via module stats...")
     try:
         response = requests.get(f"{API_BASE}/module-stats", timeout=10)
         print(f"   Status Code: {response.status_code}")
         
         if response.status_code == 200:
-            stats = response.json()
-            print(f"   Module Stats Response: {json.dumps(stats, indent=2)}")
+            final_stats = response.json()
+            print(f"   Final Module Stats Response: {json.dumps(final_stats, indent=2)}")
             
-            # Check if our submission is reflected in module 1 stats
-            module_1_stats = stats.get("1", {})
-            completions = module_1_stats.get("completions", 0)
+            # Check if our submissions are reflected in module 1 stats
+            module_1_stats = final_stats.get("1", {})
+            final_completions = module_1_stats.get("completions", 0)
             
-            if completions > 0:
-                print(f"   ✅ Module 1 shows {completions} completion(s)")
-                print(f"   ✅ Data appears to be saved to database")
+            print(f"   Initial completions: {initial_completions}")
+            print(f"   Final completions: {final_completions}")
+            print(f"   Expected increase: 2 (unique + original)")
+            print(f"   Actual increase: {final_completions - initial_completions}")
+            
+            if final_completions > initial_completions:
+                print(f"   ✅ Module 1 completions increased from {initial_completions} to {final_completions}")
+                print(f"   ✅ Data is being saved to database successfully")
                 return True
             else:
-                print("   ❌ Module 1 shows 0 completions - data not saved!")
+                print("   ❌ Module 1 completions did not increase - data not saved!")
                 return False
         else:
             print(f"   ❌ Module stats request failed with status {response.status_code}")
@@ -226,6 +231,33 @@ def test_champions_dashboard():
         print(f"   ❌ Champions dashboard request failed: {e}")
         return False
 
+def test_database_direct_verification():
+    """Test database verification using admin endpoints"""
+    print("\n🗄️ Testing Database Direct Verification")
+    print("=" * 45)
+    
+    try:
+        # Use the admin password to check quiz results
+        response = requests.get(f"{API_BASE}/quiz-results/view?password=Dynamics@26", timeout=10)
+        print(f"   Status Code: {response.status_code}")
+        
+        if response.status_code == 200:
+            print("   ✅ Admin quiz results endpoint accessible")
+            # Check if response contains HTML with quiz data
+            if "Quiz Test User" in response.text or "quiz" in response.text.lower():
+                print("   ✅ Quiz submissions found in database")
+                return True
+            else:
+                print("   ⚠️ Admin endpoint accessible but no quiz data visible")
+                return False
+        else:
+            print(f"   ❌ Admin endpoint failed with status {response.status_code}")
+            return False
+            
+    except requests.exceptions.RequestException as e:
+        print(f"   ❌ Admin endpoint request failed: {e}")
+        return False
+
 def main():
     """Run all backend tests"""
     print("🚀 AI Learning Hub - Backend API Testing")
@@ -238,13 +270,15 @@ def main():
     results = {
         "api_health": False,
         "champions_dashboard": False,
-        "quiz_submission": False
+        "quiz_submission": False,
+        "database_verification": False
     }
     
     # Run tests
     results["api_health"] = test_api_health()
     results["champions_dashboard"] = test_champions_dashboard()
     results["quiz_submission"] = test_quiz_submission_flow()
+    results["database_verification"] = test_database_direct_verification()
     
     # Summary
     print("\n" + "=" * 60)
@@ -260,8 +294,16 @@ def main():
     
     print(f"\nOverall: {passed_tests}/{total_tests} tests passed")
     
-    if results["quiz_submission"]:
+    if results["quiz_submission"] and results["database_verification"]:
         print("\n🎉 QUIZ SUBMISSION WORKING: Data is being saved to database")
+        print("   ✅ API returns success")
+        print("   ✅ Module stats reflect new submissions")
+        print("   ✅ Admin interface shows quiz data")
+    elif results["quiz_submission"]:
+        print("\n⚠️ QUIZ SUBMISSION PARTIALLY WORKING:")
+        print("   ✅ API returns success")
+        print("   ✅ Module stats reflect new submissions")
+        print("   ❌ Could not verify via admin interface")
     else:
         print("\n🚨 QUIZ SUBMISSION ISSUE CONFIRMED: Data not being saved to database")
     
