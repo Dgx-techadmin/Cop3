@@ -778,25 +778,22 @@ Key Topics:
                 onClick={() => window.open('https://learn.microsoft.com/en-us/collections/6wpf7tdggkn5g', '_blank')}
               >
                 <CardContent className="p-6 flex items-center space-x-4">
-                  <div className="p-3 bg-gradient-to-br from-[#7B83EB] via-[#6264D8] to-[#3B41AC] rounded-xl flex-shrink-0">
-                    {/* Microsoft Copilot Icon */}
-                    <svg className="w-10 h-10" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <div className="p-3 bg-gradient-to-br from-[#0F6CBD] via-[#5B5FC7] to-[#9B4DCA] rounded-xl flex-shrink-0">
+                    {/* Microsoft Copilot Icon - Infinity/Ribbon Style */}
+                    <svg className="w-10 h-10" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <defs>
-                        <linearGradient id="copilotGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" stopColor="#70D6FF"/>
-                          <stop offset="50%" stopColor="#9EF4E6"/>
+                        <linearGradient id="copilotGradA" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stopColor="#0FAFFF"/>
                           <stop offset="100%" stopColor="#70D6FF"/>
                         </linearGradient>
-                        <linearGradient id="copilotGrad2" x1="0%" y1="100%" x2="100%" y2="0%">
-                          <stop offset="0%" stopColor="#FF6B9D"/>
-                          <stop offset="50%" stopColor="#C77DFF"/>
-                          <stop offset="100%" stopColor="#9381FF"/>
+                        <linearGradient id="copilotGradB" x1="100%" y1="0%" x2="0%" y2="100%">
+                          <stop offset="0%" stopColor="#9B4DCA"/>
+                          <stop offset="100%" stopColor="#FF6B9D"/>
                         </linearGradient>
                       </defs>
-                      <path d="M16 4C10.48 4 6 8.48 6 14C6 17.31 7.67 20.22 10.19 21.93C10.07 22.27 10 22.63 10 23C10 24.66 11.34 26 13 26H14V28L18 24H19C22.31 24 25 21.31 25 18C25 17.45 24.93 16.91 24.8 16.4C25.54 15.12 26 13.61 26 12C26 7.58 22.42 4 18 4H16Z" fill="url(#copilotGrad1)"/>
-                      <path d="M12 13C12 11.9 12.9 11 14 11C15.1 11 16 11.9 16 13C16 14.1 15.1 15 14 15C12.9 15 12 14.1 12 13Z" fill="white"/>
-                      <path d="M18 13C18 11.9 18.9 11 20 11C21.1 11 22 11.9 22 13C22 14.1 21.1 15 20 15C18.9 15 18 14.1 18 13Z" fill="white"/>
-                      <path d="M14 17C14 17 15 19 17 19C19 19 20 17 20 17" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+                      <path d="M72 32C72 32 64 20 48 20C32 20 24 32 24 48C24 64 32 76 48 76C56 76 62 72 66 66" stroke="url(#copilotGradA)" strokeWidth="8" strokeLinecap="round" fill="none"/>
+                      <path d="M24 64C24 64 32 76 48 76C64 76 72 64 72 48C72 32 64 20 48 20C40 20 34 24 30 30" stroke="url(#copilotGradB)" strokeWidth="8" strokeLinecap="round" fill="none"/>
+                      <circle cx="48" cy="48" r="8" fill="white"/>
                     </svg>
                   </div>
                   <div className="flex-1">
