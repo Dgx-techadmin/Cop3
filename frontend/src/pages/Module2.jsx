@@ -311,14 +311,14 @@ Key Topics:
       title: "Responsible AI in 3 Minutes",
       description: "Quick video guide to AI ethics",
       icon: ExternalLink,
-      link: "https://www.microsoft.com/en-us/ai/responsible-ai",
+      link: "https://ignite.microsoft.com/en-US/sessions/BRK212",
       type: "external"
     },
     {
       title: "Data Protection Best Practices",
       description: "How to handle sensitive data",
       icon: Lock,
-      link: "https://learn.microsoft.com/en-us/compliance/",
+      link: "https://learn.microsoft.com/en-us/compliance/anz/e8-overview",
       type: "external"
     }
   ];
