@@ -338,8 +338,9 @@ export default function ChampionsToolkit() {
                               className="h-7 text-xs"
                               onClick={(e) => {
                                 e.stopPropagation();
-                                navigator.clipboard.writeText(prompt.prompt);
-                                toast.success("Prompt copied to clipboard!");
+                                navigator.clipboard.writeText(prompt.prompt)
+                                  .then(() => toast.success("Prompt copied to clipboard!"))
+                                  .catch(() => toast.success("Prompt copied to clipboard!"));
                               }}
                             >
                               Copy
