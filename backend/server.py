@@ -1151,24 +1151,26 @@ async def generate_certificate(request: CertificateRequest):
         c.setLineWidth(1)
         c.roundRect(35, 35, width - 70, height - 70, 8, fill=False)
         
-        # Header - Company Name (using Times for elegance)
-        c.setFillColor(dgx_orange)
-        c.setFont("Times-Bold", 16)
-        c.drawCentredString(width / 2, height - 70, "DYNAMICS G-EX")
-        
-        c.setFont("Times-Italic", 11)
-        c.setFillColor(colors.Color(0.5, 0.5, 0.5))
-        c.drawCentredString(width / 2, height - 88, "Making Life Easier")
+        # Header - Company Logo Image
+        import os
+        logo_path = os.path.join(os.path.dirname(__file__), 'dynamics-gex-logo-header.png')
+        if os.path.exists(logo_path):
+            # Draw the logo centered at top
+            logo_width = 180  # Adjust size as needed
+            logo_height = 50  # Adjust based on aspect ratio
+            logo_x = (width - logo_width) / 2
+            logo_y = height - 95
+            c.drawImage(logo_path, logo_x, logo_y, width=logo_width, height=logo_height, preserveAspectRatio=True, mask='auto')
         
         # Decorative line under header
         c.setStrokeColor(gold)
         c.setLineWidth(0.5)
-        c.line(width/2 - 100, height - 98, width/2 + 100, height - 98)
+        c.line(width/2 - 100, height - 105, width/2 + 100, height - 105)
         
         # Certificate Title (elegant serif font)
         c.setFillColor(colors.Color(0.15, 0.15, 0.15))
         c.setFont("Times-Bold", 42)
-        c.drawCentredString(width / 2, height - 150, "Certificate of Achievement")
+        c.drawCentredString(width / 2, height - 155, "Certificate of Achievement")
         
         # Decorative elements around title
         c.setStrokeColor(gold)
