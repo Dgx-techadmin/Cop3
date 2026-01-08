@@ -1056,95 +1056,234 @@ async def generate_certificate(request: CertificateRequest):
         from reportlab.lib import colors
         from reportlab.lib.units import inch
         from reportlab.pdfgen import canvas
-        from reportlab.lib.styles import getSampleStyleSheet
+        from reportlab.pdfbase import pdfmetrics
+        from reportlab.pdfbase.ttfonts import TTFont
         from io import BytesIO
+        import math
         
         buffer = BytesIO()
         c = canvas.Canvas(buffer, pagesize=landscape(A4))
         width, height = landscape(A4)
         
-        # Background gradient effect (simple version)
-        c.setFillColor(colors.Color(0.98, 0.96, 0.93))  # Light cream
-        c.rect(0, 0, width, height, fill=True)
+        # Define brand colors
+        # Dynamics G-Ex: Orange (#F37021) and Blue (#0066B3)
+        # Copilot: Purple (#7B83EB), Blue (#0078D4), Teal (#00B7C3)
+        dgx_orange = colors.Color(0.95, 0.44, 0.13)  # #F37021
+        dgx_blue = colors.Color(0, 0.4, 0.7)  # #0066B3
+        copilot_purple = colors.Color(0.48, 0.51, 0.92)  # #7B83EB
+        copilot_teal = colors.Color(0, 0.72, 0.76)  # #00B7C3
+        gold = colors.Color(0.85, 0.65, 0.13)
         
-        # Border
-        c.setStrokeColor(colors.Color(0.85, 0.65, 0.13))  # Gold
-        c.setLineWidth(8)
-        c.rect(30, 30, width - 60, height - 60, fill=False)
+        # Create gradient background
+        # Draw multiple rectangles to simulate gradient
+        steps = 50
+        for i in range(steps):
+            ratio = i / steps
+            # Blend from light orange-cream at top to light purple-blue at bottom
+            r = 0.99 - (ratio * 0.04)  # 0.99 to 0.95
+            g = 0.96 - (ratio * 0.06)  # 0.96 to 0.90
+            b = 0.93 + (ratio * 0.05)  # 0.93 to 0.98
+            c.setFillColor(colors.Color(r, g, b))
+            strip_height = height / steps
+            c.rect(0, height - (i + 1) * strip_height, width, strip_height + 1, fill=True, stroke=False)
         
+        # Draw subtle logo pattern in background
+        c.saveState()
+        c.setFillColor(colors.Color(0, 0, 0, 0.03))  # Very light opacity
+        
+        # Pattern of small geometric shapes representing logos
+        pattern_size = 60
+        for row in range(int(height / pattern_size) + 1):
+            for col in range(int(width / pattern_size) + 1):
+                x = col * pattern_size + (25 if row % 2 else 0)
+                y = row * pattern_size
+                
+                # Alternate between two shapes
+                if (row + col) % 2 == 0:
+                    # Dynamics G-Ex inspired shape (hexagon-like)
+                    c.setFillColor(colors.Color(0.95, 0.44, 0.13, 0.04))
+                    path = c.beginPath()
+                    cx, cy = x + 15, y + 15
+                    for angle_idx in range(6):
+                        angle = math.pi / 3 * angle_idx - math.pi / 6
+                        px = cx + 12 * math.cos(angle)
+                        py = cy + 12 * math.sin(angle)
+                        if angle_idx == 0:
+                            path.moveTo(px, py)
+                        else:
+                            path.lineTo(px, py)
+                    path.close()
+                    c.drawPath(path, fill=True, stroke=False)
+                else:
+                    # Copilot inspired shape (infinity/loop)
+                    c.setFillColor(colors.Color(0.48, 0.51, 0.92, 0.04))
+                    c.circle(x + 10, y + 15, 8, fill=True, stroke=False)
+                    c.circle(x + 22, y + 15, 8, fill=True, stroke=False)
+        
+        c.restoreState()
+        
+        # Decorative corner flourishes
+        c.setStrokeColor(gold)
         c.setLineWidth(2)
-        c.rect(45, 45, width - 90, height - 90, fill=False)
         
-        # Header
-        c.setFillColor(colors.Color(0.85, 0.65, 0.13))  # Gold
-        c.setFont("Helvetica-Bold", 14)
-        c.drawCentredString(width / 2, height - 80, "DYNAMICS G-EX")
+        # Top-left corner
+        c.line(40, height - 40, 40, height - 80)
+        c.line(40, height - 40, 80, height - 40)
         
-        c.setFont("Helvetica", 11)
+        # Top-right corner
+        c.line(width - 40, height - 40, width - 40, height - 80)
+        c.line(width - 40, height - 40, width - 80, height - 40)
+        
+        # Bottom-left corner
+        c.line(40, 40, 40, 80)
+        c.line(40, 40, 80, 40)
+        
+        # Bottom-right corner
+        c.line(width - 40, 40, width - 40, 80)
+        c.line(width - 40, 40, width - 80, 40)
+        
+        # Elegant double border
+        c.setStrokeColor(gold)
+        c.setLineWidth(3)
+        c.roundRect(25, 25, width - 50, height - 50, 10, fill=False)
+        
+        c.setStrokeColor(colors.Color(0.75, 0.55, 0.08))
+        c.setLineWidth(1)
+        c.roundRect(35, 35, width - 70, height - 70, 8, fill=False)
+        
+        # Header - Company Name (using Times for elegance)
+        c.setFillColor(dgx_orange)
+        c.setFont("Times-Bold", 16)
+        c.drawCentredString(width / 2, height - 70, "DYNAMICS G-EX")
+        
+        c.setFont("Times-Italic", 11)
+        c.setFillColor(colors.Color(0.5, 0.5, 0.5))
+        c.drawCentredString(width / 2, height - 88, "Making Life Easier")
+        
+        # Decorative line under header
+        c.setStrokeColor(gold)
+        c.setLineWidth(0.5)
+        c.line(width/2 - 100, height - 98, width/2 + 100, height - 98)
+        
+        # Certificate Title (elegant serif font)
+        c.setFillColor(colors.Color(0.15, 0.15, 0.15))
+        c.setFont("Times-Bold", 42)
+        c.drawCentredString(width / 2, height - 150, "Certificate of Achievement")
+        
+        # Decorative elements around title
+        c.setStrokeColor(gold)
+        c.setLineWidth(1)
+        c.line(width/2 - 220, height - 165, width/2 - 80, height - 165)
+        c.line(width/2 + 80, height - 165, width/2 + 220, height - 165)
+        
+        # Small diamond decorations
+        c.setFillColor(gold)
+        for x_offset in [-230, 230]:
+            cx = width/2 + x_offset
+            cy = height - 165
+            c.saveState()
+            c.translate(cx, cy)
+            c.rotate(45)
+            c.rect(-3, -3, 6, 6, fill=True, stroke=False)
+            c.restoreState()
+        
+        # "This is to certify that"
+        c.setFont("Times-Italic", 16)
         c.setFillColor(colors.Color(0.4, 0.4, 0.4))
-        c.drawCentredString(width / 2, height - 100, "Making Life Easier")
+        c.drawCentredString(width / 2, height - 200, "This is to certify that")
         
-        # Certificate Title
-        c.setFillColor(colors.Color(0.2, 0.2, 0.2))
-        c.setFont("Helvetica-Bold", 36)
-        c.drawCentredString(width / 2, height - 160, "CERTIFICATE OF ACHIEVEMENT")
-        
-        # Subtitle
-        c.setFont("Helvetica", 16)
-        c.setFillColor(colors.Color(0.4, 0.4, 0.4))
-        c.drawCentredString(width / 2, height - 195, "This is to certify that")
-        
-        # Name
-        c.setFont("Helvetica-Bold", 32)
-        c.setFillColor(colors.Color(0.85, 0.65, 0.13))  # Gold
+        # Recipient Name (prominent, elegant)
+        c.setFont("Times-Bold", 38)
+        c.setFillColor(colors.Color(0.1, 0.1, 0.1))
         c.drawCentredString(width / 2, height - 250, request.name)
         
-        # Decorative line under name
-        c.setStrokeColor(colors.Color(0.85, 0.65, 0.13))
-        c.setLineWidth(1)
-        c.line(width/2 - 150, height - 265, width/2 + 150, height - 265)
+        # Elegant underline for name
+        name_width = c.stringWidth(request.name, "Times-Bold", 38)
+        c.setStrokeColor(gold)
+        c.setLineWidth(2)
+        c.line(width/2 - name_width/2 - 20, height - 265, width/2 + name_width/2 + 20, height - 265)
+        c.setLineWidth(0.5)
+        c.line(width/2 - name_width/2 - 40, height - 270, width/2 + name_width/2 + 40, height - 270)
         
-        # Achievement text
-        c.setFont("Helvetica", 14)
-        c.setFillColor(colors.Color(0.3, 0.3, 0.3))
+        # Achievement description
+        c.setFont("Times-Roman", 14)
+        c.setFillColor(colors.Color(0.35, 0.35, 0.35))
         c.drawCentredString(width / 2, height - 300, "has successfully completed the")
         
-        c.setFont("Helvetica-Bold", 22)
+        c.setFont("Times-Bold", 22)
         c.setFillColor(colors.Color(0.2, 0.2, 0.2))
-        c.drawCentredString(width / 2, height - 335, "DGX AI Champions Training Program")
+        c.drawCentredString(width / 2, height - 330, "DGX AI Champions Training Program")
         
-        c.setFont("Helvetica", 14)
-        c.setFillColor(colors.Color(0.3, 0.3, 0.3))
-        c.drawCentredString(width / 2, height - 365, "and is hereby certified as a")
+        c.setFont("Times-Roman", 14)
+        c.setFillColor(colors.Color(0.35, 0.35, 0.35))
+        c.drawCentredString(width / 2, height - 355, "and is hereby recognized as a")
         
-        # Champion Badge
-        c.setFont("Helvetica-Bold", 28)
-        c.setFillColor(colors.Color(0.85, 0.65, 0.13))
-        c.drawCentredString(width / 2, height - 410, "DGX AI CHAMPION")
+        # Champion Title (grand, prominent)
+        c.setFont("Times-Bold", 32)
+        c.setFillColor(gold)
+        c.drawCentredString(width / 2, height - 395, "DGX AI CHAMPION")
         
-        # Copilot mention
-        c.setFont("Helvetica", 11)
-        c.setFillColor(colors.Color(0.5, 0.5, 0.5))
-        c.drawCentredString(width / 2, height - 445, "Proficient in Microsoft Copilot and AI Best Practices")
+        # Copilot proficiency note
+        c.setFont("Times-Italic", 12)
+        c.setFillColor(copilot_purple)
+        c.drawCentredString(width / 2, height - 420, "Demonstrating proficiency in Microsoft Copilot and AI Best Practices")
         
-        # Date
+        # Date section with elegant formatting
         from datetime import datetime
         today = datetime.now().strftime("%B %d, %Y")
-        c.setFont("Helvetica", 12)
-        c.setFillColor(colors.Color(0.4, 0.4, 0.4))
-        c.drawCentredString(width / 2, height - 490, f"Awarded on {today}")
         
-        # Footer logos/badges area
-        c.setFont("Helvetica-Bold", 10)
-        c.setFillColor(colors.Color(0.6, 0.6, 0.6))
-        c.drawString(80, 70, "Dynamics G-Ex AI Hub")
-        c.drawRightString(width - 80, 70, "Powered by Microsoft Copilot")
+        c.setFont("Times-Roman", 11)
+        c.setFillColor(colors.Color(0.4, 0.4, 0.4))
+        c.drawCentredString(width / 2, height - 460, "Awarded on")
+        
+        c.setFont("Times-Bold", 14)
+        c.setFillColor(colors.Color(0.3, 0.3, 0.3))
+        c.drawCentredString(width / 2, height - 478, today)
+        
+        # Footer section
+        c.setStrokeColor(colors.Color(0.8, 0.8, 0.8))
+        c.setLineWidth(0.5)
+        c.line(60, 90, width - 60, 90)
+        
+        # Footer logos/text
+        c.setFont("Times-Bold", 10)
+        c.setFillColor(dgx_orange)
+        c.drawString(70, 70, "Dynamics G-Ex AI Hub")
+        
+        c.setFillColor(copilot_purple)
+        c.drawRightString(width - 70, 70, "Powered by Microsoft Copilot")
         
         # Certificate ID
         cert_id = str(uuid.uuid4())[:8].upper()
-        c.setFont("Helvetica", 8)
-        c.setFillColor(colors.Color(0.7, 0.7, 0.7))
+        c.setFont("Times-Roman", 8)
+        c.setFillColor(colors.Color(0.6, 0.6, 0.6))
         c.drawCentredString(width / 2, 55, f"Certificate ID: DGX-CHAMPION-{cert_id}")
+        
+        # Seal/Badge in bottom center
+        seal_x, seal_y = width / 2, 115
+        c.setFillColor(colors.Color(gold.red, gold.green, gold.blue, 0.15))
+        c.circle(seal_x, seal_y, 30, fill=True, stroke=False)
+        c.setStrokeColor(gold)
+        c.setLineWidth(2)
+        c.circle(seal_x, seal_y, 30, fill=False, stroke=True)
+        c.setLineWidth(1)
+        c.circle(seal_x, seal_y, 25, fill=False, stroke=True)
+        
+        # Star in seal
+        c.setFillColor(gold)
+        points = []
+        for i in range(5):
+            angle = math.pi / 2 + i * 4 * math.pi / 5
+            points.append((seal_x + 15 * math.cos(angle), seal_y + 15 * math.sin(angle)))
+            angle = math.pi / 2 + i * 4 * math.pi / 5 + 2 * math.pi / 5
+            points.append((seal_x + 7 * math.cos(angle), seal_y + 7 * math.sin(angle)))
+        
+        path = c.beginPath()
+        path.moveTo(points[0][0], points[0][1])
+        for px, py in points[1:]:
+            path.lineTo(px, py)
+        path.close()
+        c.drawPath(path, fill=True, stroke=False)
         
         c.save()
         
