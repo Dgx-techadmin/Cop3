@@ -860,21 +860,62 @@ Key Topics:
               <p className="text-muted-foreground">
                 The most powerful adoption tool? Real stories from real colleagues
               </p>
+              <p className="text-xs text-muted-foreground">
+                Click any card to expand detailed guidance
+              </p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">
               {adoptionStrategies.map((strategy, idx) => (
-                <Card key={idx} className="shadow-card hover:shadow-lg transition-shadow">
+                <Card 
+                  key={idx} 
+                  className={`shadow-card hover:shadow-lg transition-all cursor-pointer border-2 ${
+                    expandedStrategy === idx ? 'border-amber-400 bg-amber-50/50 dark:bg-amber-950/30' : 'border-transparent hover:border-amber-200'
+                  }`}
+                  onClick={() => setExpandedStrategy(expandedStrategy === idx ? null : idx)}
+                >
                   <CardHeader>
-                    <div className="flex items-center space-x-3">
-                      <div className="p-2 bg-amber-100 dark:bg-amber-900/50 rounded-lg">
-                        <strategy.icon className="w-5 h-5 text-amber-600" />
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-3">
+                        <div className="p-2 bg-amber-100 dark:bg-amber-900/50 rounded-lg">
+                          <strategy.icon className="w-5 h-5 text-amber-600" />
+                        </div>
+                        <CardTitle className="text-lg">{strategy.title}</CardTitle>
                       </div>
-                      <CardTitle className="text-lg">{strategy.title}</CardTitle>
+                      <ChevronDown className={`w-5 h-5 text-amber-600 transition-transform duration-300 ${
+                        expandedStrategy === idx ? 'rotate-180' : ''
+                      }`} />
                     </div>
                   </CardHeader>
-                  <CardContent>
+                  <CardContent className="space-y-4">
                     <p className="text-sm text-muted-foreground">{strategy.description}</p>
+                    
+                    {/* Expanded Content */}
+                    {expandedStrategy === idx && strategy.expandedContent && (
+                      <div className="pt-4 border-t border-amber-200 dark:border-amber-800 space-y-4 animate-in slide-in-from-top-2 duration-300">
+                        <p className="text-sm font-medium text-foreground">
+                          {strategy.expandedContent.intro}
+                        </p>
+                        
+                        <div className="space-y-3">
+                          {strategy.expandedContent.steps.map((step, stepIdx) => (
+                            <div key={stepIdx} className="flex items-start space-x-3 p-3 bg-white dark:bg-background rounded-lg border border-amber-100 dark:border-amber-900">
+                              <div className="w-6 h-6 bg-amber-500 text-white rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">
+                                {stepIdx + 1}
+                              </div>
+                              <div>
+                                <p className="text-sm font-semibold text-foreground">{step.title}</p>
+                                <p className="text-xs text-muted-foreground">{step.detail}</p>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                        
+                        <div className="p-3 bg-amber-100 dark:bg-amber-900/50 rounded-lg">
+                          <p className="text-sm text-amber-800 dark:text-amber-200">{strategy.expandedContent.tip}</p>
+                        </div>
+                      </div>
+                    )}
                   </CardContent>
                 </Card>
               ))}
