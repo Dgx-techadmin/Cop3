@@ -102,6 +102,17 @@ export const Footer = () => {
               <li><a href="/tips" className="hover:text-primary transition-colors">Tips & Use Cases</a></li>
               <li><a href="/tutorials" className="hover:text-primary transition-colors">Tutorials</a></li>
               <li><a href="/training" className="hover:text-primary transition-colors">Training Module</a></li>
+              <li>
+                <a 
+                  href="https://forms.office.com/Pages/ResponsePage.aspx?id=TAgG8Mt-OU6jS71NMvpy6uMGTzC6judNqxQqmzhgyl1UNEJIVkVXV0NaSVdSNVBIUEhWSkdOOFZCVC4u" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors flex items-center gap-1"
+                >
+                  <MessageSquare className="w-3 h-3" />
+                  Share Feedback
+                </a>
+              </li>
             </ul>
           </div>
           
