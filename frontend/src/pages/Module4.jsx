@@ -299,7 +299,7 @@ Key Topics:
     {
       title: "Microsoft Copilot Advanced Training",
       description: "Official Microsoft learning paths for power users",
-      link: "https://learn.microsoft.com/en-us/copilot/",
+      link: "https://learn.microsoft.com/en-us/collections/6wpf7tdggkn5g",
       icon: ExternalLink,
       comingSoon: false
     },
