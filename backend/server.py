@@ -480,6 +480,7 @@ async def submit_quiz(submission: QuizSubmission):
     Store quiz submission results
     """
     try:
+        logging.info(f"Received quiz submission from: {submission.name}, email: {submission.email}, module: {submission.module_id}")
         doc = {
             "name": submission.name,
             "email": submission.email,
@@ -492,7 +493,8 @@ async def submit_quiz(submission: QuizSubmission):
             "module_name": submission.module_name,
             "timestamp": datetime.now(timezone.utc).isoformat()
         }
-        await db.quiz_submissions.insert_one(doc)
+        result = await db.quiz_submissions.insert_one(doc)
+        logging.info(f"Quiz submission saved successfully with id: {result.inserted_id}")
         return {"success": True}
     except Exception as e:
         logging.error(f"Error submitting quiz: {str(e)}")
