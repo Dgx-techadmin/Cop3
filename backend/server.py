@@ -1087,38 +1087,47 @@ async def generate_certificate(request: CertificateRequest):
             strip_height = height / steps
             c.rect(0, height - (i + 1) * strip_height, width, strip_height + 1, fill=True, stroke=False)
         
-        # Draw subtle logo pattern in background
+        # Draw subtle logo pattern in background using actual logo images
         c.saveState()
-        c.setFillColor(colors.Color(0, 0, 0, 0.03))  # Very light opacity
         
-        # Pattern of small geometric shapes representing logos
-        pattern_size = 60
-        for row in range(int(height / pattern_size) + 1):
-            for col in range(int(width / pattern_size) + 1):
-                x = col * pattern_size + (25 if row % 2 else 0)
-                y = row * pattern_size
+        # Load logo images for pattern
+        molecule_logo_path = os.path.join(os.path.dirname(__file__), 'molecule-icon.png')
+        copilot_logo_path = os.path.join(os.path.dirname(__file__), 'copilot-icon.png')
+        
+        # Pattern settings
+        pattern_spacing = 100  # Space between logos
+        logo_size = 30  # Size of each logo in the pattern
+        
+        # Create alternating pattern of both logos
+        for row in range(int(height / pattern_spacing) + 2):
+            for col in range(int(width / pattern_spacing) + 2):
+                # Offset alternate rows for a more organic pattern
+                x_offset = (pattern_spacing / 2) if row % 2 else 0
+                x = col * pattern_spacing + x_offset - 20
+                y = row * pattern_spacing - 20
                 
-                # Alternate between two shapes
-                if (row + col) % 2 == 0:
-                    # Dynamics G-Ex inspired shape (hexagon-like)
-                    c.setFillColor(colors.Color(0.95, 0.44, 0.13, 0.04))
-                    path = c.beginPath()
-                    cx, cy = x + 15, y + 15
-                    for angle_idx in range(6):
-                        angle = math.pi / 3 * angle_idx - math.pi / 6
-                        px = cx + 12 * math.cos(angle)
-                        py = cy + 12 * math.sin(angle)
-                        if angle_idx == 0:
-                            path.moveTo(px, py)
-                        else:
-                            path.lineTo(px, py)
-                    path.close()
-                    c.drawPath(path, fill=True, stroke=False)
-                else:
-                    # Copilot inspired shape (infinity/loop)
-                    c.setFillColor(colors.Color(0.48, 0.51, 0.92, 0.04))
-                    c.circle(x + 10, y + 15, 8, fill=True, stroke=False)
-                    c.circle(x + 22, y + 15, 8, fill=True, stroke=False)
+                # Skip if outside bounds
+                if x < -logo_size or x > width + logo_size or y < -logo_size or y > height + logo_size:
+                    continue
+                
+                # Alternate between molecule and copilot logos
+                try:
+                    if (row + col) % 2 == 0:
+                        # Draw molecule logo with very low opacity
+                        if os.path.exists(molecule_logo_path):
+                            c.saveState()
+                            c.setFillAlpha(0.04)  # Very subtle
+                            c.drawImage(molecule_logo_path, x, y, width=logo_size, height=logo_size, preserveAspectRatio=True, mask='auto')
+                            c.restoreState()
+                    else:
+                        # Draw copilot logo with very low opacity
+                        if os.path.exists(copilot_logo_path):
+                            c.saveState()
+                            c.setFillAlpha(0.04)  # Very subtle
+                            c.drawImage(copilot_logo_path, x, y, width=logo_size, height=logo_size, preserveAspectRatio=True, mask='auto')
+                            c.restoreState()
+                except:
+                    pass  # Skip if image can't be drawn
         
         c.restoreState()
         
