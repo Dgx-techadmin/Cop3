@@ -91,7 +91,7 @@ export const QuizComponent = ({ questions, moduleId = 1, moduleName = "Module 1"
     setShowResults(true);
     
     try {
-      await axios.post(`${API}/quiz-submit`, {
+      const response = await axios.post(`${API}/quiz-submit`, {
         name: userName,
         email: userEmail,
         department: userDepartment,
@@ -103,9 +103,14 @@ export const QuizComponent = ({ questions, moduleId = 1, moduleName = "Module 1"
         module_name: moduleName
       });
       
-      toast.success(`Quiz completed! You scored ${correctCount}/${questions.length}`);
+      if (response.data.success) {
+        toast.success(`Quiz completed! You scored ${correctCount}/${questions.length}`);
+      } else {
+        toast.error("Quiz completed but failed to save results. Please contact admin.");
+      }
     } catch (error) {
       console.error("Error submitting quiz:", error);
+      toast.error("Failed to save quiz results. Please try again or contact admin.");
     }
     
     setTimeout(() => {
