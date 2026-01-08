@@ -85,20 +85,20 @@ export default function TrainingHub() {
     },
     {
       id: 4,
-      title: "AI Excellence & Certification",
-      description: "Final assessment and certification demonstrating mastery of AI tools and responsible usage.",
+      title: "Advanced Tips for AI Champions",
+      description: "Become an AI trailblazer - master troubleshooting, drive adoption, and earn your AI Champion certificate.",
       icon: Trophy,
-      color: "bg-orange-100",
-      iconColor: "text-orange-600",
-      borderColor: "border-orange-200",
+      color: "bg-amber-100",
+      iconColor: "text-amber-600",
+      borderColor: "border-amber-200",
       objectives: [
-        "Demonstrate comprehensive AI knowledge",
-        "Pass certification assessment",
-        "Receive G-Ex AI Excellence certificate",
-        "Join the AI Champions community"
+        "Troubleshoot common AI issues",
+        "Drive adoption through storytelling",
+        "Master advanced Copilot features",
+        "Earn your AI Champion certificate"
       ],
-      duration: "45 min",
-      status: "coming_soon"
+      duration: "35 min",
+      status: "available"
     }
   ];
 
