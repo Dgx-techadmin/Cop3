@@ -679,7 +679,7 @@ Key Topics:
               <Button 
                 variant="outline" 
                 className="h-auto p-4 flex items-center space-x-3 border-2 hover:border-orange-300 hover:bg-orange-50 dark:hover:bg-orange-950"
-                onClick={() => window.open('https://learn.microsoft.com/en-us/copilot/', '_blank')}
+                onClick={() => window.open('https://learn.microsoft.com/en-us/collections/6wpf7tdggkn5g', '_blank')}
               >
                 <ExternalLink className="w-5 h-5 text-orange-600" />
                 <div className="text-left">
