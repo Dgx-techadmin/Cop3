@@ -1175,14 +1175,14 @@ async def generate_certificate(request: CertificateRequest):
         # Decorative elements around title
         c.setStrokeColor(gold)
         c.setLineWidth(1)
-        c.line(width/2 - 220, height - 165, width/2 - 80, height - 165)
-        c.line(width/2 + 80, height - 165, width/2 + 220, height - 165)
+        c.line(width/2 - 220, height - 170, width/2 - 80, height - 170)
+        c.line(width/2 + 80, height - 170, width/2 + 220, height - 170)
         
         # Small diamond decorations
         c.setFillColor(gold)
         for x_offset in [-230, 230]:
             cx = width/2 + x_offset
-            cy = height - 165
+            cy = height - 170
             c.saveState()
             c.translate(cx, cy)
             c.rotate(45)
@@ -1192,7 +1192,7 @@ async def generate_certificate(request: CertificateRequest):
         # "This is to certify that"
         c.setFont("Times-Italic", 16)
         c.setFillColor(colors.Color(0.4, 0.4, 0.4))
-        c.drawCentredString(width / 2, height - 200, "This is to certify that")
+        c.drawCentredString(width / 2, height - 205, "This is to certify that")
         
         # Recipient Name (prominent, elegant)
         c.setFont("Times-Bold", 38)
