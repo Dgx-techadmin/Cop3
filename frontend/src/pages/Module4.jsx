@@ -816,14 +816,14 @@ Key Topics:
                 <Button 
                   variant="outline" 
                   className="h-auto p-4 flex items-center space-x-3 border-2 hover:border-blue-300 hover:bg-blue-50 dark:hover:bg-blue-950 flex-1"
-                  onClick={() => toast.info("Champions Toolkit coming soon!")}
+                  onClick={() => navigate('/training/champions-toolkit')}
                 >
                   <BookOpen className="w-5 h-5 text-blue-600" />
                   <div className="text-left flex-1">
                     <p className="text-sm font-semibold">Champions Toolkit</p>
                     <p className="text-xs text-muted-foreground">Templates & guides</p>
                   </div>
-                  <Badge variant="secondary" className="text-xs">Coming Soon</Badge>
+                  <ArrowRight className="w-4 h-4 text-blue-400" />
                 </Button>
                 <Button 
                   variant="outline" 
