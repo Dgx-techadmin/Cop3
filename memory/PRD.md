@@ -65,6 +65,8 @@ Build an AI training platform to help employees learn about AI, particularly Mic
 - [x] Accordion layout for Intro & Quick Wins module (5 collapsible sections)
 - [x] Deleted redundant file `TrainingModuleEnhanced.jsx`
 - [x] Full site testing - 17/17 backend tests passed, all frontend pages working
+- [x] True accordion behavior - only one section open at a time (others auto-collapse)
+- [x] Custom icons for accordion sections: Teams, Outlook, ChatGPT, Word/Excel logos
 
 ## Upcoming Tasks (P1-P2)
 - [ ] Enhance "Success Stories" feature (dedicated page, pagination, search)
