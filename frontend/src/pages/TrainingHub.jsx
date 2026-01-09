@@ -204,8 +204,8 @@ export default function TrainingHub() {
                       </div>
                       <CardDescription className="text-base mt-3">{module.description}</CardDescription>
                     </CardHeader>
-                    <CardContent className="flex-1 pt-6 md:pt-8">
-                      <div className="grid grid-cols-2 gap-3">
+                    <CardContent className="flex-1 pt-6 md:pt-8 flex flex-col">
+                      <div className="grid grid-cols-2 gap-3 flex-1">
                         {module.objectives.map((objective, idx) => (
                           <div key={idx} className="flex items-center gap-2 text-sm text-muted-foreground">
                             <CheckCircle className="w-4 h-4 text-orange-500 flex-shrink-0" />
@@ -213,15 +213,18 @@ export default function TrainingHub() {
                           </div>
                         ))}
                       </div>
-                      <Button 
-                        className="mt-6 bg-orange-500 hover:bg-orange-600"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          navigate('/training/intro');
-                        }}
-                      >
-                        Get Started <ArrowRight className="w-4 h-4 ml-2" />
-                      </Button>
+                      <div className="flex justify-end mt-6">
+                        <Button 
+                          size="lg"
+                          className="px-8 bg-orange-500 hover:bg-orange-600"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            navigate('/training/intro');
+                          }}
+                        >
+                          Get Started <ArrowRight className="w-4 h-4 ml-2" />
+                        </Button>
+                      </div>
                     </CardContent>
                   </div>
                 </Card>
