@@ -33,6 +33,24 @@ export default function TrainingHub() {
 
   const modules = [
     {
+      id: 0,
+      title: "Intro & Quick Wins",
+      description: "Hit the ground running with practical tips you can use today - no AI expertise required!",
+      icon: Zap,
+      color: "bg-orange-100",
+      iconColor: "text-orange-600",
+      borderColor: "border-orange-200",
+      objectives: [
+        "Use Copilot in Teams meetings",
+        "Master email with Copilot in Outlook",
+        "Get started with Copilot in Word & Excel",
+        "Understand why Copilot is more secure than ChatGPT"
+      ],
+      duration: "10 min",
+      status: "available",
+      isIntro: true
+    },
+    {
       id: 1,
       title: "Intro to AI & Dynamics G-Ex Strategy",
       description: "Foundation module covering what AI is, how it aligns with our strategic pillars, and practical applications.",
