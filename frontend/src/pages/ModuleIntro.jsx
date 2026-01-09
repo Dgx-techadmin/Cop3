@@ -217,13 +217,14 @@ Key Topics:
             sectionNumber="1"
             title="How to Use Copilot in Teams"
             subtitle="Your AI assistant, right where you work"
-            icon={MessageSquare}
+            iconImage={sectionIcons.teams}
             iconBg="bg-purple-100 dark:bg-purple-900"
             iconColor="text-purple-600"
             borderColor="border-purple-200"
             gradientFrom="from-purple-50"
             gradientTo="to-indigo-50 dark:from-purple-950/30 dark:to-indigo-950/30"
-            defaultOpen={true}
+            isOpen={openSection === 1}
+            onToggle={() => handleToggle(1)}
           >
             <div className="space-y-6">
               {/* Video + Info */}
