@@ -368,8 +368,8 @@ Key Topics:
       icon: HeadphonesIcon,
       color: "blue",
       tips: [
-        { title: "Response Optimization", tip: "Analyze successful resolution patterns and create AI-assisted response templates for common issues." },
-        { title: "Sentiment Tracking", tip: "Use Copilot to summarize customer feedback themes and identify emerging issues." },
+        { title: "Response Optimisation", tip: "Analyse successful resolution patterns and create AI-assisted response templates for common issues." },
+        { title: "Sentiment Tracking", tip: "Use Copilot to summarise customer feedback themes and identify emerging issues." },
         { title: "Knowledge Base", tip: "Generate FAQ content from resolved tickets, keeping documentation current and comprehensive." }
       ]
     },
