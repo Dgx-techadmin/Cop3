@@ -174,7 +174,7 @@ Key Topics:
       icon: AlertTriangle,
       problem: "AI provides wrong facts or outdated data",
       solution: "Always fact-check AI outputs. For current data, explicitly ask AI to note its knowledge cutoff. Cross-reference with reliable sources.",
-      example: "Ask: 'Based on the data I've provided, analyze...' rather than asking for information the AI might not have accurately."
+      example: "Ask: 'Based on the data I've provided, analyse...' rather than asking for information the AI might not have accurately."
     },
     {
       title: "Inconsistent Formatting",
