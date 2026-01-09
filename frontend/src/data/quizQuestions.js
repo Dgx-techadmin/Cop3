@@ -78,10 +78,10 @@ export const quizQuestions = [
       "Delete all emails automatically",
       "Send emails without review",
       "Only check spelling errors",
-      "Draft and summarize threads"
+      "Draft and summarise threads"
     ],
     correctAnswer: 3,
-    explanation: "Copilot in Outlook can draft responses, summarize long email threads, adjust tone, and more - but you always review before sending."
+    explanation: "Copilot in Outlook can draft responses, summarise long email threads, adjust tone, and more - but you always review before sending."
   },
   {
     id: 8,
