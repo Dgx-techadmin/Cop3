@@ -129,7 +129,7 @@ Key Topics:
       title: "Predict Stock Needs",
       icon: TrendingUp,
       prompt: "Based on last 6 months sales data for Sample Bags (Region A: avg 1200/month, Region B: avg 850/month), suggest Q3 stock levels",
-      description: "Use historical data to forecast demand and optimize inventory levels.",
+      description: "Use historical data to forecast demand and optimise inventory levels.",
       tips: "Factor in seasonality, upcoming projects, and market trends that AI might not know about."
     },
     {
@@ -140,7 +140,7 @@ Key Topics:
       tips: "Double-check lead times, verify supplier availability, consider upcoming demand changes."
     },
     {
-      title: "Optimize Warehouse Operations",
+      title: "Optimise Warehouse Operations",
       icon: Settings,
       prompt: "Suggest warehouse layout improvements for faster picking of top 20 products: [list products with pick frequency]",
       description: "Get recommendations for warehouse efficiency based on product movement.",
