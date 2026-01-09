@@ -5,6 +5,7 @@ import TipsPage from "@/pages/TipsPage";
 import TutorialsPage from "@/pages/TutorialsPage";
 import DepartmentDetailPage from "@/pages/DepartmentDetailPage";
 import TrainingHub from "@/pages/TrainingHub";
+import ModuleIntro from "@/pages/ModuleIntro";
 import Module1 from "@/pages/Module1";
 import Module2 from "@/pages/Module2";
 import Module3 from "@/pages/Module3";
@@ -23,6 +24,7 @@ function App() {
           <Route path="/tips" element={<TipsPage />} />
           <Route path="/tutorials" element={<TutorialsPage />} />
           <Route path="/training" element={<TrainingHub />} />
+          <Route path="/training/intro" element={<ModuleIntro />} />
           <Route path="/training/module-1" element={<Module1 />} />
           <Route path="/training/module-2" element={<Module2 />} />
           <Route path="/training/module-3" element={<Module3 />} />
