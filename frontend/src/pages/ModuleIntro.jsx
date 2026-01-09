@@ -344,13 +344,14 @@ Key Topics:
             sectionNumber="3"
             title="Copilot in Outlook"
             subtitle="Master your inbox with AI assistance"
-            icon={Mail}
+            iconImage={sectionIcons.outlook}
             iconBg="bg-amber-100 dark:bg-amber-900"
             iconColor="text-amber-600"
             borderColor="border-amber-200"
             gradientFrom="from-amber-50"
             gradientTo="to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30"
-            defaultOpen={false}
+            isOpen={openSection === 3}
+            onToggle={() => handleToggle(3)}
           >
             <div className="space-y-6">
               {/* Video + Summary */}
