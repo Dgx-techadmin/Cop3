@@ -38,10 +38,10 @@ Key Topics:
     },
     {
       title: "Great at pattern recognition and data analysis",
-      example: "Ask Copilot to 'analyze sales trends from the last 6 months' and it'll spot patterns you might miss in thousands of rows."
+      example: "Ask Copilot to 'analyse sales trends from the last 6 months' and it'll spot patterns you might miss in thousands of rows."
     },
     {
-      title: "Helpful for drafting, summarizing, and brainstorming",
+      title: "Helpful for drafting, summarising, and brainstorming",
       example: "Stuck on a report? Ask Copilot to 'draft an executive summary of this quarter's performance' as a starting point."
     },
     {
