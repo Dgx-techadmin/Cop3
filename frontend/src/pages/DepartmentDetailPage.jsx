@@ -136,7 +136,7 @@ const departmentData = {
         outcome: "Faster incident resolution"
       }
     ],
-    strategicAlignment: "Supports STOCKSMART through optimized inventory processes and strengthens ONE TEAM via clear documentation and communication."
+    strategicAlignment: "Supports STOCKSMART through optimised inventory processes and strengthens ONE TEAM via clear documentation and communication."
   },
   leadership: {
     name: "Leadership",
