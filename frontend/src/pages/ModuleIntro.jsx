@@ -204,26 +204,57 @@ Key Topics:
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-background">
+    <div className="min-h-screen flex flex-col">
       <Navigation />
-      
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Hero Section */}
-        <div className="text-center mb-12">
-          <Badge className="mb-4 bg-orange-100 text-orange-700 border-orange-200">
-            <Zap className="w-3 h-3 mr-1" />
-            Quick Start Guide
-          </Badge>
-          <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-            Intro & Quick Wins
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-2">
-            Hit the ground running. Some stuff you can do without being AI-savvy.
-          </p>
-          <p className="text-sm text-muted-foreground max-w-xl mx-auto">
-            No quiz required - just practical tips to start using AI today.
-          </p>
+      <main className="flex-1 bg-gradient-to-b from-background to-secondary/20">
+        {/* Module Banner with Logomark Pattern */}
+        <div 
+          className="relative bg-gradient-to-r from-orange-500 to-amber-500 overflow-hidden"
+          style={{
+            backgroundImage: `url('/dynamics-gex-logo.png')`,
+            backgroundSize: '120px',
+            backgroundRepeat: 'repeat',
+            backgroundPosition: 'center',
+            opacity: 0.95
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-orange-500/95 via-orange-500/90 to-amber-500/95"></div>
+          <div className="relative py-8 px-4">
+            <div className="max-w-4xl mx-auto text-center">
+              <div className="inline-flex items-center space-x-3 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full border border-white/20">
+                <Zap className="w-6 h-6 text-white" />
+                <span className="text-2xl sm:text-3xl font-heading font-bold text-white">
+                  Quick Start Guide
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
+
+        {/* Hero Section */}
+        <section className="py-12 bg-gradient-to-br from-background via-background to-secondary/30">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+            <h1 className="text-4xl sm:text-5xl font-heading font-bold text-foreground">
+              Intro & <span className="text-orange-500">Quick Wins</span>
+            </h1>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Hit the ground running. Some stuff you can do without being AI-savvy.
+            </p>
+            <div className="flex flex-wrap justify-center gap-3 pt-4">
+              <Badge variant="outline" className="text-sm px-3 py-1 bg-orange-50 border-orange-200">
+                <Zap className="w-3 h-3 mr-1 text-orange-500" /> No Quiz Required
+              </Badge>
+              <Badge variant="outline" className="text-sm px-3 py-1 bg-green-50 border-green-200">
+                <CheckCircle className="w-3 h-3 mr-1 text-green-500" /> 10 Min Read
+              </Badge>
+              <Badge variant="outline" className="text-sm px-3 py-1 bg-blue-50 border-blue-200">
+                <Sparkles className="w-3 h-3 mr-1 text-blue-500" /> Practical Tips
+              </Badge>
+            </div>
+          </div>
+        </section>
+
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
         {/* Section 1: Copilot in Teams Basics */}
         <section className="mb-10">
