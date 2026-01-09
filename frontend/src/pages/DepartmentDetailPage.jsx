@@ -22,9 +22,9 @@ const departmentData = {
     ],
     useCases: [
       {
-        title: "Email Personalization",
-        description: "Draft personalized follow-up emails that resonate with prospects",
-        prompt: "Draft a personalized follow-up email for a prospect interested in our premium tier, highlighting ROI and next steps. Tone: Professional yet warm.",
+        title: "Email Personalisation",
+        description: "Draft personalised follow-up emails that resonate with prospects",
+        prompt: "Draft a personalised follow-up email for a prospect interested in our premium tier, highlighting ROI and next steps. Tone: Professional yet warm.",
         tool: "Copilot in Outlook",
         outcome: "Save 2-3 hours per day on email composition"
       },
@@ -37,8 +37,8 @@ const departmentData = {
       },
       {
         title: "Deal Analysis & Forecasting",
-        description: "Analyze historical data to predict trends and optimize strategy",
-        prompt: "Analyze historical deal data in Excel to identify patterns in successful closures. Highlight correlations between deal size, industry, and close time. Predict Q4 trends.",
+        description: "Analyse historical data to predict trends and optimise strategy",
+        prompt: "Analyse historical deal data in Excel to identify patterns in successful closures. Highlight correlations between deal size, industry, and close time. Predict Q4 trends.",
         tool: "Copilot in Excel",
         outcome: "Make data-driven decisions to improve win rates"
       },
@@ -50,7 +50,7 @@ const departmentData = {
         outcome: "Reduce proposal creation time by 60%"
       }
     ],
-    strategicAlignment: "Supports GLOBAL EDGE by enabling proactive, data-driven outreach and improving customer engagement through personalized communication."
+    strategicAlignment: "Supports GLOBAL EDGE by enabling proactive, data-driven outreach and improving customer engagement through personalised communication."
   },
   marketing: {
     name: "Marketing",
