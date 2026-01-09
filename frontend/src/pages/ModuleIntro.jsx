@@ -16,25 +16,25 @@ import { CollapsibleSection } from "@/components/training/CollapsibleSection";
 import { ModuleAIExpert } from "@/components/training/ModuleAIExpert";
 import { ModuleTutorial } from "@/components/training/ModuleTutorial";
 
-// Accordion Section Component
+// Accordion Section Component - Only one section open at a time
 const AccordionSection = ({ 
   title, 
   subtitle, 
-  icon: Icon, 
+  icon: Icon,
+  iconImage, // Custom image URL for icon
   iconBg, 
   iconColor, 
   borderColor, 
   gradientFrom, 
   gradientTo,
   children, 
-  defaultOpen = false,
+  isOpen,
+  onToggle,
   sectionNumber
 }) => {
-  const [isOpen, setIsOpen] = useState(defaultOpen);
-
   return (
     <Card className={`border-2 ${borderColor} shadow-card overflow-hidden transition-all duration-300 ${isOpen ? 'shadow-lg' : ''}`}>
-      <Collapsible open={isOpen} onOpenChange={setIsOpen}>
+      <Collapsible open={isOpen} onOpenChange={onToggle}>
         <CollapsibleTrigger className="w-full">
           <div className={`flex items-center justify-between p-5 bg-gradient-to-r ${gradientFrom} ${gradientTo} cursor-pointer hover:opacity-95 transition-opacity`}>
             <div className="flex items-center gap-4">
@@ -43,9 +43,15 @@ const AccordionSection = ({
                   {sectionNumber}
                 </div>
               )}
-              <div className={`p-3 ${iconBg} rounded-xl shadow-sm`}>
-                <Icon className={`w-6 h-6 ${iconColor}`} />
-              </div>
+              {iconImage ? (
+                <div className={`p-2 ${iconBg} rounded-xl shadow-sm`}>
+                  <img src={iconImage} alt={title} className="w-8 h-8 object-contain" />
+                </div>
+              ) : (
+                <div className={`p-3 ${iconBg} rounded-xl shadow-sm`}>
+                  <Icon className={`w-6 h-6 ${iconColor}`} />
+                </div>
+              )}
               <div className="text-left">
                 <h3 className="text-xl font-bold text-foreground">{title}</h3>
                 <p className="text-sm text-muted-foreground">{subtitle}</p>
