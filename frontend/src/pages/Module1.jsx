@@ -23,11 +23,11 @@ export default function TrainingModuleEnhanced() {
   const moduleContext = `This is Module 1: Intro to AI & Dynamics G-Ex Strategy. 
   
 Key Topics:
-- What AI IS: A tool to augment human capabilities, great at pattern recognition, helpful for drafting/summarizing, time-saving for repetitive tasks
+- What AI IS: A tool to augment human capabilities, great at pattern recognition, helpful for drafting/summarising, time-saving for repetitive tasks
 - What AI IS NOT: A replacement for human judgment, always 100% accurate, capable of understanding context like humans, a substitute for emotional intelligence
-- Strategic Pillars: ONE TEAM (collaboration), GLOBAL EDGE (international reach), STOCKSMART (inventory optimization), Innovation Focus (leading with AI)
-- Microsoft Copilot: Primary authorized AI tool at G-Ex, integrated with Teams, Outlook, Word, Excel, PowerPoint
-- Department Use Cases: Sales (forecasting, email campaigns), Marketing (content creation, SEO), Operations (SOPs, process optimization), Leadership (executive summaries, strategic planning), IT (technical documentation), Customer Service (empathetic responses, FAQ generation)
+- Strategic Pillars: ONE TEAM (collaboration), GLOBAL EDGE (international reach), STOCKSMART (inventory optimisation), Innovation Focus (leading with AI)
+- Microsoft Copilot: Primary authorised AI tool at G-Ex, integrated with Teams, Outlook, Word, Excel, PowerPoint
+- Department Use Cases: Sales (forecasting, email campaigns), Marketing (content creation, SEO), Operations (SOPs, process optimisation), Leadership (executive summaries, strategic planning), IT (technical documentation), Customer Service (empathetic responses, FAQ generation)
 - Getting Started: Access Copilot via Microsoft 365 sidebar, use clear prompts, fact-check outputs, apply human judgment`;
 
 
