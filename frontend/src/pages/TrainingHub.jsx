@@ -170,15 +170,79 @@ export default function TrainingHub() {
           </div>
         </section>
 
-        {/* Modules Grid */}
-        <section className="py-16">
+        {/* Intro Module - Wide Card */}
+        <section className="py-8">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            {modules.filter(m => m.isIntro).map((module) => {
+              const Icon = module.icon;
+              return (
+                <Card 
+                  key={module.id}
+                  className={`shadow-card hover:shadow-lg transition-all duration-300 border-2 hover:border-orange-400 cursor-pointer ${module.borderColor} bg-gradient-to-r from-orange-50 to-amber-50 dark:from-orange-950/30 dark:to-amber-950/30`}
+                  onClick={() => navigate('/training/intro')}
+                >
+                  <div className="flex flex-col md:flex-row">
+                    <CardHeader className="flex-1">
+                      <div className="flex items-start justify-between">
+                        <div className="flex items-center gap-4">
+                          <div className={`p-3 rounded-lg ${module.color}`}>
+                            <Icon className={`w-8 h-8 ${module.iconColor}`} />
+                          </div>
+                          <div>
+                            <div className="flex items-center gap-2 mb-1">
+                              <Badge variant="outline" className="text-xs bg-orange-100 text-orange-700 border-orange-300">
+                                Quick Start
+                              </Badge>
+                              <Badge variant="outline" className="text-xs bg-green-50 text-green-600 border-green-200">
+                                No Quiz
+                              </Badge>
+                              <span className="text-sm text-muted-foreground">• {module.duration}</span>
+                            </div>
+                            <CardTitle className="text-2xl font-bold">{module.title}</CardTitle>
+                          </div>
+                        </div>
+                      </div>
+                      <CardDescription className="text-base mt-3">{module.description}</CardDescription>
+                    </CardHeader>
+                    <CardContent className="flex-1 pt-6 md:pt-8">
+                      <div className="grid grid-cols-2 gap-3">
+                        {module.objectives.map((objective, idx) => (
+                          <div key={idx} className="flex items-center gap-2 text-sm text-muted-foreground">
+                            <CheckCircle className="w-4 h-4 text-orange-500 flex-shrink-0" />
+                            <span>{objective}</span>
+                          </div>
+                        ))}
+                      </div>
+                      <Button 
+                        className="mt-6 bg-orange-500 hover:bg-orange-600"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          navigate('/training/intro');
+                        }}
+                      >
+                        Get Started <ArrowRight className="w-4 h-4 ml-2" />
+                      </Button>
+                    </CardContent>
+                  </div>
+                </Card>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* Training Modules Grid */}
+        <section className="py-8">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+              <BookOpen className="w-6 h-6 text-primary" />
+              Training Modules
+            </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {modules.map((module) => {
+              {modules.filter(m => !m.isIntro).map((module) => {
                 const stats = getModuleStats(module.id);
                 const Icon = module.icon;
                 const isAvailable = module.status === "available";
-                const modulePath = module.isIntro ? '/training/intro' : `/training/module-${module.id}`;
+                const modulePath = `/training/module-${module.id}`;
 
                 return (
                   <Card 
@@ -193,19 +257,12 @@ export default function TrainingHub() {
                         <div className={`p-3 rounded-lg ${module.color}`}>
                           <Icon className={`w-6 h-6 ${module.iconColor}`} />
                         </div>
-                        <div className="flex items-center gap-2">
-                          {module.isIntro && (
-                            <Badge variant="outline" className="text-xs bg-orange-50 text-orange-600 border-orange-200">
-                              No Quiz
-                            </Badge>
-                          )}
-                          <Badge variant={isAvailable ? "default" : "secondary"} className="text-xs">
-                            {isAvailable ? "Available" : "Coming Soon"}
-                          </Badge>
-                        </div>
+                        <Badge variant={isAvailable ? "default" : "secondary"} className="text-xs">
+                          {isAvailable ? "Available" : "Coming Soon"}
+                        </Badge>
                       </div>
                       <CardTitle className="text-xl mt-4 flex items-center space-x-2">
-                        <span>{module.isIntro ? "Quick Start" : `Module ${module.id}`}</span>
+                        <span>Module {module.id}</span>
                         <span className="text-muted-foreground text-sm font-normal">• {module.duration}</span>
                       </CardTitle>
                       <CardTitle className="text-lg font-semibold">{module.title}</CardTitle>
@@ -216,7 +273,7 @@ export default function TrainingHub() {
                       <div>
                         <h4 className="text-sm font-semibold mb-3 flex items-center">
                           <CheckCircle className="w-4 h-4 mr-2 text-green-600" />
-                          {module.isIntro ? "What You'll Learn" : "Learning Objectives"}
+                          Learning Objectives
                         </h4>
                         <ul className="space-y-2">
                           {module.objectives.map((objective, idx) => (
@@ -228,8 +285,8 @@ export default function TrainingHub() {
                         </ul>
                       </div>
 
-                      {/* Stats - hide for intro module */}
-                      {isAvailable && !module.isIntro && (
+                      {/* Stats */}
+                      {isAvailable && (
                         <div className="space-y-3 pt-4 border-t">
                           <div className="flex justify-between items-center text-sm">
                             <span className="text-muted-foreground">Completions</span>
@@ -247,7 +304,7 @@ export default function TrainingHub() {
 
                       {/* CTA Button */}
                       <Button 
-                        className={`w-full mt-4 ${module.isIntro ? 'bg-orange-500 hover:bg-orange-600' : ''}`}
+                        className="w-full mt-4"
                         disabled={!isAvailable}
                         onClick={(e) => {
                           e.stopPropagation();
