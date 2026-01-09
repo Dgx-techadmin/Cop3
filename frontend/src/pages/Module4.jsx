@@ -337,7 +337,7 @@ Key Topics:
     },
     {
       title: "Multi-Step Workflows",
-      description: "Chain prompts together: First analyze, then summarize, then draft recommendations. Build complex outputs step by step.",
+      description: "Chain prompts together: First analyse, then summarise, then draft recommendations. Build complex outputs step by step.",
       icon: TrendingUp
     }
   ];
@@ -348,9 +348,9 @@ Key Topics:
       icon: Briefcase,
       color: "purple",
       tips: [
-        { title: "Proposal Automation", tip: "Create proposal templates with placeholders. Use Copilot to customize for each client based on their industry and needs." },
-        { title: "Campaign Analysis", tip: "Input campaign metrics into Excel, ask Copilot to identify top performers and suggest optimizations." },
-        { title: "Lead Scoring", tip: "Use Copilot to analyze lead data and suggest prioritization based on engagement patterns." }
+        { title: "Proposal Automation", tip: "Create proposal templates with placeholders. Use Copilot to customise for each client based on their industry and needs." },
+        { title: "Campaign Analysis", tip: "Input campaign metrics into Excel, ask Copilot to identify top performers and suggest optimisations." },
+        { title: "Lead Scoring", tip: "Use Copilot to analyse lead data and suggest prioritisation based on engagement patterns." }
       ]
     },
     {
