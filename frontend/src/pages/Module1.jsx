@@ -81,7 +81,7 @@ Key Topics:
     globalEdge: [
       {
         title: "Multi-region Customer Insights",
-        description: "Use Copilot in Excel to analyze customer feedback across Australia, US, Canada, and identify regional preferences instantly."
+        description: "Use Copilot in Excel to analyse customer feedback across Australia, US, Canada, and identify regional preferences instantly."
       },
       {
         title: "24/7 Email Response",
@@ -89,13 +89,13 @@ Key Topics:
       },
       {
         title: "Market Trend Analysis",
-        description: "Ask Copilot to analyze global mining trends and identify opportunities for expansion in new territories."
+        description: "Ask Copilot to analyse global mining trends and identify opportunities for expansion in new territories."
       }
     ],
     oneTeam: [
       {
         title: "Knowledge Sharing",
-        description: "Use Copilot in Teams to summarize key learnings from meetings and share with the entire organization instantly."
+        description: "Use Copilot in Teams to summarise key learnings from meetings and share with the entire organisation instantly."
       },
       {
         title: "Collaborative Documentation",
@@ -109,7 +109,7 @@ Key Topics:
     stockSmart: [
       {
         title: "Predictive Inventory Management",
-        description: "Copilot in Excel analyzes historical data to predict which products (Core Trays, Sample Bags) will be in high demand next quarter."
+        description: "Copilot in Excel analyses historical data to predict which products (Core Trays, Sample Bags) will be in high demand next quarter."
       },
       {
         title: "Automated Reorder Alerts",
