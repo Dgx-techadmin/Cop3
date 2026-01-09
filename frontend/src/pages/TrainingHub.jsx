@@ -178,6 +178,7 @@ export default function TrainingHub() {
                 const stats = getModuleStats(module.id);
                 const Icon = module.icon;
                 const isAvailable = module.status === "available";
+                const modulePath = module.isIntro ? '/training/intro' : `/training/module-${module.id}`;
 
                 return (
                   <Card 
@@ -185,19 +186,26 @@ export default function TrainingHub() {
                     className={`shadow-card hover:shadow-lg transition-all duration-300 border-2 ${
                       isAvailable ? 'hover:border-primary/30 cursor-pointer' : 'opacity-75'
                     } ${module.borderColor}`}
-                    onClick={() => isAvailable && navigate(`/training/module-${module.id}`)}
+                    onClick={() => isAvailable && navigate(modulePath)}
                   >
                     <CardHeader>
                       <div className="flex items-start justify-between">
                         <div className={`p-3 rounded-lg ${module.color}`}>
                           <Icon className={`w-6 h-6 ${module.iconColor}`} />
                         </div>
-                        <Badge variant={isAvailable ? "default" : "secondary"} className="text-xs">
-                          {isAvailable ? "Available" : "Coming Soon"}
-                        </Badge>
+                        <div className="flex items-center gap-2">
+                          {module.isIntro && (
+                            <Badge variant="outline" className="text-xs bg-orange-50 text-orange-600 border-orange-200">
+                              No Quiz
+                            </Badge>
+                          )}
+                          <Badge variant={isAvailable ? "default" : "secondary"} className="text-xs">
+                            {isAvailable ? "Available" : "Coming Soon"}
+                          </Badge>
+                        </div>
                       </div>
                       <CardTitle className="text-xl mt-4 flex items-center space-x-2">
-                        <span>Module {module.id}</span>
+                        <span>{module.isIntro ? "Quick Start" : `Module ${module.id}`}</span>
                         <span className="text-muted-foreground text-sm font-normal">• {module.duration}</span>
                       </CardTitle>
                       <CardTitle className="text-lg font-semibold">{module.title}</CardTitle>
@@ -208,7 +216,7 @@ export default function TrainingHub() {
                       <div>
                         <h4 className="text-sm font-semibold mb-3 flex items-center">
                           <CheckCircle className="w-4 h-4 mr-2 text-green-600" />
-                          Learning Objectives
+                          {module.isIntro ? "What You'll Learn" : "Learning Objectives"}
                         </h4>
                         <ul className="space-y-2">
                           {module.objectives.map((objective, idx) => (
@@ -220,8 +228,8 @@ export default function TrainingHub() {
                         </ul>
                       </div>
 
-                      {/* Stats */}
-                      {isAvailable && (
+                      {/* Stats - hide for intro module */}
+                      {isAvailable && !module.isIntro && (
                         <div className="space-y-3 pt-4 border-t">
                           <div className="flex justify-between items-center text-sm">
                             <span className="text-muted-foreground">Completions</span>
@@ -239,11 +247,11 @@ export default function TrainingHub() {
 
                       {/* CTA Button */}
                       <Button 
-                        className="w-full mt-4"
+                        className={`w-full mt-4 ${module.isIntro ? 'bg-orange-500 hover:bg-orange-600' : ''}`}
                         disabled={!isAvailable}
                         onClick={(e) => {
                           e.stopPropagation();
-                          isAvailable && navigate(`/training/module-${module.id}`);
+                          isAvailable && navigate(modulePath);
                         }}
                       >
                         {isAvailable ? (
