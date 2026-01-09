@@ -220,9 +220,9 @@ Key Topics:
                       <Zap className="w-5 h-5 text-orange-600" />
                     </div>
                     <div className="space-y-2">
-                      <h3 className="text-lg font-semibold text-foreground">What is this module?</h3>
+                      <h3 className="text-lg font-semibold text-foreground">About This Module</h3>
                       <p className="text-muted-foreground">
-                        This is a <strong>quick win module</strong> designed to give you simple, practical steps on how to set up and start using some basic Copilot features in Microsoft Teams — before diving into the full training modules.
+                        A <strong>quick-start guide</strong> with practical steps to begin using Copilot across <strong>Teams, Outlook, Word, and Excel</strong> — plus key security considerations when choosing between Copilot and ChatGPT.
                       </p>
                     </div>
                   </div>
@@ -232,9 +232,9 @@ Key Topics:
                       <AlertCircle className="w-5 h-5 text-amber-600" />
                     </div>
                     <div className="space-y-2">
-                      <h4 className="text-sm font-semibold text-foreground">Important Note</h4>
+                      <h4 className="text-sm font-semibold text-foreground">Please Note</h4>
                       <p className="text-sm text-muted-foreground">
-                        The tips found below <strong>do not dismiss the need for proper training</strong>. The content in the next modules is much more thoughtful, essential for good use of AI, and thoroughly produced to help Dynamics G-Ex team members take the most out of Copilot and AI resources.
+                        These quick tips <strong>do not replace formal training</strong>. The following modules provide comprehensive, essential guidance for effective AI use at Dynamics G-Ex.
                       </p>
                     </div>
                   </div>
