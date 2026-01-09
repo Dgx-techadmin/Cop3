@@ -288,13 +288,14 @@ Key Topics:
             sectionNumber="2"
             title="Meeting Recording & AI Recap"
             subtitle="Never miss important details from your meetings"
-            icon={Video}
+            iconImage={sectionIcons.teams}
             iconBg="bg-blue-100 dark:bg-blue-900"
             iconColor="text-blue-600"
             borderColor="border-blue-200"
             gradientFrom="from-blue-50"
             gradientTo="to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30"
-            defaultOpen={false}
+            isOpen={openSection === 2}
+            onToggle={() => handleToggle(2)}
           >
             <div className="space-y-6">
               {/* Feature Cards */}
