@@ -411,7 +411,7 @@ Key Topics:
                   <span>Inventory Management</span>
                 </CardTitle>
                 <CardDescription>
-                  Predict stock needs, generate reorder lists, and optimize operations
+                  Predict stock needs, generate reorder lists, and optimise operations
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-3">
