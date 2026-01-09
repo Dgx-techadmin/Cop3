@@ -209,6 +209,41 @@ Key Topics:
           </div>
         </section>
 
+        {/* Introduction & Disclaimer Section */}
+        <section className="py-6">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <Card className="border-2 border-orange-200 bg-gradient-to-br from-orange-50/50 to-amber-50/50 dark:from-orange-950/20 dark:to-amber-950/20 shadow-sm">
+              <CardContent className="pt-6 pb-6">
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <div className="p-2 bg-orange-100 dark:bg-orange-900/50 rounded-lg flex-shrink-0">
+                      <Zap className="w-5 h-5 text-orange-600" />
+                    </div>
+                    <div className="space-y-2">
+                      <h3 className="text-lg font-semibold text-foreground">What is this module?</h3>
+                      <p className="text-muted-foreground">
+                        This is a <strong>quick win module</strong> designed to give you simple, practical steps on how to set up and start using some basic Copilot features in Microsoft Teams — before diving into the full training modules.
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-3 pt-2 border-t border-orange-200/50">
+                    <div className="p-2 bg-amber-100 dark:bg-amber-900/50 rounded-lg flex-shrink-0">
+                      <AlertCircle className="w-5 h-5 text-amber-600" />
+                    </div>
+                    <div className="space-y-2">
+                      <h4 className="text-sm font-semibold text-foreground">Important Note</h4>
+                      <p className="text-sm text-muted-foreground">
+                        The tips found below <strong>do not dismiss the need for proper training</strong>. The content in the next modules is much more thoughtful, essential for good use of AI, and thoroughly produced to help Dynamics G-Ex team members take the most out of Copilot and AI resources.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
         {/* Accordion Sections */}
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-4">
 
