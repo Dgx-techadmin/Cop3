@@ -6,7 +6,8 @@ import { Badge } from "@/components/ui/badge";
 import { 
   Zap, MessageSquare, Mail, FileText, Video, Shield, CheckCircle,
   ArrowRight, Sparkles, Monitor, Table, BookOpen, Users, ChevronRight,
-  Play, Settings, Mic, Calendar, PenLine, ListChecks, Calculator
+  Play, Settings, Mic, Calendar, PenLine, ListChecks, Calculator,
+  MousePointer, Eye, AlertCircle, Lightbulb, ExternalLink, Clock
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { CollapsibleSection } from "@/components/training/CollapsibleSection";
@@ -27,181 +28,82 @@ Key Topics:
 - Copilot in Excel: analysing data with natural language, getting help with formulas, creating visualisations
 - This is a no-quiz introductory module designed for quick practical wins`;
 
-  const teamsBasics = [
-    {
-      title: "Access Copilot in Teams",
-      icon: MessageSquare,
-      steps: [
-        "Open Microsoft Teams on your desktop or browser",
-        "Look for the Copilot icon in the left sidebar (sparkle icon)",
-        "Click to open the Copilot chat panel",
-        "Start typing your question or request"
-      ]
+  // Video tutorial data
+  const videoTutorials = {
+    teams: {
+      title: "Copilot in Teams Tutorial",
+      videoId: "Z7DwJtTkNSE",
+      description: "Full beginner's guide to using Copilot in Microsoft Teams"
     },
-    {
-      title: "Use Copilot During Meetings",
-      icon: Video,
-      steps: [
-        "Join or start a Teams meeting as usual",
-        "Click the Copilot icon in the meeting toolbar",
-        "Ask questions like 'What have I missed?' or 'Summarise the discussion so far'",
-        "Copilot will provide real-time insights based on the meeting transcript"
-      ]
+    outlook: {
+      title: "Copilot in Outlook Tutorial",
+      videoId: "Q2WsFayNjwo",
+      description: "How to use Microsoft Copilot in Outlook"
+    },
+    word: {
+      title: "Copilot in Word Tutorial",
+      videoId: "7VlpfA_A7Tg",
+      description: "Getting started with Copilot in Word"
+    },
+    excel: {
+      title: "Copilot in Excel Tutorial",
+      videoId: "Aucr_qrwEwE",
+      description: "Using Copilot to analyse data in Excel"
     }
-  ];
-
-  const meetingRecording = [
-    {
-      title: "Enable Meeting Recording & Transcription",
-      icon: Mic,
-      steps: [
-        "During a meeting, click the '...' (More actions) button in the toolbar",
-        "Select 'Record and transcribe' → 'Start recording'",
-        "A notification will appear for all participants that recording has started",
-        "The transcript will appear in real-time in the meeting panel"
-      ]
-    },
-    {
-      title: "Use the Intelligent Meeting Recap",
-      icon: ListChecks,
-      steps: [
-        "After the meeting ends, go to your Teams Calendar",
-        "Find the meeting and click to open it",
-        "Select the 'Recap' tab to see AI-generated notes, action items, and key topics",
-        "Share the recap with colleagues who couldn't attend"
-      ]
-    }
-  ];
-
-  const outlookTips = [
-    {
-      title: "Draft Emails with Copilot",
-      icon: PenLine,
-      description: "Let Copilot help you write professional emails in seconds",
-      steps: [
-        "Click 'New Email' in Outlook",
-        "Click the Copilot icon in the email toolbar",
-        "Describe what you want: e.g., 'Write a follow-up email thanking Sarah for the meeting and confirming next steps'",
-        "Review the draft, make any tweaks, and send!"
-      ]
-    },
-    {
-      title: "Summarise Long Email Threads",
-      icon: Mail,
-      description: "Catch up on lengthy conversations instantly",
-      steps: [
-        "Open a long email thread you need to catch up on",
-        "Click the 'Summary by Copilot' button at the top of the thread",
-        "Copilot will provide key points, decisions made, and any action items",
-        "Use this to quickly understand the context before responding"
-      ]
-    },
-    {
-      title: "Coach Your Email Tone",
-      icon: MessageSquare,
-      description: "Ensure your message strikes the right tone",
-      steps: [
-        "After drafting your email, highlight the text",
-        "Click Copilot and select 'Coaching by Copilot'",
-        "Copilot will analyse tone, clarity, and sentiment",
-        "Apply suggestions to make your email more effective"
-      ]
-    }
-  ];
-
-  const copilotVsChatGPT = {
-    title: "Why Copilot in Teams is More Secure than ChatGPT",
-    points: [
-      {
-        heading: "Your Data Stays Protected",
-        description: "Unlike public ChatGPT, Copilot in Teams operates within Microsoft's secure enterprise environment. Your conversations and data never leave the G-Ex security boundary."
-      },
-      {
-        heading: "No Training on Your Data",
-        description: "Microsoft Copilot doesn't use your prompts or company data to train AI models. With ChatGPT's free tier, your inputs may be used for model improvement."
-      },
-      {
-        heading: "Compliance & Audit Ready",
-        description: "Copilot conversations are covered by our existing Microsoft 365 compliance policies, including data retention and audit capabilities."
-      },
-      {
-        heading: "Access to Company Context",
-        description: "Copilot can safely reference your emails, documents, and Teams chats to provide more relevant answers - something ChatGPT cannot do securely."
-      }
-    ],
-    howToUse: [
-      "Open the Copilot app in Teams (left sidebar)",
-      "Ask anything you'd normally ask ChatGPT: brainstorm ideas, explain concepts, draft content",
-      "For sensitive topics, you can confidently use Copilot knowing your data is protected",
-      "Try: 'Help me prepare talking points for tomorrow's client presentation'"
-    ]
   };
 
-  const wordTips = [
-    {
-      title: "Draft Documents from Scratch",
-      icon: FileText,
-      steps: [
-        "Open a new Word document",
-        "Click the Copilot icon in the Home ribbon",
-        "Describe what you need: 'Create a project proposal for a new inventory system'",
-        "Copilot generates a full draft you can refine and personalise"
-      ]
-    },
-    {
-      title: "Rewrite & Improve Text",
-      icon: PenLine,
-      steps: [
-        "Select the text you want to improve",
-        "Click the Copilot icon that appears",
-        "Choose 'Rewrite' and select your preferred tone (professional, casual, concise)",
-        "Preview options and insert your favourite version"
-      ]
-    },
-    {
-      title: "Summarise Long Documents",
-      icon: ListChecks,
-      steps: [
-        "Open a lengthy document you need to review",
-        "Click Copilot and ask: 'Summarise this document in 5 key points'",
-        "Use follow-up questions: 'What are the main recommendations?' or 'List all action items'",
-        "Perfect for quickly reviewing reports, policies, or meeting notes"
-      ]
-    }
-  ];
+  const VideoEmbed = ({ videoId, title }) => (
+    <div className="relative aspect-video rounded-lg overflow-hidden bg-gray-900 group cursor-pointer"
+         onClick={() => window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank')}>
+      <img 
+        src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
+        alt={title}
+        className="w-full h-full object-cover group-hover:opacity-80 transition-opacity"
+        onError={(e) => {
+          e.target.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+        }}
+      />
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+          <Play className="w-8 h-8 text-white ml-1" fill="white" />
+        </div>
+      </div>
+      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+        <p className="text-white text-sm font-medium">{title}</p>
+      </div>
+    </div>
+  );
 
-  const excelTips = [
-    {
-      title: "Analyse Data with Natural Language",
-      icon: Table,
-      steps: [
-        "Select your data table in Excel",
-        "Click the Copilot icon in the Home ribbon",
-        "Ask questions like: 'What are the top 5 products by revenue?' or 'Show me sales trends by month'",
-        "Copilot creates charts, highlights, and insights automatically"
-      ]
-    },
-    {
-      title: "Get Help with Formulas",
-      icon: Calculator,
-      steps: [
-        "Click in the cell where you need a formula",
-        "Open Copilot and describe what you need: 'Calculate the percentage change between columns B and C'",
-        "Copilot will suggest the correct formula (e.g., =(C2-B2)/B2)",
-        "Click to insert the formula, then drag to apply to other rows"
-      ]
-    },
-    {
-      title: "Create Instant Visualisations",
-      icon: Monitor,
-      steps: [
-        "Select your data range",
-        "Ask Copilot: 'Create a chart showing monthly sales comparison'",
-        "Choose from suggested chart types (bar, line, pie)",
-        "Copilot inserts a formatted chart you can customise further"
-      ]
-    }
-  ];
+  const StepCard = ({ number, title, description, tip, warning }) => (
+    <div className="flex gap-4 p-4 bg-white dark:bg-gray-800/50 rounded-lg border border-gray-200 dark:border-gray-700">
+      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center text-white font-bold text-lg shadow-md">
+        {number}
+      </div>
+      <div className="flex-1 space-y-2">
+        <h4 className="font-semibold text-foreground">{title}</h4>
+        <p className="text-sm text-muted-foreground">{description}</p>
+        {tip && (
+          <div className="flex items-start gap-2 mt-2 p-2 bg-blue-50 dark:bg-blue-950/30 rounded-md">
+            <Lightbulb className="w-4 h-4 text-blue-500 flex-shrink-0 mt-0.5" />
+            <p className="text-xs text-blue-700 dark:text-blue-300">{tip}</p>
+          </div>
+        )}
+        {warning && (
+          <div className="flex items-start gap-2 mt-2 p-2 bg-amber-50 dark:bg-amber-950/30 rounded-md">
+            <AlertCircle className="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5" />
+            <p className="text-xs text-amber-700 dark:text-amber-300">{warning}</p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+
+  const LocationCallout = ({ icon: Icon, location, color = "purple" }) => (
+    <div className={`inline-flex items-center gap-2 px-3 py-1.5 bg-${color}-100 dark:bg-${color}-900/30 rounded-full text-sm font-medium text-${color}-700 dark:text-${color}-300`}>
+      <Icon className="w-4 h-4" />
+      <span>{location}</span>
+    </div>
+  );
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -256,230 +158,589 @@ Key Topics:
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
-        {/* Section 1: Copilot in Teams Basics */}
-        <section className="mb-10">
-          <Card className="border-2 border-purple-200 shadow-card">
+        {/* Section 1: Copilot in Teams */}
+        <section className="mb-12">
+          <Card className="border-2 border-purple-200 shadow-card overflow-hidden">
             <CardHeader className="bg-gradient-to-r from-purple-50 to-indigo-50 dark:from-purple-950/30 dark:to-indigo-950/30">
               <div className="flex items-center gap-3">
-                <div className="p-2 bg-purple-100 dark:bg-purple-900 rounded-lg">
-                  <MessageSquare className="w-6 h-6 text-purple-600" />
+                <div className="p-3 bg-purple-100 dark:bg-purple-900 rounded-xl">
+                  <MessageSquare className="w-7 h-7 text-purple-600" />
                 </div>
                 <div>
-                  <CardTitle className="text-xl">How to Use Copilot in Teams</CardTitle>
-                  <CardDescription>Your AI assistant, right where you work</CardDescription>
+                  <CardTitle className="text-2xl">How to Use Copilot in Teams</CardTitle>
+                  <CardDescription className="text-base">Your AI assistant, right where you work</CardDescription>
                 </div>
               </div>
             </CardHeader>
-            <CardContent className="pt-6 space-y-4">
-              {teamsBasics.map((item, idx) => (
-                <CollapsibleSection key={idx} title={item.title} icon={item.icon} defaultOpen={idx === 0}>
-                  <div className="bg-purple-50 dark:bg-purple-950/30 p-4 rounded-lg">
-                    <ol className="space-y-2">
-                      {item.steps.map((step, stepIdx) => (
-                        <li key={stepIdx} className="flex items-start gap-3">
-                          <span className="flex-shrink-0 w-6 h-6 bg-purple-200 dark:bg-purple-800 rounded-full flex items-center justify-center text-sm font-semibold text-purple-700 dark:text-purple-300">
-                            {stepIdx + 1}
-                          </span>
-                          <span className="text-sm text-muted-foreground pt-0.5">{step}</span>
-                        </li>
-                      ))}
-                    </ol>
+            <CardContent className="pt-6 space-y-6">
+              {/* Video Tutorial */}
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="font-semibold mb-3 flex items-center gap-2">
+                    <Play className="w-4 h-4 text-purple-500" />
+                    Watch: Copilot in Teams Tutorial
+                  </h4>
+                  <VideoEmbed videoId={videoTutorials.teams.videoId} title={videoTutorials.teams.title} />
+                </div>
+                <div className="space-y-4">
+                  <div className="p-4 bg-purple-50 dark:bg-purple-950/30 rounded-lg border border-purple-200">
+                    <h4 className="font-semibold mb-2 flex items-center gap-2">
+                      <MousePointer className="w-4 h-4 text-purple-600" />
+                      Where to Find Copilot
+                    </h4>
+                    <ul className="space-y-2 text-sm text-muted-foreground">
+                      <li className="flex items-start gap-2">
+                        <span className="text-purple-500 font-bold">→</span>
+                        <span><strong>New Teams:</strong> Look for the <span className="bg-purple-100 px-1.5 py-0.5 rounded text-purple-700 font-mono text-xs">✨ Copilot</span> icon in the <strong>top-right corner</strong> of the Teams window</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-purple-500 font-bold">→</span>
+                        <span><strong>In Meetings:</strong> Find the Copilot button in the <strong>meeting toolbar</strong> at the top of your meeting window</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-purple-500 font-bold">→</span>
+                        <span><strong>In Chats:</strong> Open any chat and click Copilot to get summaries or ask questions about the conversation</span>
+                      </li>
+                    </ul>
                   </div>
-                </CollapsibleSection>
-              ))}
+                </div>
+              </div>
+
+              {/* Detailed Steps */}
+              <div>
+                <h4 className="font-semibold mb-4 text-lg">Step-by-Step: Access Copilot in Teams</h4>
+                <div className="space-y-3">
+                  <StepCard 
+                    number="1" 
+                    title="Open Microsoft Teams"
+                    description="Launch the Teams desktop app or open Teams in your web browser. Make sure you're signed in with your G-Ex account."
+                    tip="Use the desktop app for the best experience - it's faster and more reliable than the web version."
+                  />
+                  <StepCard 
+                    number="2" 
+                    title="Locate the Copilot Icon"
+                    description="In the new Teams interface, look at the top-right corner of your window. You'll see a sparkle icon (✨) - this is Copilot. In older versions, it may be in the left sidebar."
+                    tip="Can't see the icon? Your admin may need to enable Copilot for your account."
+                  />
+                  <StepCard 
+                    number="3" 
+                    title="Open the Copilot Panel"
+                    description="Click the Copilot icon to open a side panel on the right. This is your AI assistant chat window where you can type questions or requests."
+                  />
+                  <StepCard 
+                    number="4" 
+                    title="Start Chatting"
+                    description="Type your request in natural language. Try: 'Summarise my unread messages' or 'What meetings do I have today?' or 'Help me draft a message to my team about the project update.'"
+                    tip="Be specific! Instead of 'Help me write an email', try 'Help me write a professional email to John about rescheduling our Friday meeting to Monday.'"
+                  />
+                </div>
+              </div>
+
+              {/* Using Copilot in Meetings */}
+              <div className="border-t pt-6">
+                <h4 className="font-semibold mb-4 text-lg">Using Copilot During Meetings</h4>
+                <div className="space-y-3">
+                  <StepCard 
+                    number="1" 
+                    title="Join Your Meeting"
+                    description="Join or start a Teams meeting as usual. Copilot works with both scheduled meetings and ad-hoc calls."
+                  />
+                  <StepCard 
+                    number="2" 
+                    title="Enable Transcription (Required)"
+                    description="For Copilot to work in meetings, transcription must be on. Click the '...' (More actions) button, then 'Record and transcribe' → 'Start transcription'. All participants will be notified."
+                    warning="Without transcription, Copilot can't 'hear' the meeting and won't be able to help."
+                  />
+                  <StepCard 
+                    number="3" 
+                    title="Open Copilot"
+                    description="Click the Copilot icon in the meeting toolbar. A panel will open on the right side of your meeting window."
+                  />
+                  <StepCard 
+                    number="4" 
+                    title="Ask Questions"
+                    description="Try these powerful prompts during your meeting:"
+                    tip="'What have I missed?' • 'Summarise the discussion so far' • 'What action items have been mentioned?' • 'What questions are still unresolved?'"
+                  />
+                </div>
+              </div>
             </CardContent>
           </Card>
         </section>
 
-        {/* Section 2: Meeting Recording & Assistant */}
-        <section className="mb-10">
-          <Card className="border-2 border-blue-200 shadow-card">
+        {/* Section 2: Meeting Recording & Recap */}
+        <section className="mb-12">
+          <Card className="border-2 border-blue-200 shadow-card overflow-hidden">
             <CardHeader className="bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30">
               <div className="flex items-center gap-3">
-                <div className="p-2 bg-blue-100 dark:bg-blue-900 rounded-lg">
-                  <Video className="w-6 h-6 text-blue-600" />
+                <div className="p-3 bg-blue-100 dark:bg-blue-900 rounded-xl">
+                  <Video className="w-7 h-7 text-blue-600" />
                 </div>
                 <div>
-                  <CardTitle className="text-xl">Meeting Recording & AI Assistant</CardTitle>
-                  <CardDescription>Never miss important details from your meetings</CardDescription>
+                  <CardTitle className="text-2xl">Meeting Recording & AI Recap</CardTitle>
+                  <CardDescription className="text-base">Never miss important details from your meetings</CardDescription>
                 </div>
               </div>
             </CardHeader>
-            <CardContent className="pt-6 space-y-4">
-              {meetingRecording.map((item, idx) => (
-                <CollapsibleSection key={idx} title={item.title} icon={item.icon} defaultOpen={idx === 0}>
-                  <div className="bg-blue-50 dark:bg-blue-950/30 p-4 rounded-lg">
-                    <ol className="space-y-2">
-                      {item.steps.map((step, stepIdx) => (
-                        <li key={stepIdx} className="flex items-start gap-3">
-                          <span className="flex-shrink-0 w-6 h-6 bg-blue-200 dark:bg-blue-800 rounded-full flex items-center justify-center text-sm font-semibold text-blue-700 dark:text-blue-300">
-                            {stepIdx + 1}
-                          </span>
-                          <span className="text-sm text-muted-foreground pt-0.5">{step}</span>
-                        </li>
-                      ))}
-                    </ol>
-                  </div>
-                </CollapsibleSection>
-              ))}
+            <CardContent className="pt-6 space-y-6">
+              {/* Key Feature Callouts */}
+              <div className="grid sm:grid-cols-3 gap-4">
+                <div className="p-4 bg-blue-50 dark:bg-blue-950/30 rounded-lg text-center">
+                  <Mic className="w-8 h-8 text-blue-500 mx-auto mb-2" />
+                  <h5 className="font-semibold text-sm">Live Transcription</h5>
+                  <p className="text-xs text-muted-foreground mt-1">Real-time text of everything said</p>
+                </div>
+                <div className="p-4 bg-blue-50 dark:bg-blue-950/30 rounded-lg text-center">
+                  <ListChecks className="w-8 h-8 text-blue-500 mx-auto mb-2" />
+                  <h5 className="font-semibold text-sm">AI-Generated Notes</h5>
+                  <p className="text-xs text-muted-foreground mt-1">Automatic action items & decisions</p>
+                </div>
+                <div className="p-4 bg-blue-50 dark:bg-blue-950/30 rounded-lg text-center">
+                  <Clock className="w-8 h-8 text-blue-500 mx-auto mb-2" />
+                  <h5 className="font-semibold text-sm">Intelligent Recap</h5>
+                  <p className="text-xs text-muted-foreground mt-1">Chapters, highlights & summaries</p>
+                </div>
+              </div>
+
+              {/* How to Record */}
+              <div>
+                <h4 className="font-semibold mb-4 text-lg">How to Record & Transcribe Meetings</h4>
+                <div className="space-y-3">
+                  <StepCard 
+                    number="1" 
+                    title="Start or Join Your Meeting"
+                    description="Open your scheduled meeting or start an instant meeting in Teams."
+                  />
+                  <StepCard 
+                    number="2" 
+                    title="Click 'More Actions' (⋯)"
+                    description="In the meeting toolbar at the top, find and click the three dots '...' menu (More actions)."
+                  />
+                  <StepCard 
+                    number="3" 
+                    title="Select 'Record and Transcribe'"
+                    description="From the dropdown menu, hover over 'Record and transcribe', then click 'Start recording'. This automatically starts both recording and transcription."
+                    tip="You can also start transcription without recording if you just want the text transcript."
+                  />
+                  <StepCard 
+                    number="4" 
+                    title="Confirm Recording Has Started"
+                    description="A red recording indicator will appear in the meeting. All participants will see a notification that the meeting is being recorded and transcribed."
+                    warning="Always inform participants that the meeting is being recorded. This is both courteous and often legally required."
+                  />
+                </div>
+              </div>
+
+              {/* Intelligent Recap */}
+              <div className="border-t pt-6">
+                <h4 className="font-semibold mb-4 text-lg">Using the Intelligent Meeting Recap</h4>
+                <div className="space-y-3">
+                  <StepCard 
+                    number="1" 
+                    title="Wait for Processing"
+                    description="After your meeting ends, Teams needs a few minutes to process the recording and generate the AI recap. You'll receive a notification when it's ready."
+                  />
+                  <StepCard 
+                    number="2" 
+                    title="Open the Meeting Recap"
+                    description="Go to your Teams Calendar, find the meeting, and click to open it. Select the 'Recap' tab to see AI-generated content."
+                  />
+                  <StepCard 
+                    number="3" 
+                    title="Review AI-Generated Content"
+                    description="The Recap includes: Summary of key topics discussed, Chapters with timestamps for easy navigation, Action items extracted from the conversation, and notes organised by speaker."
+                    tip="Click on any chapter to jump directly to that part of the recording!"
+                  />
+                  <StepCard 
+                    number="4" 
+                    title="Share with Your Team"
+                    description="Use the Share button to send the recap to colleagues who couldn't attend. They'll get the summary, transcript, and recording link."
+                  />
+                </div>
+              </div>
             </CardContent>
           </Card>
         </section>
 
         {/* Section 3: Copilot in Outlook */}
-        <section className="mb-10">
-          <Card className="border-2 border-amber-200 shadow-card">
+        <section className="mb-12">
+          <Card className="border-2 border-amber-200 shadow-card overflow-hidden">
             <CardHeader className="bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30">
               <div className="flex items-center gap-3">
-                <div className="p-2 bg-amber-100 dark:bg-amber-900 rounded-lg">
-                  <Mail className="w-6 h-6 text-amber-600" />
+                <div className="p-3 bg-amber-100 dark:bg-amber-900 rounded-xl">
+                  <Mail className="w-7 h-7 text-amber-600" />
                 </div>
                 <div>
-                  <CardTitle className="text-xl">Copilot in Outlook</CardTitle>
-                  <CardDescription>Master your inbox with AI assistance</CardDescription>
+                  <CardTitle className="text-2xl">Copilot in Outlook</CardTitle>
+                  <CardDescription className="text-base">Master your inbox with AI assistance</CardDescription>
                 </div>
               </div>
             </CardHeader>
-            <CardContent className="pt-6 space-y-4">
-              {outlookTips.map((tip, idx) => (
-                <CollapsibleSection key={idx} title={tip.title} icon={tip.icon} defaultOpen={idx === 0}>
-                  <div className="bg-amber-50 dark:bg-amber-950/30 p-4 rounded-lg">
-                    <p className="text-sm text-muted-foreground mb-3 italic">{tip.description}</p>
-                    <ol className="space-y-2">
-                      {tip.steps.map((step, stepIdx) => (
-                        <li key={stepIdx} className="flex items-start gap-3">
-                          <span className="flex-shrink-0 w-6 h-6 bg-amber-200 dark:bg-amber-800 rounded-full flex items-center justify-center text-sm font-semibold text-amber-700 dark:text-amber-300">
-                            {stepIdx + 1}
-                          </span>
-                          <span className="text-sm text-muted-foreground pt-0.5">{step}</span>
-                        </li>
-                      ))}
-                    </ol>
+            <CardContent className="pt-6 space-y-6">
+              {/* Video Tutorial */}
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="font-semibold mb-3 flex items-center gap-2">
+                    <Play className="w-4 h-4 text-amber-500" />
+                    Watch: Copilot in Outlook Tutorial
+                  </h4>
+                  <VideoEmbed videoId={videoTutorials.outlook.videoId} title={videoTutorials.outlook.title} />
+                </div>
+                <div className="space-y-4">
+                  <div className="p-4 bg-amber-50 dark:bg-amber-950/30 rounded-lg border border-amber-200">
+                    <h4 className="font-semibold mb-2">Three Ways Copilot Helps in Outlook</h4>
+                    <div className="space-y-3">
+                      <div className="flex items-start gap-2">
+                        <PenLine className="w-5 h-5 text-amber-600 flex-shrink-0" />
+                        <div>
+                          <p className="font-medium text-sm">Draft Emails</p>
+                          <p className="text-xs text-muted-foreground">Generate professional emails from a simple description</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <Eye className="w-5 h-5 text-amber-600 flex-shrink-0" />
+                        <div>
+                          <p className="font-medium text-sm">Summarise Threads</p>
+                          <p className="text-xs text-muted-foreground">Get the key points from long email conversations</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <MessageSquare className="w-5 h-5 text-amber-600 flex-shrink-0" />
+                        <div>
+                          <p className="font-medium text-sm">Coach Your Tone</p>
+                          <p className="text-xs text-muted-foreground">Get feedback on clarity, tone, and sentiment</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </CollapsibleSection>
-              ))}
+                </div>
+              </div>
+
+              {/* Tip 1: Draft Emails */}
+              <div className="border-t pt-6">
+                <h4 className="font-semibold mb-4 text-lg flex items-center gap-2">
+                  <span className="bg-amber-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm">1</span>
+                  Drafting Emails with Copilot
+                </h4>
+                <div className="space-y-3">
+                  <StepCard 
+                    number="1" 
+                    title="Click 'New Email'"
+                    description="In Outlook, click 'New Email' or 'New Mail' to start composing a new message."
+                  />
+                  <StepCard 
+                    number="2" 
+                    title="Find the Copilot Icon"
+                    description="Look for the Copilot icon (✨) in the email composition toolbar. In the new Outlook, it's prominently displayed above your email."
+                  />
+                  <StepCard 
+                    number="3" 
+                    title="Select 'Draft with Copilot'"
+                    description="Click the Copilot icon and choose 'Draft with Copilot' or simply 'Draft' from the menu."
+                  />
+                  <StepCard 
+                    number="4" 
+                    title="Describe What You Need"
+                    description="Type a description of the email you want. Be specific about the recipient, purpose, and tone."
+                    tip="Example: 'Write a polite follow-up email to Sarah thanking her for yesterday's meeting and confirming our next steps for the project launch.'"
+                  />
+                  <StepCard 
+                    number="5" 
+                    title="Review and Refine"
+                    description="Copilot generates a draft. You can: Accept it as-is, Regenerate for a different version, Adjust the tone (formal, casual, direct), or Make it longer/shorter."
+                  />
+                </div>
+              </div>
+
+              {/* Tip 2: Summarise Threads */}
+              <div className="border-t pt-6">
+                <h4 className="font-semibold mb-4 text-lg flex items-center gap-2">
+                  <span className="bg-amber-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm">2</span>
+                  Summarising Long Email Threads
+                </h4>
+                <div className="space-y-3">
+                  <StepCard 
+                    number="1" 
+                    title="Open the Email Thread"
+                    description="Click on the email conversation you want to catch up on. This works best with threads that have multiple replies."
+                  />
+                  <StepCard 
+                    number="2" 
+                    title="Look for 'Summary by Copilot'"
+                    description="At the top of the email thread, you should see a 'Summary by Copilot' option or a Copilot icon. Click it."
+                  />
+                  <StepCard 
+                    number="3" 
+                    title="Review the Summary"
+                    description="Copilot provides: Key points from the conversation, Decisions that were made, Action items assigned to people, and Important dates or deadlines mentioned."
+                    tip="Use the summary to quickly understand the context before responding, especially if you've been CC'd on a long thread!"
+                  />
+                </div>
+              </div>
+
+              {/* Tip 3: Coaching */}
+              <div className="border-t pt-6">
+                <h4 className="font-semibold mb-4 text-lg flex items-center gap-2">
+                  <span className="bg-amber-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm">3</span>
+                  Coaching Your Email Tone
+                </h4>
+                <div className="space-y-3">
+                  <StepCard 
+                    number="1" 
+                    title="Draft Your Email"
+                    description="Write your email as you normally would, or use Copilot to generate a draft first."
+                  />
+                  <StepCard 
+                    number="2" 
+                    title="Select Your Text"
+                    description="Highlight the email text you want Copilot to review."
+                  />
+                  <StepCard 
+                    number="3" 
+                    title="Click 'Coaching by Copilot'"
+                    description="Click the Copilot icon and select 'Coaching by Copilot' or look for the coaching option."
+                  />
+                  <StepCard 
+                    number="4" 
+                    title="Review Feedback"
+                    description="Copilot analyses your email and provides suggestions for: Tone (too formal? too casual?), Clarity (is your message clear?), Sentiment (how might the reader feel?), and Reader impact."
+                    tip="This is especially useful for sensitive emails - get a 'second opinion' before you send!"
+                  />
+                </div>
+              </div>
             </CardContent>
           </Card>
         </section>
 
-        {/* Section 4: Copilot vs ChatGPT - Security */}
-        <section className="mb-10">
-          <Card className="border-2 border-green-200 shadow-card">
+        {/* Section 4: Copilot vs ChatGPT Security */}
+        <section className="mb-12">
+          <Card className="border-2 border-green-200 shadow-card overflow-hidden">
             <CardHeader className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-950/30 dark:to-emerald-950/30">
               <div className="flex items-center gap-3">
-                <div className="p-2 bg-green-100 dark:bg-green-900 rounded-lg">
-                  <Shield className="w-6 h-6 text-green-600" />
+                <div className="p-3 bg-green-100 dark:bg-green-900 rounded-xl">
+                  <Shield className="w-7 h-7 text-green-600" />
                 </div>
                 <div>
-                  <CardTitle className="text-xl">Copilot in Teams: Your Secure ChatGPT Alternative</CardTitle>
-                  <CardDescription>All the power of AI, with enterprise-grade security</CardDescription>
+                  <CardTitle className="text-2xl">Copilot vs ChatGPT: Security Matters</CardTitle>
+                  <CardDescription className="text-base">Why Copilot in Teams is your secure AI choice</CardDescription>
                 </div>
               </div>
             </CardHeader>
-            <CardContent className="pt-6">
-              <div className="grid gap-4 mb-6">
-                {copilotVsChatGPT.points.map((point, idx) => (
-                  <div key={idx} className="flex items-start gap-3 p-3 bg-green-50 dark:bg-green-950/30 rounded-lg">
+            <CardContent className="pt-6 space-y-6">
+              {/* Comparison Table */}
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b-2 border-green-200">
+                      <th className="text-left py-3 px-4 font-semibold">Feature</th>
+                      <th className="text-center py-3 px-4 font-semibold text-green-600">
+                        <div className="flex items-center justify-center gap-1">
+                          <Shield className="w-4 h-4" />
+                          Copilot in Teams
+                        </div>
+                      </th>
+                      <th className="text-center py-3 px-4 font-semibold text-gray-500">ChatGPT (Free)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="border-b">
+                      <td className="py-3 px-4">Data stays in G-Ex security boundary</td>
+                      <td className="py-3 px-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 mx-auto" /></td>
+                      <td className="py-3 px-4 text-center text-red-500">✗</td>
+                    </tr>
+                    <tr className="border-b bg-gray-50 dark:bg-gray-800/30">
+                      <td className="py-3 px-4">Your prompts NOT used to train AI</td>
+                      <td className="py-3 px-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 mx-auto" /></td>
+                      <td className="py-3 px-4 text-center text-red-500">✗</td>
+                    </tr>
+                    <tr className="border-b">
+                      <td className="py-3 px-4">Covered by Microsoft 365 compliance</td>
+                      <td className="py-3 px-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 mx-auto" /></td>
+                      <td className="py-3 px-4 text-center text-red-500">✗</td>
+                    </tr>
+                    <tr className="border-b bg-gray-50 dark:bg-gray-800/30">
+                      <td className="py-3 px-4">Access to your emails, files & chats</td>
+                      <td className="py-3 px-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 mx-auto" /></td>
+                      <td className="py-3 px-4 text-center text-red-500">✗</td>
+                    </tr>
+                    <tr className="border-b">
+                      <td className="py-3 px-4">Audit trail & data retention</td>
+                      <td className="py-3 px-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 mx-auto" /></td>
+                      <td className="py-3 px-4 text-center text-red-500">✗</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              {/* Key Security Points */}
+              <div className="grid sm:grid-cols-2 gap-4">
+                {[
+                  {
+                    title: "Your Data Stays Protected",
+                    description: "Copilot operates within Microsoft's secure enterprise environment. Your conversations and data never leave the G-Ex security boundary."
+                  },
+                  {
+                    title: "No Training on Your Data",
+                    description: "Microsoft doesn't use your prompts or company data to train AI models. With ChatGPT free tier, your inputs may be used for improvement."
+                  },
+                  {
+                    title: "Compliance & Audit Ready",
+                    description: "Copilot is covered by our existing Microsoft 365 compliance policies, including data retention and audit capabilities."
+                  },
+                  {
+                    title: "Access to Company Context",
+                    description: "Copilot can safely reference your emails, documents, and chats to provide relevant answers - ChatGPT can't do this securely."
+                  }
+                ].map((point, idx) => (
+                  <div key={idx} className="flex items-start gap-3 p-4 bg-green-50 dark:bg-green-950/30 rounded-lg">
                     <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                     <div>
-                      <h4 className="font-semibold text-sm">{point.heading}</h4>
-                      <p className="text-sm text-muted-foreground">{point.description}</p>
+                      <h4 className="font-semibold text-sm">{point.title}</h4>
+                      <p className="text-sm text-muted-foreground mt-1">{point.description}</p>
                     </div>
                   </div>
                 ))}
               </div>
-              
-              <CollapsibleSection title="How to Use Copilot as Your ChatGPT Replacement" icon={Sparkles} defaultOpen={true}>
-                <div className="bg-green-50 dark:bg-green-950/30 p-4 rounded-lg">
-                  <ol className="space-y-2">
-                    {copilotVsChatGPT.howToUse.map((step, idx) => (
-                      <li key={idx} className="flex items-start gap-3">
-                        <span className="flex-shrink-0 w-6 h-6 bg-green-200 dark:bg-green-800 rounded-full flex items-center justify-center text-sm font-semibold text-green-700 dark:text-green-300">
-                          {idx + 1}
-                        </span>
-                        <span className="text-sm text-muted-foreground pt-0.5">{step}</span>
-                      </li>
-                    ))}
-                  </ol>
+
+              {/* How to Use as ChatGPT Replacement */}
+              <div className="border-t pt-6">
+                <h4 className="font-semibold mb-4 text-lg">How to Use Copilot as Your ChatGPT Replacement</h4>
+                <div className="space-y-3">
+                  <StepCard 
+                    number="1" 
+                    title="Open Copilot in Teams"
+                    description="Click the Copilot icon in the top-right corner of Teams (or in the left sidebar in older versions)."
+                  />
+                  <StepCard 
+                    number="2" 
+                    title="Chat Like You Would with ChatGPT"
+                    description="Ask anything you'd normally ask ChatGPT: brainstorm ideas, explain concepts, draft content, summarise information, or get help with writing."
+                    tip="Try: 'Help me prepare talking points for tomorrow's client presentation about our Q3 results.'"
+                  />
+                  <StepCard 
+                    number="3" 
+                    title="Use for Sensitive Work with Confidence"
+                    description="Unlike ChatGPT, you can discuss internal projects, client names, and business strategies knowing your data is protected within the Microsoft 365 security boundary."
+                  />
                 </div>
-              </CollapsibleSection>
+              </div>
             </CardContent>
           </Card>
         </section>
 
         {/* Section 5: Word and Excel */}
-        <section className="mb-10">
-          <div className="grid md:grid-cols-2 gap-6">
-            {/* Word Tips */}
-            <Card className="border-2 border-indigo-200 shadow-card">
+        <section className="mb-12">
+          <div className="grid lg:grid-cols-2 gap-6">
+            {/* Word */}
+            <Card className="border-2 border-indigo-200 shadow-card overflow-hidden">
               <CardHeader className="bg-gradient-to-r from-indigo-50 to-violet-50 dark:from-indigo-950/30 dark:to-violet-950/30">
                 <div className="flex items-center gap-3">
                   <div className="p-2 bg-indigo-100 dark:bg-indigo-900 rounded-lg">
                     <FileText className="w-6 h-6 text-indigo-600" />
                   </div>
                   <div>
-                    <CardTitle className="text-lg">Copilot in Word</CardTitle>
+                    <CardTitle className="text-xl">Copilot in Word</CardTitle>
                     <CardDescription>Create documents faster</CardDescription>
                   </div>
                 </div>
               </CardHeader>
-              <CardContent className="pt-4 space-y-3">
-                {wordTips.map((tip, idx) => (
-                  <CollapsibleSection key={idx} title={tip.title} icon={tip.icon} defaultOpen={idx === 0}>
-                    <div className="bg-indigo-50 dark:bg-indigo-950/30 p-3 rounded-lg">
-                      <ol className="space-y-2">
-                        {tip.steps.map((step, stepIdx) => (
-                          <li key={stepIdx} className="flex items-start gap-2">
-                            <span className="flex-shrink-0 w-5 h-5 bg-indigo-200 dark:bg-indigo-800 rounded-full flex items-center justify-center text-xs font-semibold text-indigo-700 dark:text-indigo-300">
-                              {stepIdx + 1}
-                            </span>
-                            <span className="text-xs text-muted-foreground pt-0.5">{step}</span>
-                          </li>
-                        ))}
-                      </ol>
+              <CardContent className="pt-4 space-y-4">
+                {/* Video */}
+                <VideoEmbed videoId={videoTutorials.word.videoId} title={videoTutorials.word.title} />
+                
+                {/* Tips */}
+                <div className="space-y-4 mt-4">
+                  <CollapsibleSection title="Draft Documents from Scratch" icon={PenLine} defaultOpen={true}>
+                    <div className="space-y-2 text-sm">
+                      <p className="flex items-start gap-2"><span className="font-bold text-indigo-500">1.</span> Open a new Word document</p>
+                      <p className="flex items-start gap-2"><span className="font-bold text-indigo-500">2.</span> Click the <span className="bg-indigo-100 px-1.5 rounded font-mono text-xs">Copilot</span> icon in the Home ribbon</p>
+                      <p className="flex items-start gap-2"><span className="font-bold text-indigo-500">3.</span> Describe what you need: <em>"Create a project proposal for a new inventory system"</em></p>
+                      <p className="flex items-start gap-2"><span className="font-bold text-indigo-500">4.</span> Review and personalise the generated draft</p>
+                      <div className="mt-2 p-2 bg-indigo-50 rounded text-xs">
+                        <strong>💡 Tip:</strong> You can reference existing files: "Create a summary based on the Q3 report in my OneDrive"
+                      </div>
                     </div>
                   </CollapsibleSection>
-                ))}
+
+                  <CollapsibleSection title="Rewrite & Improve Text" icon={Settings} defaultOpen={false}>
+                    <div className="space-y-2 text-sm">
+                      <p className="flex items-start gap-2"><span className="font-bold text-indigo-500">1.</span> Select the text you want to improve</p>
+                      <p className="flex items-start gap-2"><span className="font-bold text-indigo-500">2.</span> Click the Copilot icon that appears</p>
+                      <p className="flex items-start gap-2"><span className="font-bold text-indigo-500">3.</span> Choose 'Rewrite' and select your preferred tone</p>
+                      <p className="flex items-start gap-2"><span className="font-bold text-indigo-500">4.</span> Pick from: Professional, Casual, Concise, or Imaginative</p>
+                    </div>
+                  </CollapsibleSection>
+
+                  <CollapsibleSection title="Summarise Long Documents" icon={ListChecks} defaultOpen={false}>
+                    <div className="space-y-2 text-sm">
+                      <p className="flex items-start gap-2"><span className="font-bold text-indigo-500">1.</span> Open a lengthy document</p>
+                      <p className="flex items-start gap-2"><span className="font-bold text-indigo-500">2.</span> Click Copilot and ask: <em>"Summarise this document in 5 key points"</em></p>
+                      <p className="flex items-start gap-2"><span className="font-bold text-indigo-500">3.</span> Follow up: <em>"What are the main recommendations?"</em></p>
+                      <div className="mt-2 p-2 bg-indigo-50 rounded text-xs">
+                        <strong>💡 Tip:</strong> Copilot can summarise documents up to 80,000 words!
+                      </div>
+                    </div>
+                  </CollapsibleSection>
+                </div>
               </CardContent>
             </Card>
 
-            {/* Excel Tips */}
-            <Card className="border-2 border-teal-200 shadow-card">
+            {/* Excel */}
+            <Card className="border-2 border-teal-200 shadow-card overflow-hidden">
               <CardHeader className="bg-gradient-to-r from-teal-50 to-cyan-50 dark:from-teal-950/30 dark:to-cyan-950/30">
                 <div className="flex items-center gap-3">
                   <div className="p-2 bg-teal-100 dark:bg-teal-900 rounded-lg">
                     <Table className="w-6 h-6 text-teal-600" />
                   </div>
                   <div>
-                    <CardTitle className="text-lg">Copilot in Excel</CardTitle>
+                    <CardTitle className="text-xl">Copilot in Excel</CardTitle>
                     <CardDescription>Data analysis made easy</CardDescription>
                   </div>
                 </div>
               </CardHeader>
-              <CardContent className="pt-4 space-y-3">
-                {excelTips.map((tip, idx) => (
-                  <CollapsibleSection key={idx} title={tip.title} icon={tip.icon} defaultOpen={idx === 0}>
-                    <div className="bg-teal-50 dark:bg-teal-950/30 p-3 rounded-lg">
-                      <ol className="space-y-2">
-                        {tip.steps.map((step, stepIdx) => (
-                          <li key={stepIdx} className="flex items-start gap-2">
-                            <span className="flex-shrink-0 w-5 h-5 bg-teal-200 dark:bg-teal-800 rounded-full flex items-center justify-center text-xs font-semibold text-teal-700 dark:text-teal-300">
-                              {stepIdx + 1}
-                            </span>
-                            <span className="text-xs text-muted-foreground pt-0.5">{step}</span>
-                          </li>
-                        ))}
-                      </ol>
+              <CardContent className="pt-4 space-y-4">
+                {/* Video */}
+                <VideoEmbed videoId={videoTutorials.excel.videoId} title={videoTutorials.excel.title} />
+                
+                {/* Tips */}
+                <div className="space-y-4 mt-4">
+                  <CollapsibleSection title="Analyse Data with Natural Language" icon={Monitor} defaultOpen={true}>
+                    <div className="space-y-2 text-sm">
+                      <p className="flex items-start gap-2"><span className="font-bold text-teal-500">1.</span> Select your data table in Excel</p>
+                      <p className="flex items-start gap-2"><span className="font-bold text-teal-500">2.</span> Click <span className="bg-teal-100 px-1.5 rounded font-mono text-xs">Copilot</span> in the Home ribbon</p>
+                      <p className="flex items-start gap-2"><span className="font-bold text-teal-500">3.</span> Ask: <em>"What are the top 5 products by revenue?"</em></p>
+                      <p className="flex items-start gap-2"><span className="font-bold text-teal-500">4.</span> Copilot creates charts, insights, and highlights automatically</p>
                     </div>
                   </CollapsibleSection>
-                ))}
+
+                  <CollapsibleSection title="Get Help with Formulas" icon={Calculator} defaultOpen={false}>
+                    <div className="space-y-2 text-sm">
+                      <p className="flex items-start gap-2"><span className="font-bold text-teal-500">1.</span> Click in the cell where you need a formula</p>
+                      <p className="flex items-start gap-2"><span className="font-bold text-teal-500">2.</span> Ask Copilot: <em>"Calculate the percentage change between columns B and C"</em></p>
+                      <p className="flex items-start gap-2"><span className="font-bold text-teal-500">3.</span> Copilot suggests the formula (e.g., <code className="bg-gray-100 px-1 rounded">=(C2-B2)/B2</code>)</p>
+                      <p className="flex items-start gap-2"><span className="font-bold text-teal-500">4.</span> Click to insert and drag to apply to other rows</p>
+                      <div className="mt-2 p-2 bg-teal-50 rounded text-xs">
+                        <strong>💡 Tip:</strong> Ask "Explain this formula" to understand how any complex formula works!
+                      </div>
+                    </div>
+                  </CollapsibleSection>
+
+                  <CollapsibleSection title="Create Instant Visualisations" icon={Monitor} defaultOpen={false}>
+                    <div className="space-y-2 text-sm">
+                      <p className="flex items-start gap-2"><span className="font-bold text-teal-500">1.</span> Select your data range</p>
+                      <p className="flex items-start gap-2"><span className="font-bold text-teal-500">2.</span> Ask: <em>"Create a chart showing monthly sales comparison"</em></p>
+                      <p className="flex items-start gap-2"><span className="font-bold text-teal-500">3.</span> Choose from suggested chart types (bar, line, pie)</p>
+                      <p className="flex items-start gap-2"><span className="font-bold text-teal-500">4.</span> Refine: <em>"Add data labels and change colours"</em></p>
+                    </div>
+                  </CollapsibleSection>
+                </div>
               </CardContent>
             </Card>
           </div>
         </section>
 
         {/* Section 6: Next Steps */}
-        <section className="mb-10">
+        <section className="mb-12">
           <Card className="border-2 border-orange-300 bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-950/30 dark:to-amber-950/30 shadow-card">
             <CardHeader>
               <div className="flex items-center gap-3">
