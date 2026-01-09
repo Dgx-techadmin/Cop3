@@ -11,7 +11,7 @@ from datetime import datetime
 import sys
 
 # Configuration
-BACKEND_URL = "https://ai-learning-hub-168.preview.emergentagent.com"
+BACKEND_URL = "https://ai-champions.preview.emergentagent.com"
 API_BASE = f"{BACKEND_URL}/api"
 
 def test_quiz_submission_flow():

@@ -16,7 +16,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import axios from "axios";
 
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'https://ai-learning-hub-168.preview.emergentagent.com';
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'https://ai-champions.preview.emergentagent.com';
 
 export default function ChampionsToolkit() {
   const navigate = useNavigate();
@@ -462,7 +462,7 @@ export default function ChampionsToolkit() {
                     </p>
                     <Button 
                       className="bg-purple-600 hover:bg-purple-700"
-                      onClick={() => window.open('https://teams.microsoft.com/l/channel/19%3ASfeIXOxBLmN4dbhnEWHQIAoAeODJn-D-bIYcRdTXpy41%40thread.tacv2/DGX%20AI%20Champions?groupId=0cc858a6-324a-4584-8e62-e5c350c879a4&tenantId=f006084c-7ecb-4e39-a34b-bd4d32fa72ea', '_blank')}
+                      onClick={() => window.open('https://teams.microsoft.com/l/channel/19%3ASfeIXOxBLmN4dbhnEWHQIAoAeODJn-D-bIYcRdTXpy41%40thread.tacv2/DGX%20AI%20Champions?groupId=ai-champions&tenantId=ai-champions', '_blank')}
                     >
                       <MessageSquare className="w-4 h-4 mr-2" />
                       Join Channel
