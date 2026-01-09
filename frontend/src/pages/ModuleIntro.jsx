@@ -573,7 +573,7 @@ Key Topics:
                 <h3 className="text-xl font-bold">Ready for More?</h3>
               </div>
               <div className="grid sm:grid-cols-2 gap-4">
-                <Button variant="default" className="h-auto p-4 flex items-center justify-between bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700" onClick={() => navigate('/training/module-1')}>
+                <Button variant="default" className="h-auto p-4 flex items-center justify-between bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white" onClick={() => navigate('/training/module-1')}>
                   <div className="flex items-center gap-3"><BookOpen className="w-5 h-5" /><div className="text-left"><p className="font-semibold">Start Training Module 1</p><p className="text-xs opacity-90">AI Fundamentals & Strategy</p></div></div>
                   <ChevronRight className="w-5 h-5" />
                 </Button>
