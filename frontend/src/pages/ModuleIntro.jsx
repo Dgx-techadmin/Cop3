@@ -486,13 +486,14 @@ Key Topics:
             sectionNumber="5"
             title="Copilot in Word & Excel"
             subtitle="Create documents and analyse data faster"
-            icon={FileText}
+            iconImage={sectionIcons.wordexcel}
             iconBg="bg-indigo-100 dark:bg-indigo-900"
             iconColor="text-indigo-600"
             borderColor="border-indigo-200"
             gradientFrom="from-indigo-50"
             gradientTo="to-violet-50 dark:from-indigo-950/30 dark:to-violet-950/30"
-            defaultOpen={false}
+            isOpen={openSection === 5}
+            onToggle={() => handleToggle(5)}
           >
             <div className="grid lg:grid-cols-2 gap-6">
               {/* Word */}
