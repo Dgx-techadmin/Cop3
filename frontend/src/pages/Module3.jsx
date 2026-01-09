@@ -367,7 +367,7 @@ Key Topics:
                   <span>Sales & Marketing</span>
                 </CardTitle>
                 <CardDescription>
-                  Draft proposals, summarize emails, create campaigns, and analyze feedback
+                  Draft proposals, summarise emails, create campaigns, and analyse feedback
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-3">
