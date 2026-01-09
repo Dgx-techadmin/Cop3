@@ -78,6 +78,22 @@ const AccordionSection = ({
 
 export default function ModuleIntro() {
   const navigate = useNavigate();
+  
+  // State for accordion - only one section open at a time
+  const [openSection, setOpenSection] = useState(1); // Start with section 1 open
+  
+  // Toggle section - close others when opening one
+  const handleToggle = (sectionNum) => {
+    setOpenSection(openSection === sectionNum ? null : sectionNum);
+  };
+
+  // Custom icon images
+  const sectionIcons = {
+    teams: "https://customer-assets.emergentagent.com/job_ai-champions/artifacts/15jkgz2f_teams.png",
+    outlook: "https://customer-assets.emergentagent.com/job_ai-champions/artifacts/buo5sey1_outlook.png",
+    chatgpt: "https://customer-assets.emergentagent.com/job_ai-champions/artifacts/9bvlgjg3_ChatGPT.png",
+    wordexcel: "https://customer-assets.emergentagent.com/job_ai-champions/artifacts/rn5r8sye_wordexcel.png"
+  };
 
   const moduleContext = `This is the Intro & Quick Wins module - a quick start guide for using Microsoft Copilot.
 
