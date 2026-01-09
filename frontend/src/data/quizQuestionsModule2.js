@@ -61,15 +61,15 @@ export const quizQuestionsModule2 = [
   },
   {
     id: 6,
-    question: "A Marketing team member wants to analyze customer engagement. Which approach follows G-Ex policy?",
+    question: "A Marketing team member wants to analyse customer engagement. Which approach follows G-Ex policy?",
     options: [
-      "Use anonymized metrics only",
+      "Use anonymised metrics only",
       "Upload full customer database",
       "Input specific customer names",
       "Share customer contact list"
     ],
     correctAnswer: 0,
-    explanation: "Always use anonymized, aggregated data. Remove all PII (names, emails, contact info) before analysis. The policy strictly prohibits inputting any customer personal information."
+    explanation: "Always use anonymised, aggregated data. Remove all PII (names, emails, contact info) before analysis. The policy strictly prohibits inputting any customer personal information."
   },
   {
     id: 7,
