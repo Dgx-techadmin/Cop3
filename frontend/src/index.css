@@ -179,6 +179,28 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Subtle molecule background pattern */
+body {
+    background-image: url('https://customer-assets.emergentagent.com/job_ai-champions/artifacts/x0rf2rta_Molocule%20Logo.png');
+    background-repeat: repeat;
+    background-size: 180px;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Add a semi-transparent overlay to make the pattern subtle */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: hsl(var(--background) / 0.92);
+    pointer-events: none;
+    z-index: -1;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
     width: 10px;
