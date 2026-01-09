@@ -24,12 +24,12 @@ export default function Module3() {
 
 Key Topics:
 - Hands-on Copilot applications across departments
-- Sales & Marketing: Draft proposals, summarize emails, create campaigns, analyze customer feedback
-- Inventory Management: Predict stock needs, generate reorder lists, optimize warehouse operations
+- Sales & Marketing: Draft proposals, summarise emails, create campaigns, analyse customer feedback
+- Inventory Management: Predict stock needs, generate reorder lists, optimise warehouse operations
 - Customer Service: Create response templates, handle complaints, build FAQ responses
 - Leadership: Meeting summaries, strategic planning, performance reports
 - IT: Documentation, troubleshooting guides, system reports
-- Operations: Process optimization, SOPs, workflow automation
+- Operations: Process optimisation, SOPs, workflow automation
 - ChatGPT for brainstorming: Use for creative ideation WITHOUT company data
 - Effective prompting: Be specific, provide context, iterate for better results
 - Testing approach: Start with low-risk tasks, validate results, gradually expand
