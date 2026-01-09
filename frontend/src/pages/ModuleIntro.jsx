@@ -417,13 +417,14 @@ Key Topics:
             sectionNumber="4"
             title="Copilot vs ChatGPT: Security Matters"
             subtitle="Why Copilot in Teams is your secure AI choice"
-            icon={Shield}
+            iconImage={sectionIcons.chatgpt}
             iconBg="bg-green-100 dark:bg-green-900"
             iconColor="text-green-600"
             borderColor="border-green-200"
             gradientFrom="from-green-50"
             gradientTo="to-emerald-50 dark:from-green-950/30 dark:to-emerald-950/30"
-            defaultOpen={false}
+            isOpen={openSection === 4}
+            onToggle={() => handleToggle(4)}
           >
             <div className="space-y-6">
               {/* Comparison Table */}
