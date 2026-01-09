@@ -10,9 +10,22 @@ import {
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { CollapsibleSection } from "@/components/training/CollapsibleSection";
+import { ModuleAIExpert } from "@/components/training/ModuleAIExpert";
+import { ModuleTutorial } from "@/components/training/ModuleTutorial";
 
 export default function ModuleIntro() {
   const navigate = useNavigate();
+
+  const moduleContext = `This is the Intro & Quick Wins module - a quick start guide for using Microsoft Copilot.
+
+Key Topics:
+- How to access and use Copilot in Microsoft Teams
+- Setting up meeting recording and using the intelligent meeting recap
+- Using Copilot in Outlook: drafting emails, summarising threads, coaching tone
+- Why Copilot in Teams is more secure than ChatGPT (enterprise security, no data training, compliance)
+- Copilot in Word: drafting documents, rewriting text, summarising long documents
+- Copilot in Excel: analysing data with natural language, getting help with formulas, creating visualisations
+- This is a no-quiz introductory module designed for quick practical wins`;
 
   const teamsBasics = [
     {
