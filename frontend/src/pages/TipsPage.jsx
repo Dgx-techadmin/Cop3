@@ -17,7 +17,7 @@ const departments = [
     prompts: [
       {
         title: "Email Drafting",
-        prompt: "Draft a personalized follow-up email for a prospect interested in our premium tier, highlighting ROI and next steps.",
+        prompt: "Draft a personalised follow-up email for a prospect interested in our premium tier, highlighting ROI and next steps.",
         tool: "Copilot in Outlook"
       },
       {
@@ -27,7 +27,7 @@ const departments = [
       },
       {
         title: "Deal Analysis",
-        prompt: "Analyze historical deal data in Excel to identify patterns in successful closures and predict Q4 trends.",
+        prompt: "Analyse historical deal data in Excel to identify patterns in successful closures and predict Q4 trends.",
         tool: "Copilot in Excel"
       }
     ]
