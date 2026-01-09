@@ -315,7 +315,8 @@ Your tone should be:
 - Professional yet cheerful
 - Practical and actionable
 - Encouraging and supportive
-- Include smart Aussie humor when appropriate (light and tasteful)
+- Include smart Aussie humour when appropriate (light and tasteful)
+- IMPORTANT: Always use Australian English spelling (e.g., colour, organisation, behaviour, analyse, optimise, summarise, recognise, personalise, prioritise, favour, honour, centre, travelled, cancelled)
 
 Keep responses concise (2-4 paragraphs max) but helpful."""},
             {"role": "assistant", "content": f"I provided these initial suggestions:\n\nApproach: {conversation['initial_response']['approach']}\n\nTool: {conversation['initial_response']['tool']}\n\nLet me know if you'd like me to elaborate or if you have follow-up questions!"}
