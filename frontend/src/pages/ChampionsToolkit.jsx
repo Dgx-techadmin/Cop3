@@ -117,10 +117,10 @@ export default function ChampionsToolkit() {
       color: "purple",
       prompts: [
         { title: "Proposal Generator", prompt: "Draft a proposal for [CLIENT] highlighting how our [PRODUCT/SERVICE] addresses their [SPECIFIC NEED]. Include ROI projections and implementation timeline." },
-        { title: "Outreach Email", prompt: "Write a personalized outreach email to [PROSPECT NAME] at [COMPANY]. Reference their recent [NEWS/ACHIEVEMENT] and connect it to how we can help." },
+        { title: "Outreach Email", prompt: "Write a personalised outreach email to [PROSPECT NAME] at [COMPANY]. Reference their recent [NEWS/ACHIEVEMENT] and connect it to how we can help." },
         { title: "Follow-up Sequence", prompt: "Create a 3-email follow-up sequence for prospects who attended our [EVENT/DEMO]. Make each email progressively more value-focused." },
         { title: "Competitive Analysis", prompt: "Compare our [PRODUCT] against [COMPETITOR] focusing on features, pricing, and customer success stories." },
-        { title: "Meeting Prep", prompt: "Prepare me for a meeting with [CLIENT/PROSPECT]. Summarize their company, recent news, and potential pain points we can address." }
+        { title: "Meeting Prep", prompt: "Prepare me for a meeting with [CLIENT/PROSPECT]. Summarise their company, recent news, and potential pain points we can address." }
       ]
     },
     {
@@ -130,8 +130,8 @@ export default function ChampionsToolkit() {
       prompts: [
         { title: "Campaign Brief", prompt: "Create a campaign brief for [CAMPAIGN NAME] targeting [AUDIENCE]. Include objectives, key messages, channels, and KPIs." },
         { title: "Content Calendar", prompt: "Generate a month of social media content ideas for [PLATFORM] focusing on [THEME/PRODUCT]. Include post copy and hashtag suggestions." },
-        { title: "Analytics Summary", prompt: "Analyze this campaign data and summarize key insights: What worked, what didn't, and recommendations for next quarter." },
-        { title: "Blog Post Outline", prompt: "Create an SEO-optimized outline for a blog post about [TOPIC]. Include H2s, key points, and a compelling hook." },
+        { title: "Analytics Summary", prompt: "Analyse this campaign data and summarise key insights: What worked, what didn't, and recommendations for next quarter." },
+        { title: "Blog Post Outline", prompt: "Create an SEO-optimised outline for a blog post about [TOPIC]. Include H2s, key points, and a compelling hook." },
         { title: "A/B Test Ideas", prompt: "Suggest 5 A/B tests we could run on our [LANDING PAGE/EMAIL/AD] to improve [METRIC]." }
       ]
     },
@@ -141,7 +141,7 @@ export default function ChampionsToolkit() {
       color: "blue",
       prompts: [
         { title: "Process Documentation", prompt: "Document the [PROCESS NAME] workflow step-by-step. Include responsible parties, decision points, and expected timelines." },
-        { title: "Forecast Analysis", prompt: "Analyze this inventory/demand data and provide a 3-month forecast. Flag any potential stockouts or overstock situations." },
+        { title: "Forecast Analysis", prompt: "Analyse this inventory/demand data and provide a 3-month forecast. Flag any potential stockouts or overstock situations." },
         { title: "SOP Template", prompt: "Create a Standard Operating Procedure for [TASK/PROCESS]. Include purpose, scope, required materials, and step-by-step instructions." },
         { title: "Efficiency Report", prompt: "Review this operational data and identify the top 3 bottlenecks. Suggest specific improvements with estimated impact." },
         { title: "Vendor Comparison", prompt: "Compare these vendor quotes for [SERVICE/PRODUCT]. Create a decision matrix based on price, quality, reliability, and terms." }
@@ -156,7 +156,7 @@ export default function ChampionsToolkit() {
         { title: "FAQ Generator", prompt: "Based on our recent support tickets, generate an FAQ document with clear, helpful answers. Group by category." },
         { title: "Escalation Guide", prompt: "Create an escalation decision tree for [ISSUE TYPE]. Include when to escalate, to whom, and what information to include." },
         { title: "Customer Journey", prompt: "Map the customer journey for [SCENARIO]. Identify friction points and suggest improvements at each touchpoint." },
-        { title: "Sentiment Analysis", prompt: "Analyze this customer feedback and categorize by sentiment. Identify top 3 pain points and 3 praise areas." }
+        { title: "Sentiment Analysis", prompt: "Analyse this customer feedback and categorise by sentiment. Identify top 3 pain points and 3 praise areas." }
       ]
     },
     {
