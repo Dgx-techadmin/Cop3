@@ -146,7 +146,7 @@ Key Topics:
       examples: [
         {
           title: "Email Campaigns",
-          prompt: "Draft 5 personalized email templates for different customer segments (mining, exploration, labs) highlighting our Sample Bags' quality advantage."
+          prompt: "Draft 5 personalised email templates for different customer segments (mining, exploration, labs) highlighting our Sample Bags' quality advantage."
         },
         {
           title: "Teams Meeting Follow-up",
@@ -154,7 +154,7 @@ Key Topics:
         },
         {
           title: "Automated Lead Scoring",
-          prompt: "Ask Copilot in Excel: 'Analyze our leads from last quarter, score by engagement level, and highlight top 10 for immediate follow-up.'"
+          prompt: "Ask Copilot in Excel: 'Analyse our leads from last quarter, score by engagement level, and highlight top 10 for immediate follow-up.'"
         }
       ]
     },
@@ -163,7 +163,7 @@ Key Topics:
       icon: Settings,
       color: "bg-green-100",
       iconColor: "text-green-600",
-      description: "Streamline processes with automated documentation, meeting summaries, and workflow optimization.",
+      description: "Streamline processes with automated documentation, meeting summaries, and workflow optimisation.",
       examples: [
         {
           title: "SOP Automation",
