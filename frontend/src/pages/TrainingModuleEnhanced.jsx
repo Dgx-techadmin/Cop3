@@ -25,7 +25,7 @@ export default function TrainingModuleEnhanced() {
     },
     {
       title: "Great at pattern recognition and data analysis",
-      example: "Ask Copilot to 'analyze sales trends from the last 6 months' and it'll spot patterns you might miss in thousands of rows."
+      example: "Ask Copilot to 'analyse sales trends from the last 6 months' and it'll spot patterns you might miss in thousands of rows."
     },
     {
       title: "Helpful for drafting, summarizing, and brainstorming",
@@ -68,7 +68,7 @@ export default function TrainingModuleEnhanced() {
     globalEdge: [
       {
         title: "Multi-region Customer Insights",
-        description: "Use Copilot in Excel to analyze customer feedback across Australia, US, Canada, and identify regional preferences instantly."
+        description: "Use Copilot in Excel to analyse customer feedback across Australia, US, Canada, and identify regional preferences instantly."
       },
       {
         title: "24/7 Email Response",
@@ -76,13 +76,13 @@ export default function TrainingModuleEnhanced() {
       },
       {
         title: "Market Trend Analysis",
-        description: "Ask Copilot to analyze global mining trends and identify opportunities for expansion in new territories."
+        description: "Ask Copilot to analyse global mining trends and identify opportunities for expansion in new territories."
       }
     ],
     oneTeam: [
       {
         title: "Knowledge Sharing",
-        description: "Use Copilot in Teams to summarize key learnings from meetings and share with the entire organization instantly."
+        description: "Use Copilot in Teams to summarise key learnings from meetings and share with the entire organisation instantly."
       },
       {
         title: "Collaborative Documentation",
@@ -96,7 +96,7 @@ export default function TrainingModuleEnhanced() {
     stockSmart: [
       {
         title: "Predictive Inventory Management",
-        description: "Copilot in Excel analyzes historical data to predict which products (Core Trays, Sample Bags) will be in high demand next quarter."
+        description: "Copilot in Excel analyses historical data to predict which products (Core Trays, Sample Bags) will be in high demand next quarter."
       },
       {
         title: "Automated Reorder Alerts",
@@ -133,7 +133,7 @@ export default function TrainingModuleEnhanced() {
       examples: [
         {
           title: "Email Campaigns",
-          prompt: "Draft 5 personalized email templates for different customer segments (mining, exploration, labs) highlighting our Sample Bags' quality advantage."
+          prompt: "Draft 5 personalised email templates for different customer segments (mining, exploration, labs) highlighting our Sample Bags' quality advantage."
         },
         {
           title: "Teams Meeting Follow-up",
@@ -141,7 +141,7 @@ export default function TrainingModuleEnhanced() {
         },
         {
           title: "Automated Lead Scoring",
-          prompt: "Ask Copilot in Excel: 'Analyze our leads from last quarter, score by engagement level, and highlight top 10 for immediate follow-up.'"
+          prompt: "Ask Copilot in Excel: 'Analyse our leads from last quarter, score by engagement level, and highlight top 10 for immediate follow-up.'"
         }
       ]
     },
@@ -179,7 +179,7 @@ export default function TrainingModuleEnhanced() {
         },
         {
           title: "FAQ Generation from Tickets",
-          prompt: "Analyze last month's support tickets in Excel, identify top 5 recurring questions, and draft FAQ answers."
+          prompt: "Analyse last month's support tickets in Excel, identify top 5 recurring questions, and draft FAQ answers."
         },
         {
           title: "Teams Chat for Quick Resolutions",
@@ -200,7 +200,7 @@ export default function TrainingModuleEnhanced() {
         },
         {
           title: "Email Time Management",
-          prompt: "Use Copilot in Outlook to prioritize emails: 'Summarize unread emails and flag urgent items requiring immediate attention.'"
+          prompt: "Use Copilot in Outlook to prioritise emails: 'Summarise unread emails and flag urgent items requiring immediate attention.'"
         },
         {
           title: "Strategic Planning",
@@ -426,7 +426,7 @@ export default function TrainingModuleEnhanced() {
                       "Open Microsoft Teams (desktop or web)",
                       "Look for the Copilot icon in the left sidebar",
                       "Click the icon to open Copilot chat",
-                      "Ask questions like 'Summarize today's messages' or 'What action items do I have?'",
+                      "Ask questions like 'Summarise today's messages' or 'What action items do I have?'",
                       "During meetings, Copilot appears automatically to take notes"
                     ]}
                   />

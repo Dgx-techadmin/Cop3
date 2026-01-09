@@ -63,12 +63,12 @@ const quizQuestions = [
     question: "How can Customer Service use Microsoft Copilot most effectively?",
     options: [
       "To make all decisions automatically",
-      "To draft response templates and analyze ticket trends",
+      "To draft response templates and analyse ticket trends",
       "To replace customer service staff",
       "To store customer passwords"
     ],
     correctAnswer: 1,
-    explanation: "Copilot helps draft empathetic responses, analyze common issues, and speed up support – but humans remain essential for customer relationships."
+    explanation: "Copilot helps draft empathetic responses, analyse common issues, and speed up support – but humans remain essential for customer relationships."
   }
 ];
 
@@ -243,7 +243,7 @@ export default function TrainingModule() {
                     <p className="text-sm text-muted-foreground">Share knowledge and best practices instantly, collaborate better, and work as a unified force.</p>
                   </div>
                   <div className="bg-muted/50 rounded-lg p-4">
-                    <h4 className="font-semibold text-foreground mb-2">📦 Optimize STOCKSMART</h4>
+                    <h4 className="font-semibold text-foreground mb-2">📦 Optimise STOCKSMART</h4>
                     <p className="text-sm text-muted-foreground">Predict demand, reduce waste, and make data-driven inventory decisions with AI analytics.</p>
                   </div>
                   <div className="bg-muted/50 rounded-lg p-4">
@@ -312,7 +312,7 @@ export default function TrainingModule() {
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <p className="text-sm text-muted-foreground">
-                    Use Copilot to analyze CRM data, draft personalized emails, and generate campaign ideas in minutes.
+                    Use Copilot to analyse CRM data, draft personalised emails, and generate campaign ideas in minutes.
                   </p>
                   <div className="text-xs text-muted-foreground space-y-1">
                     <p><strong>Example:</strong> "Draft a follow-up email for prospect interested in Sample Bags, highlighting ROI."</p>
@@ -332,7 +332,7 @@ export default function TrainingModule() {
                     Copilot in Excel predicts stock needs, identifies trends, and suggests reorder points based on historical data.
                   </p>
                   <div className="text-xs text-muted-foreground space-y-1">
-                    <p><strong>Example:</strong> "Analyze last 6 months sales. Predict Q1 demand for Core Trays by region."</p>
+                    <p><strong>Example:</strong> "Analyse last 6 months sales. Predict Q1 demand for Core Trays by region."</p>
                   </div>
                 </CardContent>
               </Card>
@@ -346,7 +346,7 @@ export default function TrainingModule() {
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <p className="text-sm text-muted-foreground">
-                    Draft empathetic responses, generate FAQs from common inquiries, and analyze ticket sentiment trends.
+                    Draft empathetic responses, generate FAQs from common inquiries, and analyse ticket sentiment trends.
                   </p>
                   <div className="text-xs text-muted-foreground space-y-1">
                     <p><strong>Example:</strong> "Create empathetic response for delayed shipment with solution options."</p>
