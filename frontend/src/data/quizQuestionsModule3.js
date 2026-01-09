@@ -9,11 +9,11 @@ export const quizQuestionsModule3 = [
       "It sends proposals automatically"
     ],
     correctAnswer: 2,
-    explanation: "Copilot assists in drafting proposals faster, but you remain in control, adding your expertise, customizing content, and ensuring accuracy."
+    explanation: "Copilot assists in drafting proposals faster, but you remain in control, adding your expertise, customising content, and ensuring accuracy."
   },
   {
     id: 2,
-    question: "When using Copilot to summarize customer emails, what should you ALWAYS do?",
+    question: "When using Copilot to summarise customer emails, what should you ALWAYS do?",
     options: [
       "Review for accuracy and context",
       "Send the summary directly",
@@ -30,7 +30,7 @@ export const quizQuestionsModule3 = [
       "Tell me everything about inventory",
       "Fix all inventory problems",
       "Show me all products",
-      "Analyze 3-month Product A trends"
+      "Analyse 3-month Product A trends"
     ],
     correctAnswer: 3,
     explanation: "Specific, data-driven prompts work best. Include the product, timeframe, and desired outcome for accurate, actionable results."
@@ -40,12 +40,12 @@ export const quizQuestionsModule3 = [
     question: "What's the best way to use Copilot for customer service response templates?",
     options: [
       "Use generic templates only",
-      "Create templates, then personalize",
+      "Create templates, then personalise",
       "Let Copilot respond directly",
       "Only use templates for VIPs"
     ],
     correctAnswer: 1,
-    explanation: "Create base templates for common scenarios, then personalize each response with customer-specific details, maintaining empathy and accuracy."
+    explanation: "Create base templates for common scenarios, then personalise each response with customer-specific details, maintaining empathy and accuracy."
   },
   {
     id: 5,
