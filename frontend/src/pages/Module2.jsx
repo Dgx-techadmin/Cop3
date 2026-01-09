@@ -213,7 +213,7 @@ Key Topics:
         },
         {
           title: "✅ GOOD: Process Improvement",
-          prompt: "Suggest ways to optimize warehouse receiving process for mining equipment suppliers.",
+          prompt: "Suggest ways to optimise warehouse receiving process for mining equipment suppliers.",
           note: "General process improvement without confidential operational data."
         }
       ]
