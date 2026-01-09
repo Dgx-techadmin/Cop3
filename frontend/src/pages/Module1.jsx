@@ -213,7 +213,7 @@ Key Topics:
         },
         {
           title: "Email Time Management",
-          prompt: "Use Copilot in Outlook to prioritize emails: 'Summarize unread emails and flag urgent items requiring immediate attention.'"
+          prompt: "Use Copilot in Outlook to prioritise emails: 'Summarise unread emails and flag urgent items requiring immediate attention.'"
         },
         {
           title: "Strategic Planning",
