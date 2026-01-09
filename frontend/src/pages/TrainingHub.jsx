@@ -170,6 +170,38 @@ export default function TrainingHub() {
           </div>
         </section>
 
+        {/* Pro Tips for Learning Section */}
+        <section className="py-8">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <Card className="shadow-elegant border-2 border-primary/20 bg-gradient-to-br from-card to-secondary/20">
+              <CardContent className="pt-8 pb-6">
+                <div className="text-center space-y-4">
+                  <div className="text-5xl mb-4">🎯</div>
+                  <h3 className="text-2xl font-heading font-bold text-foreground">Pro Tips for Learning</h3>
+                  <div className="space-y-3 text-left max-w-2xl mx-auto">
+                    <div className="flex items-start space-x-3 text-muted-foreground">
+                      <span className="w-6 h-6 rounded-full bg-primary/10 text-primary text-sm flex items-center justify-center flex-shrink-0 mt-0.5">1</span>
+                      <p className="text-sm"><strong className="text-foreground">Start small:</strong> Pick one tool that you use daily and master it first.</p>
+                    </div>
+                    <div className="flex items-start space-x-3 text-muted-foreground">
+                      <span className="w-6 h-6 rounded-full bg-primary/10 text-primary text-sm flex items-center justify-center flex-shrink-0 mt-0.5">2</span>
+                      <p className="text-sm"><strong className="text-foreground">Practice regularly:</strong> Use Copilot for at least one task per day to build muscle memory.</p>
+                    </div>
+                    <div className="flex items-start space-x-3 text-muted-foreground">
+                      <span className="w-6 h-6 rounded-full bg-primary/10 text-primary text-sm flex items-center justify-center flex-shrink-0 mt-0.5">3</span>
+                      <p className="text-sm"><strong className="text-foreground">Iterate on prompts:</strong> If the first result isn't perfect, refine your prompt and try again.</p>
+                    </div>
+                    <div className="flex items-start space-x-3 text-muted-foreground">
+                      <span className="w-6 h-6 rounded-full bg-primary/10 text-primary text-sm flex items-center justify-center flex-shrink-0 mt-0.5">4</span>
+                      <p className="text-sm"><strong className="text-foreground">Share & learn:</strong> Discuss wins with your team – ONE TEAM grows together!</p>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
         {/* Intro Module - Wide Card */}
         <section className="py-8">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
