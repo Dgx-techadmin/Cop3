@@ -536,14 +536,28 @@ Key Topics:
         </section>
 
         {/* Back to Training Hub */}
-        <div className="text-center">
+        <div className="text-center mb-8">
           <Button variant="ghost" onClick={() => navigate('/training')}>
             ← Back to Training Hub
           </Button>
         </div>
+        </div>
       </main>
       
       <Footer />
+      
+      {/* Module Tutorial */}
+      <ModuleTutorial 
+        moduleId={0}
+        moduleName="Intro & Quick Wins"
+      />
+      
+      {/* Module AI Expert */}
+      <ModuleAIExpert 
+        moduleId={0}
+        moduleName="Intro & Quick Wins"
+        moduleContext={moduleContext}
+      />
     </div>
   );
 }
